@@ -8,12 +8,14 @@
 
 #import "LSPaletteController.h"
 #import "Palette.h"
-#define  palette_R SCREEN_WIDTH/3.0f
+#define  palette_R (SCREEN_WIDTH-150)/2.0f
 @interface LSPaletteController ()
 @property (nonatomic,strong) Palette *paletteView;
 @property (nonatomic,strong) UIImageView *backImgV;
 @property (nonatomic,strong) UIImageView *leftImgV;
 @property (nonatomic,strong) UISwitch *rightSwitch;
+@property (nonatomic,strong) UISlider *lightSlider;
+@property (nonatomic,strong) UIView *rgbView;
 
 @end
 
@@ -25,9 +27,45 @@
     [self.view addSubview:self.leftImgV];
     [self.view addSubview:self.rightSwitch];
     [self.view addSubview:self.paletteView];
+    [self.view addSubview:self.lightSlider];
+    [self.view addSubview:self.rgbView];
 }
 
 #pragma mark - lazy loading
+-(UIView *)rgbView{
+    if (!_rgbView) {
+        _rgbView = [[UIView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-palette_R*2)/2.0f-50, 70+NavBar_H+palette_R*2-50, 60,90)];
+        for (int i =0; i<3; i++) {
+            UILabel * lb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0+i*30, 20,25)];
+            lb.textColor = [UIColor whiteColor];
+            lb.text = @"R";
+            if (i==1) {
+                lb.text = @"G";
+            }else if(i == 2){
+                lb.text = @"B";
+            }
+            lb.font = [UIFont systemFontOfSize:18];
+            
+            UILabel * numberLb = [[UILabel alloc]initWithFrame:CGRectMake(20, 0+i*30,35,25)];
+            numberLb.tag = i+100;
+            numberLb.textAlignment = NSTextAlignmentCenter;
+            numberLb.backgroundColor = [UIColor blackColor];
+            numberLb.font = [UIFont systemFontOfSize:16];
+            numberLb.textColor = [UIColor whiteColor];
+            numberLb.text = @"255";
+            [_rgbView addSubview:lb];
+            [_rgbView addSubview:numberLb];
+
+        }
+    }
+    return _rgbView;
+}
+-(UISlider *)lightSlider{
+    if (!_lightSlider) {
+        _lightSlider = [[UISlider alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-palette_R*2)/2.0f, 70+NavBar_H+palette_R*2+200, palette_R*2, 2)];
+    }
+   return  _lightSlider;
+}
 -(Palette *)paletteView{
     if (!_paletteView) {
         _paletteView = [[Palette alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-palette_R*2)/2.0f, 70+NavBar_H,palette_R*2, palette_R*2)];

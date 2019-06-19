@@ -31,6 +31,8 @@
 		2F10663E22B0A69D002D3B6D /* LSOnlineMusicController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F10663C22B0A69D002D3B6D /* LSOnlineMusicController.xib */; };
 		2F10664422B0AAB2002D3B6D /* Palette.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F10664122B0AAB2002D3B6D /* Palette.m */; };
 		2F10664522B0AAB2002D3B6D /* HSVWithNew.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F10664322B0AAB2002D3B6D /* HSVWithNew.c */; };
+		4BACEF7822BA74CB00C5D5DB /* ColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BACEF7622BA74CB00C5D5DB /* ColorCell.m */; };
+		4BACEF7922BA74CB00C5D5DB /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BACEF7722BA74CB00C5D5DB /* ColorCell.xib */; };
 		5E69760E5F0BB060866D5EFA /* libPods-DeviceControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46939196AC287B81F9663E79 /* libPods-DeviceControl.a */; };
 /* End PBXBuildFile section */
 
@@ -101,6 +103,9 @@
 		2F10664222B0AAB2002D3B6D /* Palette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Palette.h; sourceTree = "<group>"; };
 		2F10664322B0AAB2002D3B6D /* HSVWithNew.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HSVWithNew.c; sourceTree = "<group>"; };
 		46939196AC287B81F9663E79 /* libPods-DeviceControl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeviceControl.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BACEF7522BA74CB00C5D5DB /* ColorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorCell.h; sourceTree = "<group>"; };
+		4BACEF7622BA74CB00C5D5DB /* ColorCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorCell.m; sourceTree = "<group>"; };
+		4BACEF7722BA74CB00C5D5DB /* ColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
 		7495AFF72BE6FFAA8273DF29 /* Pods-DeviceControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeviceControl.debug.xcconfig"; path = "Target Support Files/Pods-DeviceControl/Pods-DeviceControl.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -293,6 +298,9 @@
 				2F10664122B0AAB2002D3B6D /* Palette.m */,
 				2F10664022B0AAB2002D3B6D /* HSVWithNew.h */,
 				2F10664322B0AAB2002D3B6D /* HSVWithNew.c */,
+				4BACEF7522BA74CB00C5D5DB /* ColorCell.h */,
+				4BACEF7622BA74CB00C5D5DB /* ColorCell.m */,
+				4BACEF7722BA74CB00C5D5DB /* ColorCell.xib */,
 			);
 			path = Palette;
 			sourceTree = "<group>";
@@ -414,6 +422,7 @@
 				2F10662F22B0A641002D3B6D /* LSMicrophoneController.xib in Resources */,
 				2F1065E922B0A092002D3B6D /* LaunchScreen.storyboard in Resources */,
 				2F10663422B0A661002D3B6D /* LSModelController.xib in Resources */,
+				4BACEF7922BA74CB00C5D5DB /* ColorCell.xib in Resources */,
 				2F1065E622B0A092002D3B6D /* Assets.xcassets in Resources */,
 				2F10662622B0A4D1002D3B6D /* NaviBarView.xib in Resources */,
 				2F10663E22B0A69D002D3B6D /* LSOnlineMusicController.xib in Resources */,
@@ -490,6 +499,7 @@
 				2F10662522B0A4D1002D3B6D /* BaseViewController.m in Sources */,
 				2F10662A22B0A5F3002D3B6D /* LSPaletteController.m in Sources */,
 				2F10663822B0A685002D3B6D /* LSMusicController.m in Sources */,
+				4BACEF7822BA74CB00C5D5DB /* ColorCell.m in Sources */,
 				2F10662422B0A4D1002D3B6D /* MainTabBarController.m in Sources */,
 				2F1065EC22B0A092002D3B6D /* main.m in Sources */,
 				2F10664422B0AAB2002D3B6D /* Palette.m in Sources */,

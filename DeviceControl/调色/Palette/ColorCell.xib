@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ColorCell">
+            <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eul-De-vTt">
+                        <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="勾选中" translatesAutoresizingMaskIntoConstraints="NO" id="bpE-5Q-zrg">
+                                <rect key="frame" x="32" y="32" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="CNX-y5-dPp"/>
+                                    <constraint firstAttribute="width" constant="20" id="mqf-mD-GgR"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.91885238885879517" green="0.19850584864616394" blue="0.39999866485595703" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="bpE-5Q-zrg" secondAttribute="bottom" constant="-10" id="4gb-ll-vE9"/>
+                            <constraint firstAttribute="trailing" secondItem="bpE-5Q-zrg" secondAttribute="trailing" constant="-10" id="FeN-Jp-EPA"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Eul-De-vTt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3AZ-9T-YEo"/>
+                <constraint firstAttribute="bottom" secondItem="Eul-De-vTt" secondAttribute="bottom" id="JWO-an-W7T"/>
+                <constraint firstItem="Eul-De-vTt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="s0v-eg-b0I"/>
+                <constraint firstAttribute="trailing" secondItem="Eul-De-vTt" secondAttribute="trailing" id="tI0-fw-lAZ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <size key="customSize" width="42" height="42"/>
+            <connections>
+                <outlet property="backView" destination="Eul-De-vTt" id="ef4-ms-qZ0"/>
+                <outlet property="selectImageV" destination="bpE-5Q-zrg" id="sPm-1R-6t1"/>
+            </connections>
+            <point key="canvasLocation" x="-59.420289855072468" y="34.151785714285715"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="勾选中" width="12.5" height="12.5"/>
+    </resources>
+</document>
