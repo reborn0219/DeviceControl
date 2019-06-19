@@ -95,7 +95,7 @@
 -(NaviBarView *)navibarView{
     if (!_navibarView) {
         _navibarView = [[[NSBundle mainBundle]loadNibNamed:@"NaviBarView" owner:self options:nil] lastObject];
-        [_navibarView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, k_Height_StatusBar+60)];
+        [_navibarView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, k_Height_StatusBar+50)];
         [_navibarView setBackgroundColor:SHADOW_COLOR];
     }
     return _navibarView;
