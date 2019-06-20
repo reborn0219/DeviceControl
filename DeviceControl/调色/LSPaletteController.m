@@ -9,7 +9,8 @@
 #import "LSPaletteController.h"
 #import "Palette.h"
 #define  palette_R (SCREEN_WIDTH-140)/2.0f
-#define  slider_bottom (IS_PhoneXAll?320:210)
+#define  bottom_color_view_h (IS_PhoneXAll?200:120)
+#define  slider_bottom (bottom_color_view_h+k_Height_TabBar+15)
 @interface LSPaletteController ()
 @property (nonatomic,strong) Palette *paletteView;
 @property (nonatomic,strong) UIImageView *backImgV;
@@ -17,6 +18,8 @@
 @property (nonatomic,strong) UISwitch *rightSwitch;
 @property (nonatomic,strong) UISlider *lightSlider;
 @property (nonatomic,strong) UIView *rgbView;
+@property (nonatomic,strong) UIView *bottomColorView;
+@property (nonatomic,strong) UICollectionView *collectionView;
 
 @end
 
@@ -31,8 +34,11 @@
     [self.view addSubview:self.paletteView];
     [self.view addSubview:self.lightSlider];
     [self.view addSubview:self.rgbView];
+    [self.view addSubview:self.bottomColorView];
 }
-
+-(void)changeColor{
+    
+}
 #pragma mark - lazy loading
 -(UIView *)rgbView{
     if (!_rgbView) {
@@ -64,14 +70,13 @@
 }
 -(UISlider *)lightSlider{
     if (!_lightSlider) {
-        _lightSlider = [[UISlider alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-palette_R*2)/2.0f, SCREEN_HEIGHT-slider_bottom, palette_R*2, 2)];
+        _lightSlider = [[UISlider alloc]initWithFrame:CGRectMake(45, SCREEN_HEIGHT-slider_bottom-20,SCREEN_WIDTH-90, 2)];
         [_lightSlider setThumbTintColor:Selected_Color];
         [_lightSlider setTintColor:Selected_Color];
-        UIImageView * leftImgV = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-palette_R*2)/2.0f-30,_lightSlider.frame.origin.y-10, 20, 20)];
+        UIImageView * leftImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15,_lightSlider.frame.origin.y-10, 20, 20)];
         [leftImgV setImage:[UIImage imageNamed:@"亮度-"]];
         [self.view addSubview:leftImgV];
-        
-        UIImageView * rightImgV = [[UIImageView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-palette_R*2)/2.0f+10+palette_R*2,_lightSlider.frame.origin.y-10, 20, 20)];
+        UIImageView * rightImgV = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-35,_lightSlider.frame.origin.y-10, 20, 20)];
         [rightImgV setImage:[UIImage imageNamed:@"亮度+"]];
         [self.view addSubview:leftImgV];
         [self.view addSubview:rightImgV];
@@ -106,5 +111,13 @@
         [_rightSwitch setOn:YES];
     }
     return _rightSwitch;
+}
+-(UIView *)bottomColorView{
+    if (!_bottomColorView) {
+        _bottomColorView = [[UIView alloc]initWithFrame:CGRectMake(20,SCREEN_HEIGHT-k_Height_TabBar-15-bottom_color_view_h,
+                                                                   SCREEN_WIDTH-40,bottom_color_view_h)];
+        _bottomColorView.backgroundColor = [UIColor redColor];
+    }
+    return _bottomColorView;
 }
 @end
