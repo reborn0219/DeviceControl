@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LSMicrophoneController : BaseViewController
+@interface LSMicrophoneController : UIViewController
 
 @end
 

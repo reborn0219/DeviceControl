@@ -8,10 +8,11 @@
 
 #import "LSPaletteController.h"
 #import "Palette.h"
+#import "ColorCell.h"
 #define  palette_R (SCREEN_WIDTH-140)/2.0f
 #define  bottom_color_view_h (IS_PhoneXAll?200:120)
 #define  slider_bottom (bottom_color_view_h+k_Height_TabBar+15)
-@interface LSPaletteController ()
+@interface LSPaletteController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic,strong) Palette *paletteView;
 @property (nonatomic,strong) UIImageView *backImgV;
 @property (nonatomic,strong) UIImageView *leftImgV;
@@ -116,8 +117,73 @@
     if (!_bottomColorView) {
         _bottomColorView = [[UIView alloc]initWithFrame:CGRectMake(20,SCREEN_HEIGHT-k_Height_TabBar-15-bottom_color_view_h,
                                                                    SCREEN_WIDTH-40,bottom_color_view_h)];
-        _bottomColorView.backgroundColor = [UIColor redColor];
+        [_bottomColorView addSubview:self.collectionView];
+        UILabel *topLb = [[UILabel alloc]initWithFrame:CGRectMake(0,bottom_color_view_h-120,50,60)];
+        topLb.text = @"常用";
+        topLb.font = [UIFont systemFontOfSize:20];
+        topLb.textColor = [UIColor whiteColor];
+        [_bottomColorView addSubview:topLb];
+        UILabel *bottomLb = [[UILabel alloc]initWithFrame:CGRectMake(0,bottom_color_view_h-60,50,60)];
+        bottomLb.text = @"经典";
+        bottomLb.font = [UIFont systemFontOfSize:20];
+        bottomLb.textColor = [UIColor whiteColor];
+        [_bottomColorView addSubview:bottomLb];
+
     }
     return _bottomColorView;
 }
+-(UICollectionView *)collectionView{
+    if (!_collectionView) {
+        UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
+        flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(50,bottom_color_view_h-120,SCREEN_WIDTH-90,120) collectionViewLayout: flowLayout];
+        [_collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([ColorCell class]) bundle:nil] forCellWithReuseIdentifier:@"ColorCell"];
+        _collectionView.backgroundColor = [UIColor clearColor];
+        _collectionView.delegate = self;
+        _collectionView.dataSource = self;
+        UIView *lineV = [[UIView alloc]initWithFrame:CGRectMake(50, bottom_color_view_h-64.5, SCREEN_WIDTH-90, 1)];
+        [lineV setBackgroundColor:HexRGB(0x939393)];
+        [self.bottomColorView addSubview:lineV];
+    }
+    return _collectionView;
+}
+#pragma mark - UICollectionViewDataSource
+//cell的最小行间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 20;
+}
+//cell的最小列间距
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+{
+    return 5;
+}
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(50,50);
+}
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    return UIEdgeInsetsMake(0, 0, 0, 0);
+}
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return 12;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ColorCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ColorCell" forIndexPath:indexPath];
+    return cell;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+  
+}
+
+
 @end

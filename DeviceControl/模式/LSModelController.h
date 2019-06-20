@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LSModelController : BaseViewController
+@interface LSModelController : UIViewController
 
 @end
 

@@ -16,7 +16,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    _backView.layer.cornerRadius = 2;
+    _backView.layer.cornerRadius = 5;
 }
 
 @end

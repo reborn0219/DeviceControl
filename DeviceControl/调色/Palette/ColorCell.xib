@@ -20,29 +20,29 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eul-De-vTt">
-                        <rect key="frame" x="0.0" y="0.0" width="42" height="42"/>
+                        <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="勾选中" translatesAutoresizingMaskIntoConstraints="NO" id="bpE-5Q-zrg">
-                                <rect key="frame" x="32" y="32" width="20" height="20"/>
+                                <rect key="frame" x="32" y="32" width="10" height="10"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="CNX-y5-dPp"/>
-                                    <constraint firstAttribute="width" constant="20" id="mqf-mD-GgR"/>
+                                    <constraint firstAttribute="height" constant="10" id="CNX-y5-dPp"/>
+                                    <constraint firstAttribute="width" constant="10" id="mqf-mD-GgR"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.91885238885879517" green="0.19850584864616394" blue="0.39999866485595703" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.57647058823529407" green="0.0" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="bpE-5Q-zrg" secondAttribute="bottom" constant="-10" id="4gb-ll-vE9"/>
-                            <constraint firstAttribute="trailing" secondItem="bpE-5Q-zrg" secondAttribute="trailing" constant="-10" id="FeN-Jp-EPA"/>
+                            <constraint firstAttribute="bottom" secondItem="bpE-5Q-zrg" secondAttribute="bottom" constant="-5" id="4gb-ll-vE9"/>
+                            <constraint firstAttribute="trailing" secondItem="bpE-5Q-zrg" secondAttribute="trailing" constant="-5" id="FeN-Jp-EPA"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="Eul-De-vTt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3AZ-9T-YEo"/>
-                <constraint firstAttribute="bottom" secondItem="Eul-De-vTt" secondAttribute="bottom" id="JWO-an-W7T"/>
+                <constraint firstAttribute="bottom" secondItem="Eul-De-vTt" secondAttribute="bottom" constant="5" id="JWO-an-W7T"/>
                 <constraint firstItem="Eul-De-vTt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="s0v-eg-b0I"/>
-                <constraint firstAttribute="trailing" secondItem="Eul-De-vTt" secondAttribute="trailing" id="tI0-fw-lAZ"/>
+                <constraint firstAttribute="trailing" secondItem="Eul-De-vTt" secondAttribute="trailing" constant="5" id="tI0-fw-lAZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="42" height="42"/>
