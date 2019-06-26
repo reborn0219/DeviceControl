@@ -74,36 +74,7 @@
 
 - (void)scanForPeripherals {
     
-    if (IOS10_OR_LATER){
-        
-        if (_centralManager.state == CBManagerStateUnsupported) {//设备不支持蓝牙
-            
-        }else {//设备支持蓝牙连接
-            
-            if (1) {//蓝牙开启状态
-                
-                [self discconnection];
-                _discoveredPeripheral=nil;
-                rssi=[[NSNumber alloc]initWithInt:-100];
-            
-                [_centralManager scanForPeripheralsWithServices:nil options:nil];
-                
-                if(self.blueToothBlock)
-                {
-                    self.blueToothBlock(@"正在搜索设备...",SearchBluetooth);
-                }
-                
-                count=0;
-                //开一个定时器监控连接超时的情况
-                if (connectTimer) {
-                    [connectTimer invalidate];//停止时钟
-                    connectTimer=nil;
-                }
-                connectTimer =[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(connectTimeout) userInfo:nil repeats:YES];
-            }
-     
-        }
-    }
+ 
 }
 
 #pragma mark - ScanTimer
@@ -136,146 +107,16 @@
     }
     [_centralManager scanForPeripheralsWithServices:nil options:nil];
     
-}
+} 
 
 #pragma mark - 发现蓝牙设备
 
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *,id> *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    NSLog(@"-----扫描到的蓝牙名称------%@---蓝牙详情%@----advertisementData:----%@",peripheral.name==nil?@"0":peripheral.name,peripheral,advertisementData);
-    
-    [self findStrongBlueth:peripheral RSSI:RSSI andAdverDataName:[advertisementData objectForKey:@"kCBAdvDataLocalName"]];
-    
-}
-#pragma mark - 查找用户是否有该蓝牙使用权限
--(void) findStrongBlueth:(CBPeripheral *)peripheral RSSI:(NSNumber *)RSSI andAdverDataName:(NSString *)advStr {
-    
-    
-    NSMutableArray *arr = [blueTooths mutableCopy];
-    if (advArr_.count > 0) {
-        for (int i = 0; i < advArr_.count; i++) {
-            
-            [arr insertObject:advArr_[i] atIndex:0];
-        }
+    if (peripheral.name) {
+        NSLog(@"-----扫描到的蓝牙名称------%@---蓝牙详情----advertisementData:----%@",peripheral.name,advertisementData);
+
     }
-    NSLog(@"-----扫描到的蓝牙名称------%@---蓝牙详情%@",peripheral.name==nil?@"------":peripheral.name,peripheral);
-    NSString * scanBlueName = peripheral.name;
-    if ([advStr isNotBlank]) {
-        scanBlueName = advStr;
-    }
-    NSInteger counts=arr.count;
-    
-    for (int i=0; i<counts; i++) {
-        
-        uukm=[arr objectAtIndex:i];
-        
-        if (![scanBlueName isNotBlank]) {
-            break;
-        }
-        //        if(1){
-        if([scanBlueName isEqualToString:uukm.bluename]){
-            
-            ///搜索到蓝牙设备以后 发送广播
-            if([uukm.version isEqualToString:@"3.0"])
-            {
-                
-                ls_openKey =  uukm.openkey;
-                
-                if (![ls_openKey isEqualToString:@""]) {
-                    
-                    LeiXing= uukm.type.integerValue;
-                    [_centralManager stopScan];
-                    count=0;
-                    ///开一个定时器监控连接超时的情况
-                    if (connectTimer) {
-                        [connectTimer invalidate];///停止时钟
-                        connectTimer=nil;
-                    }
-                  
-                    
-                    if(self.blueToothBlock)
-                    {
-                        self.blueToothBlock(@{@"name":scanBlueName,
-                                              @"RSSI":rssi,@"uukm":uukm},DevInfo);
-                    }
-                    [self setUp];
-                    break;
-                }
-            }
-            /// type 蓝牙类型：1 社区大门 2 单元门 3 电梯
-            if (uukm.type.intValue== 1) {
-                
-                LeiXing=1;
-                rssi=RSSI;
-                _discoveredPeripheral=peripheral;
-                if(self.blueToothBlock)
-                {
-                    self.blueToothBlock(@{@"name":scanBlueName,
-                                          @"RSSI":rssi,@"uukm":uukm},DevInfo);
-                }
-                timeOutUUKM = uukm;
-                _discoveredPeripheral=peripheral;
-                [_centralManager stopScan];
-                [connectTimer invalidate];//停止时钟
-                connectTimer=nil;
-                count=0;
-                [self connect:_discoveredPeripheral];
-                [_discoveredPeripheral setDelegate:self];
-                
-            }else if (uukm.type.integerValue==2) {
-                
-                LeiXing=2;
-                if (rssi==nil) {
-                    rssi=RSSI;
-                    _discoveredPeripheral=peripheral;
-                }
-                
-                if (rssi.integerValue<RSSI.integerValue) {
-                    rssi=RSSI;
-                    _discoveredPeripheral=peripheral;
-                }
-                
-                [_centralManager stopScan];
-                [connectTimer invalidate];//停止时钟
-                connectTimer=nil;
-                count=0;
-                [self connect:_discoveredPeripheral];
-                [_discoveredPeripheral setDelegate:self];
-                timeOutUUKM = uukm;
-                
-                if(self.blueToothBlock)
-                {
-                    self.blueToothBlock(@{@"name":scanBlueName,
-                                          @"RSSI":rssi,@"uukm":uukm},DevInfo);
-                }
-                
-            }else if(uukm.type.integerValue == 3) {
-                
-              
-                
-                timeOutUUKM = uukm;
-                LeiXing=3;
-                rssi=RSSI;
-                _discoveredPeripheral=peripheral;
-                if(self.blueToothBlock)
-                {
-                    self.blueToothBlock(@{@"name":scanBlueName,
-                                          @"RSSI":rssi,@"uukm":uukm},DevInfo);
-                }
-                _discoveredPeripheral=peripheral;
-                [_centralManager stopScan];
-                [connectTimer invalidate];//停止时钟
-                connectTimer=nil;
-                count=0;
-                [self connect:_discoveredPeripheral];
-                [_discoveredPeripheral setDelegate:self];
-                
-            }
-            
-            break;
-        }
-    }
-    
 }
 
 #pragma mark - 链接需要匹配的蓝牙设备
@@ -304,62 +145,7 @@
     
 }
 
-#pragma mark - 蓝牙连接超时
-
-- (void)connectTimeout {
-    
-    count++;
-    if(count>2) {
-        
-        [_centralManager stopScan];
-        [connectTimer invalidate];//停止时钟
-        connectTimer=nil;
-        count=0;
-        if(_discoveredPeripheral==nil){
-            
-            if(self.blueToothBlock)
-            {
-                self.blueToothBlock(@"未搜索到蓝牙设备~",NoFindDev);
-            }
-            
-        }else {
-          
-            [self connect:_discoveredPeripheral];
-            
-        }
-        
-    }
-    NSLog(@"count==%d",count);
-}
-
-#pragma mark - 蓝牙连接超时
-
--(void)connectTimeout2
-{
-    count++;
-    if(count>2)
-    {
-        [_centralManager stopScan];
-        [connectTimer invalidate];//停止时钟
-        connectTimer=nil;
-        count=0;
-        [_peripheralManager stopAdvertising];
-        if(_discoveredPeripheral==nil)
-        {
-            self.blueToothBlock(@"未搜索到蓝牙设备~",NoFindDev);
-        }
-        else
-        {
-            [self connect:_discoveredPeripheral];
-        }
-        
-    }
-    NSLog(@"count==%d",count);
-}
-
-
 #pragma mark - 蓝牙连接成功
-
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     
     _discoveredPeripheral = peripheral;
@@ -766,7 +552,7 @@
     
     CBUUID *characteristicUUID = [CBUUID UUIDWithString:@"FEC8"];
     _charPeripheral = [[CBMutableCharacteristic alloc]initWithType:characteristicUUID properties:CBCharacteristicPropertyNotify value:nil permissions:CBAttributePermissionsReadable];
-    CBUUID *serviceUUID = [CBUUID UUIDWithString:@"FEC8"];
+    CBUUID *serviceUUID = [CBUUID UUIDWithString:@"FEE0"];
     _customerService = [[CBMutableService alloc]initWithType:serviceUUID primary:YES];
     [_peripheralManager addService:_customerService];
     
@@ -779,9 +565,8 @@
             
         case CBManagerStatePoweredOn:
         {
-            [self setUp];
-            [_peripheralManager startAdvertising:@{CBAdvertisementDataLocalNameKey : @"ABBA017700553303EF"}];
-
+//            [self setUp];
+//            [_peripheralManager startAdvertising:@{CBAdvertisementDataServiceUUIDsKey:@"FEE0",CBAdvertisementDataLocalNameKey:@"ABBA017700553303EF"}];
         }
             break;
         case CBManagerStatePoweredOff:
