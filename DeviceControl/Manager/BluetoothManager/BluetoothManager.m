@@ -52,7 +52,7 @@
             [_centralManager setDelegate:self];
         }
         
-        [self startPeripheralAdvertising];
+//        [self startPeripheralAdvertising];
         
         
     }
@@ -80,25 +80,14 @@
             
         }else {//设备支持蓝牙连接
             
-            if (_centralManager.state == CBManagerStatePoweredOn) {//蓝牙开启状态
+            if (1) {//蓝牙开启状态
                 
                 [self discconnection];
                 _discoveredPeripheral=nil;
                 rssi=[[NSNumber alloc]initWithInt:-100];
-                
-                if (blueTooths==nil) {
-//                    blueTooths=(NSArray *)[UserDefaultsStorage getDataforKey:@"UserUnitKeyArray"];
-                }
-                if (blueTooths==nil||blueTooths.count==0) {
-                    if(self.blueToothBlock)
-                    {
-                        self.blueToothBlock(@"您所在单元还未安装智能开门设备",NOAuthorize);
-                    }
-                    return;
-                }
-                
-                blueCount=0;
+            
                 [_centralManager scanForPeripheralsWithServices:nil options:nil];
+                
                 if(self.blueToothBlock)
                 {
                     self.blueToothBlock(@"正在搜索设备...",SearchBluetooth);
@@ -112,56 +101,7 @@
                 }
                 connectTimer =[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(connectTimeout) userInfo:nil repeats:YES];
             }
-            else
-            {
-                alert(@"蓝牙设备未打开,请先打开蓝牙!",@"确认");
-            }
-            
-            
-        }
-    }else
-    {
-        if (_centralManager.state == CBCentralManagerStateUnsupported) {//设备不支持蓝牙
-            
-        }else {//设备支持蓝牙连接
-            
-            if (_centralManager.state == CBCentralManagerStatePoweredOn) {//蓝牙开启状态
-                [self discconnection];
-                _discoveredPeripheral=nil;
-                
-                rssi=[[NSNumber alloc]initWithInt:-100];
-                if (blueTooths==nil) {
-//                    blueTooths=(NSArray *)[UserDefaultsStorage getDataforKey:@"UserUnitKeyArray"];
-                }
-                if (blueTooths==nil||blueTooths.count==0) {
-                    if(self.blueToothBlock)
-                    {
-                        self.blueToothBlock(@"您所在单元还未安装智能开门设备",NOAuthorize);
-                    }
-                    return;
-                }
-                
-                blueCount=0;
-                [_centralManager scanForPeripheralsWithServices:nil options:nil];
-                if(self.blueToothBlock)
-                {
-                    self.blueToothBlock(@"正在搜索设备...",SearchBluetooth);
-                }
-                
-                count=0;
-                ///开一个定时器监控连接超时的情况
-                if (connectTimer) {
-                    [connectTimer invalidate];///停止时钟
-                    connectTimer=nil;
-                }
-                connectTimer =[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(connectTimeout) userInfo:nil repeats:YES];
-            }
-            else
-            {
-                alert(@"蓝牙设备未打开,请先打开蓝牙!",@"确认");
-            }
-            
-            
+     
         }
     }
 }
@@ -194,6 +134,7 @@
     {
         self.blueToothBlock(central,BluetoothState);
     }
+    [_centralManager scanForPeripheralsWithServices:nil options:nil];
     
 }
 
@@ -211,7 +152,6 @@
     
     
     NSMutableArray *arr = [blueTooths mutableCopy];
-    
     if (advArr_.count > 0) {
         for (int i = 0; i < advArr_.count; i++) {
             
@@ -220,11 +160,9 @@
     }
     NSLog(@"-----扫描到的蓝牙名称------%@---蓝牙详情%@",peripheral.name==nil?@"------":peripheral.name,peripheral);
     NSString * scanBlueName = peripheral.name;
-    
     if ([advStr isNotBlank]) {
         scanBlueName = advStr;
     }
-    
     NSInteger counts=arr.count;
     
     for (int i=0; i<counts; i++) {
@@ -264,7 +202,6 @@
                     break;
                 }
             }
-            
             /// type 蓝牙类型：1 社区大门 2 单元门 3 电梯
             if (uukm.type.intValue== 1) {
                 
@@ -277,7 +214,6 @@
                                           @"RSSI":rssi,@"uukm":uukm},DevInfo);
                 }
                 timeOutUUKM = uukm;
-                
                 _discoveredPeripheral=peripheral;
                 [_centralManager stopScan];
                 [connectTimer invalidate];//停止时钟
@@ -346,11 +282,11 @@
 
 - (void)connect:(CBPeripheral *)peripheral{
     
-    if (_centralManager.state == CBCentralManagerStateUnsupported) {//设备不支持蓝牙
+    if (_centralManager.state == CBManagerStateUnsupported) {//设备不支持蓝牙
         
     }else {//设备支持蓝牙连接
         
-        if (_centralManager.state == CBCentralManagerStatePoweredOn) {//蓝牙开启状态
+        if (_centralManager.state == CBManagerStatePoweredOn) {//蓝牙开启状态
             
             //连接设备
             [_discoveredPeripheral setDelegate:self];
@@ -470,7 +406,6 @@
                 [_discoveredPeripheral writeValue:dataCut forCharacteristic:_characteristicWrite type:CBCharacteristicWriteWithResponse];
                 
                 sleep(0.1);
-                
             }
             
         }else{
@@ -842,10 +777,14 @@
     
     switch (peripheral.state) {
             
-        case CBPeripheralManagerStatePoweredOn:
-            
+        case CBManagerStatePoweredOn:
+        {
+            [self setUp];
+            [_peripheralManager startAdvertising:@{CBAdvertisementDataLocalNameKey : @"ABBA017700553303EF"}];
+
+        }
             break;
-        case CBPeripheralManagerStatePoweredOff:
+        case CBManagerStatePoweredOff:
             
             break;
             

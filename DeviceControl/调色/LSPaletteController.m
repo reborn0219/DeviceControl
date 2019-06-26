@@ -9,6 +9,8 @@
 #import "LSPaletteController.h"
 #import "Palette.h"
 #import "ColorCell.h"
+#import "BluetoothManager.h"
+
 #define  palette_R (SCREEN_WIDTH-140)/2.0f
 #define  bottom_color_view_h (IS_PhoneXAll?200:120)
 #define  slider_bottom (bottom_color_view_h+k_Height_TabBar+15)
@@ -21,14 +23,14 @@
 @property (nonatomic,strong) UIView *rgbView;
 @property (nonatomic,strong) UIView *bottomColorView;
 @property (nonatomic,strong) UICollectionView *collectionView;
-
+@property (nonatomic,strong) BluetoothManager * blueManager;
+@property (nonatomic,assign) CBManagerState CBmanagerState;
 @end
 
 @implementation LSPaletteController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.view addSubview:self.backImgV];
     [self.view addSubview:self.leftImgV];
     [self.view addSubview:self.rightSwitch];
@@ -36,6 +38,18 @@
     [self.view addSubview:self.lightSlider];
     [self.view addSubview:self.rgbView];
     [self.view addSubview:self.bottomColorView];
+    self.blueManager = [[BluetoothManager alloc]init];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.blueManager startScanPeripherals];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    if (_blueManager!=nil) {
+        [_blueManager discconnection];
+    }
 }
 -(void)changeColor{
     
@@ -54,7 +68,6 @@
                 lb.text = @"B";
             }
             lb.font = [UIFont systemFontOfSize:18];
-            
             UILabel * numberLb = [[UILabel alloc]initWithFrame:CGRectMake(20, 0+i*30,35,25)];
             numberLb.tag = i+100;
             numberLb.textAlignment = NSTextAlignmentCenter;
@@ -64,7 +77,6 @@
             numberLb.text = @"255";
             [_rgbView addSubview:lb];
             [_rgbView addSubview:numberLb];
-
         }
     }
     return _rgbView;
@@ -128,7 +140,6 @@
         bottomLb.font = [UIFont systemFontOfSize:20];
         bottomLb.textColor = [UIColor whiteColor];
         [_bottomColorView addSubview:bottomLb];
-
     }
     return _bottomColorView;
 }
@@ -184,6 +195,4 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
   
 }
-
-
 @end
