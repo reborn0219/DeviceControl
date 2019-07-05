@@ -107,7 +107,7 @@
     }
     [_centralManager scanForPeripheralsWithServices:nil options:nil];
     
-} 
+}
 
 #pragma mark - 发现蓝牙设备
 
