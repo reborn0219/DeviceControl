@@ -31,6 +31,80 @@
 		2F10663E22B0A69D002D3B6D /* LSOnlineMusicController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F10663C22B0A69D002D3B6D /* LSOnlineMusicController.xib */; };
 		2F10664422B0AAB2002D3B6D /* Palette.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F10664122B0AAB2002D3B6D /* Palette.m */; };
 		2F10664522B0AAB2002D3B6D /* HSVWithNew.c in Sources */ = {isa = PBXBuildFile; fileRef = 2F10664322B0AAB2002D3B6D /* HSVWithNew.c */; };
+		2F27542D22D343FF000C4F5F /* 调色板-点击@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753E222D343FE000C4F5F /* 调色板-点击@3x.png */; };
+		2F27542E22D343FF000C4F5F /* 中图模式-点击@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753E322D343FE000C4F5F /* 中图模式-点击@3x.png */; };
+		2F27542F22D343FF000C4F5F /* 大黑白@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753E422D343FE000C4F5F /* 大黑白@2x.png */; };
+		2F27543022D343FF000C4F5F /* 麦克风-点击@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753E522D343FE000C4F5F /* 麦克风-点击@2x.png */; };
+		2F27543122D343FF000C4F5F /* 亮度+@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753E622D343FE000C4F5F /* 亮度+@3x.png */; };
+		2F27543222D343FF000C4F5F /* 速度-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753E722D343FE000C4F5F /* 速度-@3x.png */; };
+		2F27543322D343FF000C4F5F /* 速度-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753E822D343FE000C4F5F /* 速度-@2x.png */; };
+		2F27543422D343FF000C4F5F /* 亮度+@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753E922D343FE000C4F5F /* 亮度+@2x.png */; };
+		2F27543522D343FF000C4F5F /* 汉仪粗黑简.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753EA22D343FE000C4F5F /* 汉仪粗黑简.ttf */; };
+		2F27543622D343FF000C4F5F /* 大黑白@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753EB22D343FE000C4F5F /* 大黑白@3x.png */; };
+		2F27543722D343FF000C4F5F /* 麦克风-点击@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753EC22D343FE000C4F5F /* 麦克风-点击@3x.png */; };
+		2F27543822D343FF000C4F5F /* 中图模式-点击@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753ED22D343FE000C4F5F /* 中图模式-点击@2x.png */; };
+		2F27543922D343FF000C4F5F /* 调色板-点击@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753EE22D343FE000C4F5F /* 调色板-点击@2x.png */; };
+		2F27543A22D343FF000C4F5F /* 勾选中@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753EF22D343FE000C4F5F /* 勾选中@2x.png */; };
+		2F27543B22D343FF000C4F5F /* 亮度-@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753F022D343FE000C4F5F /* 亮度-@3x.png */; };
+		2F27543C22D343FF000C4F5F /* 组6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753F122D343FE000C4F5F /* 组6@2x.png */; };
+		2F27543D22D343FF000C4F5F /* 加号@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753F222D343FE000C4F5F /* 加号@3x.png */; };
+		2F27543E22D343FF000C4F5F /* 设置@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753F322D343FE000C4F5F /* 设置@2x.png */; };
+		2F27543F22D343FF000C4F5F /* 小色彩盘@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753F422D343FE000C4F5F /* 小色彩盘@2x.png */; };
+		2F27544022D343FF000C4F5F /* 关于@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753F522D343FE000C4F5F /* 关于@2x.png */; };
+		2F27544122D343FF000C4F5F /* 在线音乐@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753F622D343FE000C4F5F /* 在线音乐@2x.png */; };
+		2F27544222D343FF000C4F5F /* 黄色@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753F722D343FE000C4F5F /* 黄色@2x.png */; };
+		2F27544322D343FF000C4F5F /* 灯1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753F822D343FE000C4F5F /* 灯1@3x.png */; };
+		2F27544422D343FF000C4F5F /* 麦克风@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753F922D343FE000C4F5F /* 麦克风@2x.png */; };
+		2F27544522D343FF000C4F5F /* 背景@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753FA22D343FE000C4F5F /* 背景@3x.png */; };
+		2F27544622D343FF000C4F5F /* 麦克风@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753FB22D343FE000C4F5F /* 麦克风@3x.png */; };
+		2F27544722D343FF000C4F5F /* 背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753FC22D343FE000C4F5F /* 背景@2x.png */; };
+		2F27544822D343FF000C4F5F /* 灯1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753FD22D343FE000C4F5F /* 灯1@2x.png */; };
+		2F27544922D343FF000C4F5F /* 黄色@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753FE22D343FE000C4F5F /* 黄色@3x.png */; };
+		2F27544A22D343FF000C4F5F /* 关于@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F2753FF22D343FE000C4F5F /* 关于@3x.png */; };
+		2F27544B22D343FF000C4F5F /* 在线音乐@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540022D343FE000C4F5F /* 在线音乐@3x.png */; };
+		2F27544C22D343FF000C4F5F /* 小色彩盘@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540122D343FE000C4F5F /* 小色彩盘@3x.png */; };
+		2F27544D22D343FF000C4F5F /* 设置@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540222D343FE000C4F5F /* 设置@3x.png */; };
+		2F27544E22D343FF000C4F5F /* 加号@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540322D343FE000C4F5F /* 加号@2x.png */; };
+		2F27544F22D343FF000C4F5F /* 组6@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540422D343FE000C4F5F /* 组6@3x.png */; };
+		2F27545022D343FF000C4F5F /* 亮度-@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540522D343FE000C4F5F /* 亮度-@2x.png */; };
+		2F27545122D343FF000C4F5F /* 勾选中@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540622D343FE000C4F5F /* 勾选中@3x.png */; };
+		2F27545222D343FF000C4F5F /* 灯数设置@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540722D343FE000C4F5F /* 灯数设置@2x.png */; };
+		2F27545322D343FF000C4F5F /* 关于logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540822D343FE000C4F5F /* 关于logo@3x.png */; };
+		2F27545422D343FF000C4F5F /* 中图模式@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540922D343FE000C4F5F /* 中图模式@2x.png */; };
+		2F27545522D343FF000C4F5F /* 音乐点击@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540A22D343FE000C4F5F /* 音乐点击@3x.png */; };
+		2F27545622D343FF000C4F5F /* 在线音乐-点击@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540B22D343FE000C4F5F /* 在线音乐-点击@3x.png */; };
+		2F27545722D343FF000C4F5F /* 字体.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540C22D343FE000C4F5F /* 字体.txt */; };
+		2F27545822D343FF000C4F5F /* 调色板@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540D22D343FE000C4F5F /* 调色板@3x.png */; };
+		2F27545922D343FF000C4F5F /* 选中@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540E22D343FE000C4F5F /* 选中@2x.png */; };
+		2F27545A22D343FF000C4F5F /* 更多@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27540F22D343FE000C4F5F /* 更多@3x.png */; };
+		2F27545B22D343FF000C4F5F /* 更多@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541022D343FE000C4F5F /* 更多@2x.png */; };
+		2F27545C22D343FF000C4F5F /* 选中@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541122D343FE000C4F5F /* 选中@3x.png */; };
+		2F27545D22D343FF000C4F5F /* 调色板@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541222D343FE000C4F5F /* 调色板@2x.png */; };
+		2F27545E22D343FF000C4F5F /* 在线音乐-点击@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541322D343FE000C4F5F /* 在线音乐-点击@2x.png */; };
+		2F27545F22D343FF000C4F5F /* 音乐点击@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541422D343FE000C4F5F /* 音乐点击@2x.png */; };
+		2F27546022D343FF000C4F5F /* 中图模式@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541522D343FE000C4F5F /* 中图模式@3x.png */; };
+		2F27546122D343FF000C4F5F /* 关于logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541622D343FE000C4F5F /* 关于logo@2x.png */; };
+		2F27546222D343FF000C4F5F /* 灯数设置@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541722D343FE000C4F5F /* 灯数设置@3x.png */; };
+		2F27546322D343FF000C4F5F /* 小黑白@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541822D343FE000C4F5F /* 小黑白@3x.png */; };
+		2F27546422D343FF000C4F5F /* 音乐@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541922D343FE000C4F5F /* 音乐@3x.png */; };
+		2F27546522D343FF000C4F5F /* 灯2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541A22D343FE000C4F5F /* 灯2@2x.png */; };
+		2F27546622D343FF000C4F5F /* 刷新@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541B22D343FE000C4F5F /* 刷新@2x.png */; };
+		2F27546722D343FF000C4F5F /* 刷新@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541C22D343FE000C4F5F /* 刷新@3x.png */; };
+		2F27546822D343FF000C4F5F /* 灯2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541D22D343FE000C4F5F /* 灯2@3x.png */; };
+		2F27546922D343FF000C4F5F /* 音乐@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541E22D343FE000C4F5F /* 音乐@2x.png */; };
+		2F27546A22D343FF000C4F5F /* 小黑白@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27541F22D343FE000C4F5F /* 小黑白@2x.png */; };
+		2F27546B22D343FF000C4F5F /* 兰亭黑 GBK.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542022D343FE000C4F5F /* 兰亭黑 GBK.TTF */; };
+		2F27546C22D343FF000C4F5F /* 设备.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542222D343FF000C4F5F /* 设备.png */; };
+		2F27546D22D343FF000C4F5F /* 关于.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542322D343FF000C4F5F /* 关于.png */; };
+		2F27546E22D343FF000C4F5F /* 分组管理-添加.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542422D343FF000C4F5F /* 分组管理-添加.png */; };
+		2F27546F22D343FF000C4F5F /* 模式.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542522D343FF000C4F5F /* 模式.png */; };
+		2F27547022D343FF000C4F5F /* 设置.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542622D343FF000C4F5F /* 设置.png */; };
+		2F27547122D343FF000C4F5F /* 添加-标注.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542722D343FF000C4F5F /* 添加-标注.png */; };
+		2F27547222D343FF000C4F5F /* 首页.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542822D343FF000C4F5F /* 首页.png */; };
+		2F27547322D343FF000C4F5F /* 模式-标注.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542922D343FF000C4F5F /* 模式-标注.png */; };
+		2F27547422D343FF000C4F5F /* 设备-标注.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542A22D343FF000C4F5F /* 设备-标注.png */; };
+		2F27547522D343FF000C4F5F /* 关于-标注.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542B22D343FF000C4F5F /* 关于-标注.png */; };
+		2F27547622D343FF000C4F5F /* 设置-标注.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542C22D343FF000C4F5F /* 设置-标注.png */; };
 		2F89379922C309B900FD4CB7 /* 蓝牙协议.md in Resources */ = {isa = PBXBuildFile; fileRef = 2F89379722C309B900FD4CB7 /* 蓝牙协议.md */; };
 		2F89379A22C309B900FD4CB7 /* BluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89379822C309B900FD4CB7 /* BluetoothManager.m */; };
 		2F89379F22C30AB000FD4CB7 /* UserUnitKeyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89379D22C30AB000FD4CB7 /* UserUnitKeyModel.m */; };
@@ -105,6 +179,80 @@
 		2F10664122B0AAB2002D3B6D /* Palette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Palette.m; sourceTree = "<group>"; };
 		2F10664222B0AAB2002D3B6D /* Palette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Palette.h; sourceTree = "<group>"; };
 		2F10664322B0AAB2002D3B6D /* HSVWithNew.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = HSVWithNew.c; sourceTree = "<group>"; };
+		2F2753E222D343FE000C4F5F /* 调色板-点击@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "调色板-点击@3x.png"; sourceTree = "<group>"; };
+		2F2753E322D343FE000C4F5F /* 中图模式-点击@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中图模式-点击@3x.png"; sourceTree = "<group>"; };
+		2F2753E422D343FE000C4F5F /* 大黑白@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "大黑白@2x.png"; sourceTree = "<group>"; };
+		2F2753E522D343FE000C4F5F /* 麦克风-点击@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "麦克风-点击@2x.png"; sourceTree = "<group>"; };
+		2F2753E622D343FE000C4F5F /* 亮度+@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "亮度+@3x.png"; sourceTree = "<group>"; };
+		2F2753E722D343FE000C4F5F /* 速度-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "速度-@3x.png"; sourceTree = "<group>"; };
+		2F2753E822D343FE000C4F5F /* 速度-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "速度-@2x.png"; sourceTree = "<group>"; };
+		2F2753E922D343FE000C4F5F /* 亮度+@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "亮度+@2x.png"; sourceTree = "<group>"; };
+		2F2753EA22D343FE000C4F5F /* 汉仪粗黑简.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "汉仪粗黑简.ttf"; sourceTree = "<group>"; };
+		2F2753EB22D343FE000C4F5F /* 大黑白@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "大黑白@3x.png"; sourceTree = "<group>"; };
+		2F2753EC22D343FE000C4F5F /* 麦克风-点击@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "麦克风-点击@3x.png"; sourceTree = "<group>"; };
+		2F2753ED22D343FE000C4F5F /* 中图模式-点击@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中图模式-点击@2x.png"; sourceTree = "<group>"; };
+		2F2753EE22D343FE000C4F5F /* 调色板-点击@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "调色板-点击@2x.png"; sourceTree = "<group>"; };
+		2F2753EF22D343FE000C4F5F /* 勾选中@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "勾选中@2x.png"; sourceTree = "<group>"; };
+		2F2753F022D343FE000C4F5F /* 亮度-@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "亮度-@3x.png"; sourceTree = "<group>"; };
+		2F2753F122D343FE000C4F5F /* 组6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "组6@2x.png"; sourceTree = "<group>"; };
+		2F2753F222D343FE000C4F5F /* 加号@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加号@3x.png"; sourceTree = "<group>"; };
+		2F2753F322D343FE000C4F5F /* 设置@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设置@2x.png"; sourceTree = "<group>"; };
+		2F2753F422D343FE000C4F5F /* 小色彩盘@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "小色彩盘@2x.png"; sourceTree = "<group>"; };
+		2F2753F522D343FE000C4F5F /* 关于@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于@2x.png"; sourceTree = "<group>"; };
+		2F2753F622D343FE000C4F5F /* 在线音乐@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "在线音乐@2x.png"; sourceTree = "<group>"; };
+		2F2753F722D343FE000C4F5F /* 黄色@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "黄色@2x.png"; sourceTree = "<group>"; };
+		2F2753F822D343FE000C4F5F /* 灯1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灯1@3x.png"; sourceTree = "<group>"; };
+		2F2753F922D343FE000C4F5F /* 麦克风@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "麦克风@2x.png"; sourceTree = "<group>"; };
+		2F2753FA22D343FE000C4F5F /* 背景@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "背景@3x.png"; sourceTree = "<group>"; };
+		2F2753FB22D343FE000C4F5F /* 麦克风@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "麦克风@3x.png"; sourceTree = "<group>"; };
+		2F2753FC22D343FE000C4F5F /* 背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "背景@2x.png"; sourceTree = "<group>"; };
+		2F2753FD22D343FE000C4F5F /* 灯1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灯1@2x.png"; sourceTree = "<group>"; };
+		2F2753FE22D343FE000C4F5F /* 黄色@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "黄色@3x.png"; sourceTree = "<group>"; };
+		2F2753FF22D343FE000C4F5F /* 关于@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于@3x.png"; sourceTree = "<group>"; };
+		2F27540022D343FE000C4F5F /* 在线音乐@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "在线音乐@3x.png"; sourceTree = "<group>"; };
+		2F27540122D343FE000C4F5F /* 小色彩盘@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "小色彩盘@3x.png"; sourceTree = "<group>"; };
+		2F27540222D343FE000C4F5F /* 设置@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设置@3x.png"; sourceTree = "<group>"; };
+		2F27540322D343FE000C4F5F /* 加号@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加号@2x.png"; sourceTree = "<group>"; };
+		2F27540422D343FE000C4F5F /* 组6@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "组6@3x.png"; sourceTree = "<group>"; };
+		2F27540522D343FE000C4F5F /* 亮度-@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "亮度-@2x.png"; sourceTree = "<group>"; };
+		2F27540622D343FE000C4F5F /* 勾选中@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "勾选中@3x.png"; sourceTree = "<group>"; };
+		2F27540722D343FE000C4F5F /* 灯数设置@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灯数设置@2x.png"; sourceTree = "<group>"; };
+		2F27540822D343FE000C4F5F /* 关于logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于logo@3x.png"; sourceTree = "<group>"; };
+		2F27540922D343FE000C4F5F /* 中图模式@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中图模式@2x.png"; sourceTree = "<group>"; };
+		2F27540A22D343FE000C4F5F /* 音乐点击@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "音乐点击@3x.png"; sourceTree = "<group>"; };
+		2F27540B22D343FE000C4F5F /* 在线音乐-点击@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "在线音乐-点击@3x.png"; sourceTree = "<group>"; };
+		2F27540C22D343FE000C4F5F /* 字体.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "字体.txt"; sourceTree = "<group>"; };
+		2F27540D22D343FE000C4F5F /* 调色板@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "调色板@3x.png"; sourceTree = "<group>"; };
+		2F27540E22D343FE000C4F5F /* 选中@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选中@2x.png"; sourceTree = "<group>"; };
+		2F27540F22D343FE000C4F5F /* 更多@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "更多@3x.png"; sourceTree = "<group>"; };
+		2F27541022D343FE000C4F5F /* 更多@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "更多@2x.png"; sourceTree = "<group>"; };
+		2F27541122D343FE000C4F5F /* 选中@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选中@3x.png"; sourceTree = "<group>"; };
+		2F27541222D343FE000C4F5F /* 调色板@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "调色板@2x.png"; sourceTree = "<group>"; };
+		2F27541322D343FE000C4F5F /* 在线音乐-点击@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "在线音乐-点击@2x.png"; sourceTree = "<group>"; };
+		2F27541422D343FE000C4F5F /* 音乐点击@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "音乐点击@2x.png"; sourceTree = "<group>"; };
+		2F27541522D343FE000C4F5F /* 中图模式@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "中图模式@3x.png"; sourceTree = "<group>"; };
+		2F27541622D343FE000C4F5F /* 关于logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于logo@2x.png"; sourceTree = "<group>"; };
+		2F27541722D343FE000C4F5F /* 灯数设置@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灯数设置@3x.png"; sourceTree = "<group>"; };
+		2F27541822D343FE000C4F5F /* 小黑白@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "小黑白@3x.png"; sourceTree = "<group>"; };
+		2F27541922D343FE000C4F5F /* 音乐@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "音乐@3x.png"; sourceTree = "<group>"; };
+		2F27541A22D343FE000C4F5F /* 灯2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灯2@2x.png"; sourceTree = "<group>"; };
+		2F27541B22D343FE000C4F5F /* 刷新@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "刷新@2x.png"; sourceTree = "<group>"; };
+		2F27541C22D343FE000C4F5F /* 刷新@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "刷新@3x.png"; sourceTree = "<group>"; };
+		2F27541D22D343FE000C4F5F /* 灯2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灯2@3x.png"; sourceTree = "<group>"; };
+		2F27541E22D343FE000C4F5F /* 音乐@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "音乐@2x.png"; sourceTree = "<group>"; };
+		2F27541F22D343FE000C4F5F /* 小黑白@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "小黑白@2x.png"; sourceTree = "<group>"; };
+		2F27542022D343FE000C4F5F /* 兰亭黑 GBK.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "兰亭黑 GBK.TTF"; sourceTree = "<group>"; };
+		2F27542222D343FF000C4F5F /* 设备.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设备.png"; sourceTree = "<group>"; };
+		2F27542322D343FF000C4F5F /* 关于.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于.png"; sourceTree = "<group>"; };
+		2F27542422D343FF000C4F5F /* 分组管理-添加.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分组管理-添加.png"; sourceTree = "<group>"; };
+		2F27542522D343FF000C4F5F /* 模式.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "模式.png"; sourceTree = "<group>"; };
+		2F27542622D343FF000C4F5F /* 设置.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设置.png"; sourceTree = "<group>"; };
+		2F27542722D343FF000C4F5F /* 添加-标注.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加-标注.png"; sourceTree = "<group>"; };
+		2F27542822D343FF000C4F5F /* 首页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页.png"; sourceTree = "<group>"; };
+		2F27542922D343FF000C4F5F /* 模式-标注.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "模式-标注.png"; sourceTree = "<group>"; };
+		2F27542A22D343FF000C4F5F /* 设备-标注.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设备-标注.png"; sourceTree = "<group>"; };
+		2F27542B22D343FF000C4F5F /* 关于-标注.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于-标注.png"; sourceTree = "<group>"; };
+		2F27542C22D343FF000C4F5F /* 设置-标注.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设置-标注.png"; sourceTree = "<group>"; };
 		2F89379622C309B900FD4CB7 /* BluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothManager.h; sourceTree = "<group>"; };
 		2F89379722C309B900FD4CB7 /* 蓝牙协议.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "蓝牙协议.md"; sourceTree = "<group>"; };
 		2F89379822C309B900FD4CB7 /* BluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothManager.m; sourceTree = "<group>"; };
@@ -285,6 +433,8 @@
 				2F10661522B0A16E002D3B6D /* EnumerationDefinition.h */,
 				2F89379C22C30A5900FD4CB7 /* AppType.h */,
 				2F89379B22C30A5900FD4CB7 /* PABlockDefinition.h */,
+				2F27542122D343FF000C4F5F /* 页面 */,
+				2F2753E122D343FE000C4F5F /* ios */,
 				2F10661A22B0A16E002D3B6D /* PPConst.h */,
 				2F10661622B0A16E002D3B6D /* PPConst.m */,
 				2F10661722B0A16E002D3B6D /* BlockDefinition.h */,
@@ -316,6 +466,94 @@
 				4BACEF7722BA74CB00C5D5DB /* ColorCell.xib */,
 			);
 			path = Palette;
+			sourceTree = "<group>";
+		};
+		2F2753E122D343FE000C4F5F /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				2F2753E222D343FE000C4F5F /* 调色板-点击@3x.png */,
+				2F2753E322D343FE000C4F5F /* 中图模式-点击@3x.png */,
+				2F2753E422D343FE000C4F5F /* 大黑白@2x.png */,
+				2F2753E522D343FE000C4F5F /* 麦克风-点击@2x.png */,
+				2F2753E622D343FE000C4F5F /* 亮度+@3x.png */,
+				2F2753E722D343FE000C4F5F /* 速度-@3x.png */,
+				2F2753E822D343FE000C4F5F /* 速度-@2x.png */,
+				2F2753E922D343FE000C4F5F /* 亮度+@2x.png */,
+				2F2753EA22D343FE000C4F5F /* 汉仪粗黑简.ttf */,
+				2F2753EB22D343FE000C4F5F /* 大黑白@3x.png */,
+				2F2753EC22D343FE000C4F5F /* 麦克风-点击@3x.png */,
+				2F2753ED22D343FE000C4F5F /* 中图模式-点击@2x.png */,
+				2F2753EE22D343FE000C4F5F /* 调色板-点击@2x.png */,
+				2F2753EF22D343FE000C4F5F /* 勾选中@2x.png */,
+				2F2753F022D343FE000C4F5F /* 亮度-@3x.png */,
+				2F2753F122D343FE000C4F5F /* 组6@2x.png */,
+				2F2753F222D343FE000C4F5F /* 加号@3x.png */,
+				2F2753F322D343FE000C4F5F /* 设置@2x.png */,
+				2F2753F422D343FE000C4F5F /* 小色彩盘@2x.png */,
+				2F2753F522D343FE000C4F5F /* 关于@2x.png */,
+				2F2753F622D343FE000C4F5F /* 在线音乐@2x.png */,
+				2F2753F722D343FE000C4F5F /* 黄色@2x.png */,
+				2F2753F822D343FE000C4F5F /* 灯1@3x.png */,
+				2F2753F922D343FE000C4F5F /* 麦克风@2x.png */,
+				2F2753FA22D343FE000C4F5F /* 背景@3x.png */,
+				2F2753FB22D343FE000C4F5F /* 麦克风@3x.png */,
+				2F2753FC22D343FE000C4F5F /* 背景@2x.png */,
+				2F2753FD22D343FE000C4F5F /* 灯1@2x.png */,
+				2F2753FE22D343FE000C4F5F /* 黄色@3x.png */,
+				2F2753FF22D343FE000C4F5F /* 关于@3x.png */,
+				2F27540022D343FE000C4F5F /* 在线音乐@3x.png */,
+				2F27540122D343FE000C4F5F /* 小色彩盘@3x.png */,
+				2F27540222D343FE000C4F5F /* 设置@3x.png */,
+				2F27540322D343FE000C4F5F /* 加号@2x.png */,
+				2F27540422D343FE000C4F5F /* 组6@3x.png */,
+				2F27540522D343FE000C4F5F /* 亮度-@2x.png */,
+				2F27540622D343FE000C4F5F /* 勾选中@3x.png */,
+				2F27540722D343FE000C4F5F /* 灯数设置@2x.png */,
+				2F27540822D343FE000C4F5F /* 关于logo@3x.png */,
+				2F27540922D343FE000C4F5F /* 中图模式@2x.png */,
+				2F27540A22D343FE000C4F5F /* 音乐点击@3x.png */,
+				2F27540B22D343FE000C4F5F /* 在线音乐-点击@3x.png */,
+				2F27540C22D343FE000C4F5F /* 字体.txt */,
+				2F27540D22D343FE000C4F5F /* 调色板@3x.png */,
+				2F27540E22D343FE000C4F5F /* 选中@2x.png */,
+				2F27540F22D343FE000C4F5F /* 更多@3x.png */,
+				2F27541022D343FE000C4F5F /* 更多@2x.png */,
+				2F27541122D343FE000C4F5F /* 选中@3x.png */,
+				2F27541222D343FE000C4F5F /* 调色板@2x.png */,
+				2F27541322D343FE000C4F5F /* 在线音乐-点击@2x.png */,
+				2F27541422D343FE000C4F5F /* 音乐点击@2x.png */,
+				2F27541522D343FE000C4F5F /* 中图模式@3x.png */,
+				2F27541622D343FE000C4F5F /* 关于logo@2x.png */,
+				2F27541722D343FE000C4F5F /* 灯数设置@3x.png */,
+				2F27541822D343FE000C4F5F /* 小黑白@3x.png */,
+				2F27541922D343FE000C4F5F /* 音乐@3x.png */,
+				2F27541A22D343FE000C4F5F /* 灯2@2x.png */,
+				2F27541B22D343FE000C4F5F /* 刷新@2x.png */,
+				2F27541C22D343FE000C4F5F /* 刷新@3x.png */,
+				2F27541D22D343FE000C4F5F /* 灯2@3x.png */,
+				2F27541E22D343FE000C4F5F /* 音乐@2x.png */,
+				2F27541F22D343FE000C4F5F /* 小黑白@2x.png */,
+				2F27542022D343FE000C4F5F /* 兰亭黑 GBK.TTF */,
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		2F27542122D343FF000C4F5F /* 页面 */ = {
+			isa = PBXGroup;
+			children = (
+				2F27542222D343FF000C4F5F /* 设备.png */,
+				2F27542322D343FF000C4F5F /* 关于.png */,
+				2F27542422D343FF000C4F5F /* 分组管理-添加.png */,
+				2F27542522D343FF000C4F5F /* 模式.png */,
+				2F27542622D343FF000C4F5F /* 设置.png */,
+				2F27542722D343FF000C4F5F /* 添加-标注.png */,
+				2F27542822D343FF000C4F5F /* 首页.png */,
+				2F27542922D343FF000C4F5F /* 模式-标注.png */,
+				2F27542A22D343FF000C4F5F /* 设备-标注.png */,
+				2F27542B22D343FF000C4F5F /* 关于-标注.png */,
+				2F27542C22D343FF000C4F5F /* 设置-标注.png */,
+			);
+			path = "页面";
 			sourceTree = "<group>";
 		};
 		2F89379422C309B000FD4CB7 /* Manager */ = {
@@ -452,16 +690,90 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F27544422D343FF000C4F5F /* 麦克风@2x.png in Resources */,
+				2F27547322D343FF000C4F5F /* 模式-标注.png in Resources */,
+				2F27542E22D343FF000C4F5F /* 中图模式-点击@3x.png in Resources */,
+				2F27544722D343FF000C4F5F /* 背景@2x.png in Resources */,
+				2F27545222D343FF000C4F5F /* 灯数设置@2x.png in Resources */,
+				2F27546522D343FF000C4F5F /* 灯2@2x.png in Resources */,
+				2F27546422D343FF000C4F5F /* 音乐@3x.png in Resources */,
+				2F27546822D343FF000C4F5F /* 灯2@3x.png in Resources */,
+				2F27546F22D343FF000C4F5F /* 模式.png in Resources */,
+				2F27545822D343FF000C4F5F /* 调色板@3x.png in Resources */,
+				2F27544B22D343FF000C4F5F /* 在线音乐@3x.png in Resources */,
+				2F27544D22D343FF000C4F5F /* 设置@3x.png in Resources */,
+				2F27546622D343FF000C4F5F /* 刷新@2x.png in Resources */,
+				2F27544522D343FF000C4F5F /* 背景@3x.png in Resources */,
+				2F27544C22D343FF000C4F5F /* 小色彩盘@3x.png in Resources */,
+				2F27543822D343FF000C4F5F /* 中图模式-点击@2x.png in Resources */,
+				2F27545D22D343FF000C4F5F /* 调色板@2x.png in Resources */,
+				2F27543D22D343FF000C4F5F /* 加号@3x.png in Resources */,
+				2F27542D22D343FF000C4F5F /* 调色板-点击@3x.png in Resources */,
 				2F10662F22B0A641002D3B6D /* LSMicrophoneController.xib in Resources */,
+				2F27543922D343FF000C4F5F /* 调色板-点击@2x.png in Resources */,
+				2F27547222D343FF000C4F5F /* 首页.png in Resources */,
 				2F89379922C309B900FD4CB7 /* 蓝牙协议.md in Resources */,
+				2F27546D22D343FF000C4F5F /* 关于.png in Resources */,
 				2F1065E922B0A092002D3B6D /* LaunchScreen.storyboard in Resources */,
+				2F27545022D343FF000C4F5F /* 亮度-@2x.png in Resources */,
+				2F27543F22D343FF000C4F5F /* 小色彩盘@2x.png in Resources */,
+				2F27543622D343FF000C4F5F /* 大黑白@3x.png in Resources */,
+				2F27543B22D343FF000C4F5F /* 亮度-@3x.png in Resources */,
+				2F27545622D343FF000C4F5F /* 在线音乐-点击@3x.png in Resources */,
+				2F27545E22D343FF000C4F5F /* 在线音乐-点击@2x.png in Resources */,
 				2F10663422B0A661002D3B6D /* LSModelController.xib in Resources */,
+				2F27546C22D343FF000C4F5F /* 设备.png in Resources */,
+				2F27545922D343FF000C4F5F /* 选中@2x.png in Resources */,
+				2F27546E22D343FF000C4F5F /* 分组管理-添加.png in Resources */,
 				4BACEF7922BA74CB00C5D5DB /* ColorCell.xib in Resources */,
+				2F27545522D343FF000C4F5F /* 音乐点击@3x.png in Resources */,
+				2F27545C22D343FF000C4F5F /* 选中@3x.png in Resources */,
+				2F27547522D343FF000C4F5F /* 关于-标注.png in Resources */,
+				2F27545122D343FF000C4F5F /* 勾选中@3x.png in Resources */,
 				2F1065E622B0A092002D3B6D /* Assets.xcassets in Resources */,
+				2F27545422D343FF000C4F5F /* 中图模式@2x.png in Resources */,
+				2F27547022D343FF000C4F5F /* 设置.png in Resources */,
+				2F27546722D343FF000C4F5F /* 刷新@3x.png in Resources */,
+				2F27546A22D343FF000C4F5F /* 小黑白@2x.png in Resources */,
+				2F27543A22D343FF000C4F5F /* 勾选中@2x.png in Resources */,
+				2F27544E22D343FF000C4F5F /* 加号@2x.png in Resources */,
+				2F27546322D343FF000C4F5F /* 小黑白@3x.png in Resources */,
+				2F27543122D343FF000C4F5F /* 亮度+@3x.png in Resources */,
+				2F27546122D343FF000C4F5F /* 关于logo@2x.png in Resources */,
+				2F27546022D343FF000C4F5F /* 中图模式@3x.png in Resources */,
+				2F27543C22D343FF000C4F5F /* 组6@2x.png in Resources */,
+				2F27546922D343FF000C4F5F /* 音乐@2x.png in Resources */,
+				2F27544322D343FF000C4F5F /* 灯1@3x.png in Resources */,
+				2F27547422D343FF000C4F5F /* 设备-标注.png in Resources */,
+				2F27544F22D343FF000C4F5F /* 组6@3x.png in Resources */,
+				2F27544922D343FF000C4F5F /* 黄色@3x.png in Resources */,
+				2F27543022D343FF000C4F5F /* 麦克风-点击@2x.png in Resources */,
+				2F27543422D343FF000C4F5F /* 亮度+@2x.png in Resources */,
+				2F27544A22D343FF000C4F5F /* 关于@3x.png in Resources */,
+				2F27544022D343FF000C4F5F /* 关于@2x.png in Resources */,
+				2F27543222D343FF000C4F5F /* 速度-@3x.png in Resources */,
 				2F10662622B0A4D1002D3B6D /* NaviBarView.xib in Resources */,
+				2F27545B22D343FF000C4F5F /* 更多@2x.png in Resources */,
+				2F27547622D343FF000C4F5F /* 设置-标注.png in Resources */,
+				2F27545722D343FF000C4F5F /* 字体.txt in Resources */,
 				2F10663E22B0A69D002D3B6D /* LSOnlineMusicController.xib in Resources */,
 				2F10663922B0A685002D3B6D /* LSMusicController.xib in Resources */,
+				2F27543E22D343FF000C4F5F /* 设置@2x.png in Resources */,
+				2F27545322D343FF000C4F5F /* 关于logo@3x.png in Resources */,
+				2F27546222D343FF000C4F5F /* 灯数设置@3x.png in Resources */,
+				2F27542F22D343FF000C4F5F /* 大黑白@2x.png in Resources */,
+				2F27544122D343FF000C4F5F /* 在线音乐@2x.png in Resources */,
 				2F1065E422B0A090002D3B6D /* Main.storyboard in Resources */,
+				2F27544622D343FF000C4F5F /* 麦克风@3x.png in Resources */,
+				2F27544222D343FF000C4F5F /* 黄色@2x.png in Resources */,
+				2F27547122D343FF000C4F5F /* 添加-标注.png in Resources */,
+				2F27543322D343FF000C4F5F /* 速度-@2x.png in Resources */,
+				2F27546B22D343FF000C4F5F /* 兰亭黑 GBK.TTF in Resources */,
+				2F27543522D343FF000C4F5F /* 汉仪粗黑简.ttf in Resources */,
+				2F27545F22D343FF000C4F5F /* 音乐点击@2x.png in Resources */,
+				2F27545A22D343FF000C4F5F /* 更多@3x.png in Resources */,
+				2F27544822D343FF000C4F5F /* 灯1@2x.png in Resources */,
+				2F27543722D343FF000C4F5F /* 麦克风-点击@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
