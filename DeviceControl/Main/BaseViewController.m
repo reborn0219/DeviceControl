@@ -26,33 +26,16 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     [self.view addSubview:self.navibarView];
-
     MJWeakSelf
     _navibarView.block = ^(NSInteger index) {
         if (index == 2) {
             [weakSelf backAction];
+        }else if(index == 1){
+            [weakSelf rightAction];
         }
     };
     self.view.backgroundColor = SHADOW_COLOR;
-    
-//    //导航栏 返回 按钮
-//    NSArray *viewControllers = self.navigationController.viewControllers;
-//
-//    if (viewControllers.count > 1){
-//
-//        [self.navibarView.backBtn setHidden:NO];
-//        //返回的手势
-//        UISwipeGestureRecognizer *gesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(backSweepGesture:)];
-//        gesture.direction = UISwipeGestureRecognizerDirectionRight;
-//        [self.view addGestureRecognizer:gesture];
-//
-//
-//    }else{
-//        [self.navibarView.backBtn setHidden:YES];
-//
-//    }
-    
-    
+ 
 }
 -(void)setNaviBar:(NSInteger)type{
     [self.navibarView.backBtn setHidden:NO];
@@ -106,7 +89,9 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
-
+-(void)rightAction{
+    
+}
 
 -(void)setCustomerTitle:(NSString *)title{
     

@@ -14,8 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface BaseViewController : UIViewController
 @property (nonatomic, retain) NaviBarView * navibarView;
 
-- (void)backAction;
-
+-(void)backAction;
+-(void)rightAction;
 -(void)setCustomerTitle:(NSString *)title;
 
 -(void)setNaviBar:(NSInteger)type;

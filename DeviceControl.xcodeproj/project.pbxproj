@@ -105,6 +105,10 @@
 		2F27547422D343FF000C4F5F /* 设备-标注.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542A22D343FF000C4F5F /* 设备-标注.png */; };
 		2F27547522D343FF000C4F5F /* 关于-标注.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542B22D343FF000C4F5F /* 关于-标注.png */; };
 		2F27547622D343FF000C4F5F /* 设置-标注.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F27542C22D343FF000C4F5F /* 设置-标注.png */; };
+		2F27547B22D34975000C4F5F /* LeftPopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27547922D34975000C4F5F /* LeftPopController.m */; };
+		2F27547C22D34975000C4F5F /* LeftPopController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F27547A22D34975000C4F5F /* LeftPopController.xib */; };
+		2F27548022D3498A000C4F5F /* RightPopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27547E22D3498A000C4F5F /* RightPopController.m */; };
+		2F27548122D3498A000C4F5F /* RightPopController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F27547F22D3498A000C4F5F /* RightPopController.xib */; };
 		2F89379922C309B900FD4CB7 /* 蓝牙协议.md in Resources */ = {isa = PBXBuildFile; fileRef = 2F89379722C309B900FD4CB7 /* 蓝牙协议.md */; };
 		2F89379A22C309B900FD4CB7 /* BluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89379822C309B900FD4CB7 /* BluetoothManager.m */; };
 		2F89379F22C30AB000FD4CB7 /* UserUnitKeyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89379D22C30AB000FD4CB7 /* UserUnitKeyModel.m */; };
@@ -253,6 +257,12 @@
 		2F27542A22D343FF000C4F5F /* 设备-标注.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设备-标注.png"; sourceTree = "<group>"; };
 		2F27542B22D343FF000C4F5F /* 关于-标注.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于-标注.png"; sourceTree = "<group>"; };
 		2F27542C22D343FF000C4F5F /* 设置-标注.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设置-标注.png"; sourceTree = "<group>"; };
+		2F27547822D34975000C4F5F /* LeftPopController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftPopController.h; sourceTree = "<group>"; };
+		2F27547922D34975000C4F5F /* LeftPopController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftPopController.m; sourceTree = "<group>"; };
+		2F27547A22D34975000C4F5F /* LeftPopController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftPopController.xib; sourceTree = "<group>"; };
+		2F27547D22D3498A000C4F5F /* RightPopController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RightPopController.h; sourceTree = "<group>"; };
+		2F27547E22D3498A000C4F5F /* RightPopController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RightPopController.m; sourceTree = "<group>"; };
+		2F27547F22D3498A000C4F5F /* RightPopController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RightPopController.xib; sourceTree = "<group>"; };
 		2F89379622C309B900FD4CB7 /* BluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothManager.h; sourceTree = "<group>"; };
 		2F89379722C309B900FD4CB7 /* 蓝牙协议.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "蓝牙协议.md"; sourceTree = "<group>"; };
 		2F89379822C309B900FD4CB7 /* BluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothManager.m; sourceTree = "<group>"; };
@@ -366,6 +376,7 @@
 		2F10660E22B0A105002D3B6D /* 调色 */ = {
 			isa = PBXGroup;
 			children = (
+				2F27547722D34948000C4F5F /* 菜单 */,
 				2F10663F22B0AAB2002D3B6D /* Palette */,
 				2F10662822B0A5F3002D3B6D /* LSPaletteController.h */,
 				2F10662922B0A5F3002D3B6D /* LSPaletteController.m */,
@@ -556,6 +567,19 @@
 			path = "页面";
 			sourceTree = "<group>";
 		};
+		2F27547722D34948000C4F5F /* 菜单 */ = {
+			isa = PBXGroup;
+			children = (
+				2F27547822D34975000C4F5F /* LeftPopController.h */,
+				2F27547922D34975000C4F5F /* LeftPopController.m */,
+				2F27547A22D34975000C4F5F /* LeftPopController.xib */,
+				2F27547D22D3498A000C4F5F /* RightPopController.h */,
+				2F27547E22D3498A000C4F5F /* RightPopController.m */,
+				2F27547F22D3498A000C4F5F /* RightPopController.xib */,
+			);
+			path = "菜单";
+			sourceTree = "<group>";
+		};
 		2F89379422C309B000FD4CB7 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -726,6 +750,7 @@
 				2F27545922D343FF000C4F5F /* 选中@2x.png in Resources */,
 				2F27546E22D343FF000C4F5F /* 分组管理-添加.png in Resources */,
 				4BACEF7922BA74CB00C5D5DB /* ColorCell.xib in Resources */,
+				2F27548122D3498A000C4F5F /* RightPopController.xib in Resources */,
 				2F27545522D343FF000C4F5F /* 音乐点击@3x.png in Resources */,
 				2F27545C22D343FF000C4F5F /* 选中@3x.png in Resources */,
 				2F27547522D343FF000C4F5F /* 关于-标注.png in Resources */,
@@ -762,6 +787,7 @@
 				2F27545322D343FF000C4F5F /* 关于logo@3x.png in Resources */,
 				2F27546222D343FF000C4F5F /* 灯数设置@3x.png in Resources */,
 				2F27542F22D343FF000C4F5F /* 大黑白@2x.png in Resources */,
+				2F27547C22D34975000C4F5F /* LeftPopController.xib in Resources */,
 				2F27544122D343FF000C4F5F /* 在线音乐@2x.png in Resources */,
 				2F1065E422B0A090002D3B6D /* Main.storyboard in Resources */,
 				2F27544622D343FF000C4F5F /* 麦克风@3x.png in Resources */,
@@ -841,7 +867,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F10663322B0A661002D3B6D /* LSModelController.m in Sources */,
+				2F27548022D3498A000C4F5F /* RightPopController.m in Sources */,
 				2F1065E122B0A090002D3B6D /* ViewController.m in Sources */,
+				2F27547B22D34975000C4F5F /* LeftPopController.m in Sources */,
 				2F10662522B0A4D1002D3B6D /* BaseViewController.m in Sources */,
 				2F10662A22B0A5F3002D3B6D /* LSPaletteController.m in Sources */,
 				2F10663822B0A685002D3B6D /* LSMusicController.m in Sources */,

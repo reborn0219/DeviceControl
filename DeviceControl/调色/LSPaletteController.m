@@ -10,6 +10,8 @@
 #import "Palette.h"
 #import "ColorCell.h"
 #import "BluetoothManager.h"
+#import "LeftPopController.h"
+#import "RightPopController.h"
 
 #define  palette_R (SCREEN_WIDTH-140)/2.0f
 #define  bottom_color_view_h (IS_PhoneXAll?200:120)
@@ -54,6 +56,14 @@
 -(void)changeColor{
     
 }
+-(void)backAction{
+    LeftPopController *leftVC = [[LeftPopController alloc]init];
+    [leftVC showInVC:self];
+}
+-(void)rightAction{
+    RightPopController *rightVC = [[RightPopController alloc]init];
+    [rightVC showInVC:self];
+}
 #pragma mark - lazy loading
 -(UIView *)rgbView{
     if (!_rgbView) {
@@ -83,13 +93,15 @@
 }
 -(UISlider *)lightSlider{
     if (!_lightSlider) {
-        _lightSlider = [[UISlider alloc]initWithFrame:CGRectMake(45, SCREEN_HEIGHT-slider_bottom-20,SCREEN_WIDTH-90, 2)];
+        _lightSlider = [[UISlider alloc]initWithFrame:CGRectMake(45, SCREEN_HEIGHT-slider_bottom-30,SCREEN_WIDTH-90,20)];
         [_lightSlider setThumbTintColor:Selected_Color];
         [_lightSlider setTintColor:Selected_Color];
-        UIImageView * leftImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15,_lightSlider.frame.origin.y-10, 20, 20)];
+////        UIImage *imagea=[self OriginImage:[UIImage imageNamed:@"Icon-60"] scaleToSize:CGSizeMake(12, 12)];
+//        [_lightSlider  setThumbImage:[UIImage imageNamed:@"调色板-点击"] forState:UIControlStateNormal];
+        UIImageView * leftImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15,_lightSlider.frame.origin.y, 20, 20)];
         [leftImgV setImage:[UIImage imageNamed:@"亮度-"]];
         [self.view addSubview:leftImgV];
-        UIImageView * rightImgV = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-35,_lightSlider.frame.origin.y-10, 20, 20)];
+        UIImageView * rightImgV = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-35,_lightSlider.frame.origin.y, 20, 20)];
         [rightImgV setImage:[UIImage imageNamed:@"亮度+"]];
         [self.view addSubview:leftImgV];
         [self.view addSubview:rightImgV];
