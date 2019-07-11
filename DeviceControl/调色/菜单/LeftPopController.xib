@@ -5,12 +5,13 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeftPopController">
             <connections>
+                <outlet property="leftTable" destination="sJE-jD-rpS" id="n5n-jV-2eF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,9 +22,19 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8s-xb-5EP">
                     <rect key="frame" x="0.0" y="0.0" width="200" height="896"/>
-                    <color key="backgroundColor" red="0.1921544969" green="0.1842067242" blue="0.19215783480000001" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sJE-jD-rpS">
+                            <rect key="frame" x="15" y="88" width="185" height="808"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1921544969" green="0.1842067242" blue="0.19215783480000001" alpha="0.79805787852112675" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="sJE-jD-rpS" secondAttribute="trailing" id="6C1-H7-blc"/>
+                        <constraint firstAttribute="bottom" secondItem="sJE-jD-rpS" secondAttribute="bottom" id="C0S-E1-dV7"/>
+                        <constraint firstItem="sJE-jD-rpS" firstAttribute="top" secondItem="g8s-xb-5EP" secondAttribute="top" constant="88" id="Lg4-Qr-ZXH"/>
                         <constraint firstAttribute="width" constant="200" id="fqB-lw-cwI"/>
+                        <constraint firstItem="sJE-jD-rpS" firstAttribute="leading" secondItem="g8s-xb-5EP" secondAttribute="leading" constant="15" id="nhb-3S-zuG"/>
                     </constraints>
                 </view>
             </subviews>

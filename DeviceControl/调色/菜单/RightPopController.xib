@@ -21,7 +21,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSD-lG-v8x">
                     <rect key="frame" x="214" y="0.0" width="200" height="896"/>
-                    <color key="backgroundColor" red="0.1921544969" green="0.1842067242" blue="0.19215783480000001" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" red="0.1921544969" green="0.1842067242" blue="0.19215783480000001" alpha="0.79819542253521125" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="1AN-5U-Ud8"/>
                         <constraint firstAttribute="width" constant="200" id="7ta-fr-jf7"/>

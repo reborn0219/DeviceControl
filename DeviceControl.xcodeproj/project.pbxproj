@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F0C237522D6E2400068FCFB /* 蓝牙.zip in Resources */ = {isa = PBXBuildFile; fileRef = 2F0C237422D6E2400068FCFB /* 蓝牙.zip */; };
 		2F1065DE22B0A090002D3B6D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1065DD22B0A090002D3B6D /* AppDelegate.m */; };
 		2F1065E122B0A090002D3B6D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1065E022B0A090002D3B6D /* ViewController.m */; };
 		2F1065E422B0A090002D3B6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F1065E222B0A090002D3B6D /* Main.storyboard */; };
@@ -136,6 +137,7 @@
 
 /* Begin PBXFileReference section */
 		2B172BEF5E4E7259C7B34B76 /* Pods-DeviceControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeviceControl.release.xcconfig"; path = "Target Support Files/Pods-DeviceControl/Pods-DeviceControl.release.xcconfig"; sourceTree = "<group>"; };
+		2F0C237422D6E2400068FCFB /* 蓝牙.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = "蓝牙.zip"; sourceTree = "<group>"; };
 		2F1065D922B0A090002D3B6D /* DeviceControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DeviceControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F1065DC22B0A090002D3B6D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2F1065DD22B0A090002D3B6D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -552,6 +554,7 @@
 		2F27542122D343FF000C4F5F /* 页面 */ = {
 			isa = PBXGroup;
 			children = (
+				2F0C237422D6E2400068FCFB /* 蓝牙.zip */,
 				2F27542222D343FF000C4F5F /* 设备.png */,
 				2F27542322D343FF000C4F5F /* 关于.png */,
 				2F27542422D343FF000C4F5F /* 分组管理-添加.png */,
@@ -729,6 +732,7 @@
 				2F27546622D343FF000C4F5F /* 刷新@2x.png in Resources */,
 				2F27544522D343FF000C4F5F /* 背景@3x.png in Resources */,
 				2F27544C22D343FF000C4F5F /* 小色彩盘@3x.png in Resources */,
+				2F0C237522D6E2400068FCFB /* 蓝牙.zip in Resources */,
 				2F27543822D343FF000C4F5F /* 中图模式-点击@2x.png in Resources */,
 				2F27545D22D343FF000C4F5F /* 调色板@2x.png in Resources */,
 				2F27543D22D343FF000C4F5F /* 加号@3x.png in Resources */,

@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LeftPopController : UIViewController
+@property (nonatomic,strong) NSArray *blueArr;
 -(void)showInVC:(UIViewController *)VC;
 
 @end
