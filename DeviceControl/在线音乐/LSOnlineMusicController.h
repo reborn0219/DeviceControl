@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LSOnlineMusicController : UIViewController
+@interface LSOnlineMusicController : BaseViewController
 
 @end
 

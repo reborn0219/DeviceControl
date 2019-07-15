@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeftPopController">
             <connections>
+                <outlet property="backView_top" destination="BwO-pd-ol7" id="iYD-le-87O"/>
                 <outlet property="leftTable" destination="sJE-jD-rpS" id="n5n-jV-2eF"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -21,29 +22,48 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8s-xb-5EP">
-                    <rect key="frame" x="0.0" y="0.0" width="200" height="896"/>
+                    <rect key="frame" x="0.0" y="44" width="200" height="852"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sJE-jD-rpS">
-                            <rect key="frame" x="15" y="88" width="185" height="808"/>
+                            <rect key="frame" x="15" y="88" width="185" height="764"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNi-KY-NvV">
+                            <rect key="frame" x="140" y="0.0" width="60" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="Jjs-k4-1Lh"/>
+                                <constraint firstAttribute="width" constant="60" id="vhN-EY-5h4"/>
+                            </constraints>
+                            <state key="normal" image="更多">
+                                <color key="titleColor" red="0.71764705882352942" green="0.9137254901960784" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </state>
+                            <connections>
+                                <action selector="backBtnAction:" destination="-1" eventType="touchUpInside" id="gmH-R1-5ps"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.1921544969" green="0.1842067242" blue="0.19215783480000001" alpha="0.79805787852112675" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" red="0.0040457160212099552" green="0.0035857551265507936" blue="0.019610075280070305" alpha="0.90358164612676062" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="tintColor" red="0.16862745098039217" green="0.19607843137254902" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="sJE-jD-rpS" secondAttribute="trailing" id="6C1-H7-blc"/>
+                        <constraint firstAttribute="trailing" secondItem="aNi-KY-NvV" secondAttribute="trailing" id="6IT-dG-RLC"/>
                         <constraint firstAttribute="bottom" secondItem="sJE-jD-rpS" secondAttribute="bottom" id="C0S-E1-dV7"/>
                         <constraint firstItem="sJE-jD-rpS" firstAttribute="top" secondItem="g8s-xb-5EP" secondAttribute="top" constant="88" id="Lg4-Qr-ZXH"/>
                         <constraint firstAttribute="width" constant="200" id="fqB-lw-cwI"/>
                         <constraint firstItem="sJE-jD-rpS" firstAttribute="leading" secondItem="g8s-xb-5EP" secondAttribute="leading" constant="15" id="nhb-3S-zuG"/>
+                        <constraint firstItem="aNi-KY-NvV" firstAttribute="top" secondItem="g8s-xb-5EP" secondAttribute="top" id="tgH-KI-6Wz"/>
                     </constraints>
                 </view>
             </subviews>
             <constraints>
-                <constraint firstItem="g8s-xb-5EP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="BwO-pd-ol7"/>
+                <constraint firstItem="g8s-xb-5EP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="BwO-pd-ol7"/>
                 <constraint firstAttribute="bottom" secondItem="g8s-xb-5EP" secondAttribute="bottom" id="Eh4-Ye-Nha"/>
                 <constraint firstItem="g8s-xb-5EP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gRW-g0-HrD"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </view>
     </objects>
+    <resources>
+        <image name="更多" width="26" height="6.5"/>
+    </resources>
 </document>

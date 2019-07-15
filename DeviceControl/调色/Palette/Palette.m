@@ -17,6 +17,8 @@
 
 @property (nonatomic,strong)UIImageView *mainImageView;
 
+@property (nonatomic,strong)UIView *centerView;
+
 @property (nonatomic,strong)UIImageView *sliderImageView;
 
 @end
@@ -46,11 +48,22 @@
     self.mainImageView.image=[UIImage imageNamed:@"paletteColor"];
     [self addSubview:self.mainImageView];
     
-    self.sliderImageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"followCircle"]];
+    self.sliderImageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"勾选中"]];
     [self addSubview:self.sliderImageView];
     self.sliderImageView.center=CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
 }
+-(void)changeStatus:(NSInteger)type{
+    if (type==1) {
+        self.mainImageView.image=[UIImage imageNamed:@"paletteColor"];
+    }else if (type==2){
+        self.mainImageView.image=[UIImage imageNamed:@"黄色"];
 
+    }else if (type==3)
+    {
+        self.mainImageView.image=[UIImage imageNamed:@"大黑白"];
+
+    }
+}
 #pragma mark 开始触摸或者点击
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self calculateShowColor:touches];   // 得到颜色

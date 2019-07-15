@@ -10,6 +10,7 @@
 @interface ColorCell()
 @property (weak, nonatomic) IBOutlet UIImageView *selectImageV;
 @property (weak, nonatomic) IBOutlet UIView *backView;
+@property(nonatomic,strong)ColorModel *cellModel;
 @end
 
 @implementation ColorCell
@@ -18,5 +19,8 @@
     [super awakeFromNib];
     _backView.layer.cornerRadius = 5;
 }
-
+-(void)assignmentData:(ColorModel *)model{
+    [_selectImageV setHidden:!model.selected];
+    [_backView setBackgroundColor:model.color];
+}
 @end

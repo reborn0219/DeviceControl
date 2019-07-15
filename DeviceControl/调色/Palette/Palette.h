@@ -37,5 +37,5 @@
  *  @return 颜色
  */
 -(UIColor *)calculateCenterPointInView:(CGPoint)point;
-
+-(void)changeStatus:(NSInteger)type;
 @end

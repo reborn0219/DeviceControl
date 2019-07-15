@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
+#import "LeftPopController.h"
+#import "RightPopController.h"
 @interface BaseViewController ()
 @property (nonatomic, retain) UIView* overlayView;
 @property (nonatomic, retain) UIView* bgview;
@@ -84,15 +85,14 @@
     return _navibarView;
 }
 #pragma mark Action
-
-- (void)backAction{
-    
-    [self.navigationController popViewControllerAnimated:YES];
+-(void)backAction{
+    LeftPopController *leftVC = [[LeftPopController alloc]init];
+    [leftVC showInVC:self];
 }
 -(void)rightAction{
-    
+    RightPopController *rightVC = [[RightPopController alloc]init];
+    [rightVC showInVC:self];
 }
-
 -(void)setCustomerTitle:(NSString *)title{
     
     _navibarView.titleLb.text = title;

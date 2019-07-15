@@ -6,12 +6,11 @@
 //  Copyright © 2018年 石家庄优思交通智能科技有限公司. All rights reserved.
 //
 
-#import <CoreBluetooth/CoreBluetooth.h>
 #import "PABlockDefinition.h"
+#import "BluetoothModel.h"
+
 @interface BluetoothManager : NSObject
-<CBCentralManagerDelegate,
-CBPeripheralDelegate,
-CBPeripheralManagerDelegate>
+<CBCentralManagerDelegate,CBPeripheralDelegate>
 
 ///主设中心
 @property (strong, nonatomic) CBCentralManager      * centralManager;
@@ -31,6 +30,5 @@ CBPeripheralManagerDelegate>
 ///断开连接
 -(void)discconnection;
 ///发送蓝牙指令
--(BOOL)writeChar:(NSData *)data;
-
+-(void)sendInstructions:(NSString *)instructionStr;
 @end

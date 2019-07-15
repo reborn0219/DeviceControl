@@ -10,13 +10,12 @@
 #import "Palette.h"
 #import "ColorCell.h"
 #import "BluetoothManager.h"
-#import "LeftPopController.h"
-#import "RightPopController.h"
+
 
 #define  palette_R (SCREEN_WIDTH-140)/2.0f
 #define  bottom_color_view_h (IS_PhoneXAll?200:120)
 #define  slider_bottom (bottom_color_view_h+k_Height_TabBar+15)
-@interface LSPaletteController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface LSPaletteController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,PaletteDelegate>
 @property (nonatomic,strong) Palette *paletteView;
 @property (nonatomic,strong) UIImageView *backImgV;
 @property (nonatomic,strong) UIImageView *leftImgV;
@@ -27,6 +26,7 @@
 @property (nonatomic,strong) UICollectionView *collectionView;
 @property (nonatomic,strong) BluetoothManager * blueManager;
 @property (nonatomic,assign) CBManagerState CBmanagerState;
+@property(nonatomic,strong)NSMutableArray *colorArr;
 @end
 
 @implementation LSPaletteController
@@ -41,6 +41,7 @@
     [self.view addSubview:self.rgbView];
     [self.view addSubview:self.bottomColorView];
     self.blueManager = [[BluetoothManager alloc]init];
+    [self creatData];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -53,35 +54,98 @@
         [_blueManager discconnection];
     }
 }
+-(void)creatData{
+    
+    NSArray *defaultArr = @[
+                            HexRGB(0x62c16f),
+                            HexRGB(0xee00f5),
+                            HexRGB(0x54a8f1),
+                            HexRGB(0x7848fd),
+                            HexRGB(0xffff00),
+                            HexRGB(0x999999),
+                            HexRGB(0xffff00),
+                            HexRGB(0xffffff),
+                            HexRGB(0x00ffff),
+                            HexRGB(0xff0000),
+                            HexRGB(0x00ff00),
+                            HexRGB(0x0000ff),
+//                            HexRGB(0xA449F6),
+//                            HexRGB(0xE14E73),
+//                            HexRGB(0x75FBCF),
+//                            HexRGB(0xF7D252),
+//                            HexRGB(0xE832E1),
+//                            HexRGB(0xB7E9B0),
+                            ];
+    for (UIColor *color in defaultArr) {
+        ColorModel * model = [[ColorModel alloc]init];
+        model.color = color;
+        model.selected = NO;
+        [self.colorArr addObject:model];
+    }
+}
+-(void)patette:(Palette *)patette choiceColor:(UIColor *)color colorPoint:(CGPoint)colorPoint{
+    [self setColorLabelCount:color];
+    [_blueManager sendInstructions:@"ABBA017700553303EF"];
+}
+-(void)setColorLabelCount:(UIColor *)color{
+    const CGFloat *components = CGColorGetComponents(color.CGColor);
+    NSLog(@"Red: %.f", components[0]*255);
+    NSLog(@"Green: %.f", components[1]*255);
+    NSLog(@"Blue: %.f", components[2]*255);
+    UILabel * tempLab = [_rgbView viewWithTag:100];
+    tempLab.text = [NSString stringWithFormat:@"%.f", components[0]*255];
+    
+    UILabel * tempLab1 = [_rgbView viewWithTag:101];
+    tempLab1.text = [NSString stringWithFormat:@"%.f", components[1]*255];
+    
+    UILabel * tempLab2 = [_rgbView viewWithTag:102];
+    tempLab2.text = [NSString stringWithFormat:@"%.f", components[2]*255];
+}
 -(void)changeColor{
     
 }
--(void)backAction{
-    LeftPopController *leftVC = [[LeftPopController alloc]init];
-    [leftVC showInVC:self];
-}
--(void)rightAction{
-    RightPopController *rightVC = [[RightPopController alloc]init];
-    [rightVC showInVC:self];
-}
+
 #pragma mark - lazy loading
+-(NSMutableArray *)colorArr{
+    if (!_colorArr) {
+        _colorArr = [NSMutableArray array];
+    }
+    return _colorArr;
+}
 -(UIView *)rgbView{
     if (!_rgbView) {
         _rgbView = [[UIView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-palette_R*2)/2.0f-50, 70+NavBar_H+palette_R*2-60, 60,90)];
         for (int i =0; i<3; i++) {
-            UILabel * lb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0+i*30, 20,25)];
+            UILabel * lb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0+i*30,14,25)];
             lb.textColor = [UIColor whiteColor];
             lb.text = @"R";
+            lb.textAlignment = NSTextAlignmentCenter;
+//            lb.backgroundColor = [UIColor redColor];
             if (i==1) {
                 lb.text = @"G";
+//                lb.backgroundColor = [UIColor greenColor];
+
             }else if(i == 2){
                 lb.text = @"B";
+//                lb.backgroundColor = [UIColor blueColor];
+
             }
             lb.font = [UIFont systemFontOfSize:18];
             UILabel * numberLb = [[UILabel alloc]initWithFrame:CGRectMake(20, 0+i*30,35,25)];
             numberLb.tag = i+100;
-            numberLb.textAlignment = NSTextAlignmentCenter;
-            numberLb.backgroundColor = [UIColor blackColor];
+            numberLb.textAlignment = NSTextAlignmentLeft;
+            numberLb.backgroundColor = [UIColor redColor];
+
+            if (i==1) {
+                numberLb.backgroundColor = [UIColor greenColor];
+                
+            }else if(i == 2){
+                numberLb.backgroundColor = [UIColor blueColor];
+                
+            }
+            numberLb.backgroundColor = HexRGB(0x2B324E);
+
+            
             numberLb.font = [UIFont systemFontOfSize:16];
             numberLb.textColor = [UIColor whiteColor];
             numberLb.text = @"255";
@@ -112,6 +176,8 @@
 -(Palette *)paletteView{
     if (!_paletteView) {
         _paletteView = [[Palette alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-palette_R*2)/2.0f, 50+NavBar_H,palette_R*2, palette_R*2)];
+        _paletteView.delegate = self;
+        [_paletteView changeStatus:1];
     }
     return _paletteView;
 }
@@ -183,7 +249,7 @@
 }
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(50,50);
+    return CGSizeMake((SCREEN_WIDTH-90)/6.0f-5,(SCREEN_WIDTH-90)/6.0f-5);
 }
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
@@ -196,15 +262,30 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 12;
+    return self.colorArr.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    ColorModel * model = [_colorArr objectAtIndex:indexPath.item];
     ColorCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ColorCell" forIndexPath:indexPath];
+    [cell assignmentData:model];
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-  
+    for (ColorModel *model in _colorArr) {
+        model.selected = NO;
+    }
+    ColorModel * cellModel = [_colorArr objectAtIndex:indexPath.item];
+    cellModel.selected = YES;
+    [collectionView reloadData];
+    if (indexPath.row==4) {
+        [_paletteView changeStatus:2];
+    }else if(indexPath.row==5) {
+        [_paletteView changeStatus:3];
+    }else{
+        [_paletteView changeStatus:1];
+
+    }
 }
 @end
