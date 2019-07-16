@@ -42,7 +42,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.0040457160212099552" green="0.0035857551265507936" blue="0.019610075280070305" alpha="0.90358164612676062" colorSpace="custom" customColorSpace="displayP3"/>
+                    <color key="backgroundColor" red="0.0039215686274509803" green="0.0039215686274509803" blue="0.019607843137254902" alpha="0.90358164612676062" colorSpace="custom" customColorSpace="displayP3"/>
                     <color key="tintColor" red="0.16862745098039217" green="0.19607843137254902" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="sJE-jD-rpS" secondAttribute="trailing" id="6C1-H7-blc"/>

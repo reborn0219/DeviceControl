@@ -48,9 +48,13 @@
 }
 -(UISlider *)lightSlider{
     if (!_lightSlider) {
-        _lightSlider = [[UISlider alloc]initWithFrame:CGRectMake(45, SCREEN_HEIGHT-90,SCREEN_WIDTH-90,20)];
+        _lightSlider = [[UISlider alloc]initWithFrame:CGRectMake(45, SCREEN_HEIGHT-160,SCREEN_WIDTH-90,20)];
         [_lightSlider setThumbTintColor:Selected_Color];
         [_lightSlider setTintColor:Selected_Color];
+        UILabel * lightLb = [[UILabel alloc]initWithFrame:CGRectMake(45,_lightSlider.frame.origin.y-40,200,20)];
+        lightLb.text = @"亮度：0";
+        lightLb.textColor = [UIColor whiteColor];
+        [self.view addSubview:lightLb];
         ////        UIImage *imagea=[self OriginImage:[UIImage imageNamed:@"Icon-60"] scaleToSize:CGSizeMake(12, 12)];
         //        [_lightSlider  setThumbImage:[UIImage imageNamed:@"调色板-点击"] forState:UIControlStateNormal];
         UIImageView * leftImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15,_lightSlider.frame.origin.y, 20, 20)];
@@ -66,16 +70,21 @@
 }
 -(UISlider *)speedSlider{
     if (!_speedSlider) {
-        _speedSlider = [[UISlider alloc]initWithFrame:CGRectMake(45, SCREEN_HEIGHT-180,SCREEN_WIDTH-90,20)];
+        _speedSlider = [[UISlider alloc]initWithFrame:CGRectMake(45, SCREEN_HEIGHT-250,SCREEN_WIDTH-90,20)];
         [_speedSlider setThumbTintColor:Selected_Color];
         [_speedSlider setTintColor:Selected_Color];
+        UILabel * speedLb = [[UILabel alloc]initWithFrame:CGRectMake(45,_speedSlider.frame.origin.y-40,200,20)];
+        speedLb.text = @"速度：0";
+        speedLb.textColor = [UIColor whiteColor];
+        [self.view addSubview:speedLb];
+
         ////        UIImage *imagea=[self OriginImage:[UIImage imageNamed:@"Icon-60"] scaleToSize:CGSizeMake(12, 12)];
         //        [_lightSlider  setThumbImage:[UIImage imageNamed:@"调色板-点击"] forState:UIControlStateNormal];
         UIImageView * leftImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15,_speedSlider.frame.origin.y, 20, 20)];
-        [leftImgV setImage:[UIImage imageNamed:@"亮度-"]];
+        [leftImgV setImage:[UIImage imageNamed:@"速度-"]];
         [self.view addSubview:leftImgV];
         UIImageView * rightImgV = [[UIImageView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-35,_speedSlider.frame.origin.y, 20, 20)];
-        [rightImgV setImage:[UIImage imageNamed:@"亮度+"]];
+        [rightImgV setImage:[UIImage imageNamed:@"速度-"]];
         [self.view addSubview:leftImgV];
         [self.view addSubview:rightImgV];
         

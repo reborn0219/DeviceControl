@@ -97,6 +97,7 @@
 		2F89379922C309B900FD4CB7 /* 蓝牙协议.md in Resources */ = {isa = PBXBuildFile; fileRef = 2F89379722C309B900FD4CB7 /* 蓝牙协议.md */; };
 		2F89379A22C309B900FD4CB7 /* BluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89379822C309B900FD4CB7 /* BluetoothManager.m */; };
 		2F89379F22C30AB000FD4CB7 /* BluetoothModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89379D22C30AB000FD4CB7 /* BluetoothModel.m */; };
+		2FED6DEC22DD7EA70007777A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FED6DEB22DD7EA70007777A /* AboutViewController.m */; };
 		4BACEF7822BA74CB00C5D5DB /* ColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BACEF7622BA74CB00C5D5DB /* ColorCell.m */; };
 		4BACEF7922BA74CB00C5D5DB /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BACEF7722BA74CB00C5D5DB /* ColorCell.xib */; };
 		4BB77F4022DA594C0060B539 /* ColorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB77F3F22DA594C0060B539 /* ColorModel.m */; };
@@ -241,6 +242,8 @@
 		2F89379C22C30A5900FD4CB7 /* AppType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppType.h; sourceTree = "<group>"; };
 		2F89379D22C30AB000FD4CB7 /* BluetoothModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothModel.m; sourceTree = "<group>"; };
 		2F89379E22C30AB000FD4CB7 /* BluetoothModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothModel.h; sourceTree = "<group>"; };
+		2FED6DEA22DD7EA70007777A /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		2FED6DEB22DD7EA70007777A /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		46939196AC287B81F9663E79 /* libPods-DeviceControl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeviceControl.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BACEF7522BA74CB00C5D5DB /* ColorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorCell.h; sourceTree = "<group>"; };
 		4BACEF7622BA74CB00C5D5DB /* ColorCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorCell.m; sourceTree = "<group>"; };
@@ -527,6 +530,8 @@
 				2F27547D22D3498A000C4F5F /* RightPopController.h */,
 				2F27547E22D3498A000C4F5F /* RightPopController.m */,
 				2F27547F22D3498A000C4F5F /* RightPopController.xib */,
+				2FED6DEA22DD7EA70007777A /* AboutViewController.h */,
+				2FED6DEB22DD7EA70007777A /* AboutViewController.m */,
 			);
 			path = "菜单";
 			sourceTree = "<group>";
@@ -814,6 +819,7 @@
 				2F10663322B0A661002D3B6D /* LSModelController.m in Sources */,
 				2F27548022D3498A000C4F5F /* RightPopController.m in Sources */,
 				2F1065E122B0A090002D3B6D /* ViewController.m in Sources */,
+				2FED6DEC22DD7EA70007777A /* AboutViewController.m in Sources */,
 				2F27547B22D34975000C4F5F /* LeftPopController.m in Sources */,
 				2F10662522B0A4D1002D3B6D /* BaseViewController.m in Sources */,
 				2F10662A22B0A5F3002D3B6D /* LSPaletteController.m in Sources */,

@@ -7,8 +7,11 @@
 //
 
 #import "RightPopController.h"
+#import "AboutViewController.h"
 
 @interface RightPopController ()
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *backView_top;
+@property (nonatomic,strong) UIViewController *currentVC;
 
 @end
 
@@ -16,13 +19,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    _backView_top.constant = k_Height_StatusBar;
+}
+- (IBAction)backAction:(id)sender {
+    [self dismissViewControllerAnimated:NO completion:nil];
+
+}
+- (IBAction)aboutUsAction:(id)sender {
+    [self dismissViewControllerAnimated:NO completion:nil];
+    AboutViewController * aboutVC = [[AboutViewController alloc]init];
+    aboutVC.hidesBottomBarWhenPushed = YES;
+    [_currentVC.navigationController pushViewController:aboutVC animated:YES];
+    
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 -(void)showInVC:(UIViewController *)VC {
-    
+    _currentVC = VC;
     if (self.isBeingPresented) {
         return;
     }
@@ -37,5 +51,44 @@
     }
     [VC presentViewController:self animated:YES completion:nil];
 }
-
+- (UIViewController *)jsd_getRootViewController{
+    
+    UIWindow* window = [[[UIApplication sharedApplication] delegate] window];
+    NSAssert(window, @"The window is empty");
+    return window.rootViewController;
+}
+- (UIViewController *)getCurrentViewController{
+    
+    UIViewController* currentViewController = [self jsd_getRootViewController];
+    BOOL runLoopFind = YES;
+    while (runLoopFind) {
+        if (currentViewController.presentedViewController) {
+            
+            currentViewController = currentViewController.presentedViewController;
+        } else if ([currentViewController isKindOfClass:[UINavigationController class]]) {
+            
+            UINavigationController* navigationController = (UINavigationController* )currentViewController;
+            currentViewController = [navigationController.childViewControllers lastObject];
+            
+        } else if ([currentViewController isKindOfClass:[UITabBarController class]]) {
+            
+            UITabBarController* tabBarController = (UITabBarController* )currentViewController;
+            currentViewController = tabBarController.selectedViewController;
+        } else {
+            
+            NSUInteger childViewControllerCount = currentViewController.childViewControllers.count;
+            if (childViewControllerCount > 0) {
+                
+                currentViewController = currentViewController.childViewControllers.lastObject;
+                
+                return currentViewController;
+            } else {
+                
+                return currentViewController;
+            }
+        }
+        
+    }
+    return currentViewController;
+}
 @end
