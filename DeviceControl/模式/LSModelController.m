@@ -36,8 +36,8 @@
 }
 - (UIPickerView *)pickerView {
     if (!_pickerView) {
-        _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH,SCREEN_HEIGHT)];
-        UIView *lineV = [[UIView alloc] initWithFrame:CGRectMake(0,SCREEN_HEIGHT/2.0f, SCREEN_WIDTH,1)];
+        _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0,NavBar_H,SCREEN_WIDTH,SCREEN_HEIGHT-250-NavBar_H)];
+        UIView *lineV = [[UIView alloc] initWithFrame:CGRectMake(0,(SCREEN_HEIGHT-250-NavBar_H)/2.0f+NavBar_H, SCREEN_WIDTH,1)];
         [lineV setBackgroundColor:HexRGB(0xD33BFF)];
         [self.view addSubview:lineV];
         _pickerView.delegate = self;
@@ -55,8 +55,6 @@
         lightLb.text = @"亮度：0";
         lightLb.textColor = [UIColor whiteColor];
         [self.view addSubview:lightLb];
-        ////        UIImage *imagea=[self OriginImage:[UIImage imageNamed:@"Icon-60"] scaleToSize:CGSizeMake(12, 12)];
-        //        [_lightSlider  setThumbImage:[UIImage imageNamed:@"调色板-点击"] forState:UIControlStateNormal];
         UIImageView * leftImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15,_lightSlider.frame.origin.y, 20, 20)];
         [leftImgV setImage:[UIImage imageNamed:@"亮度-"]];
         [self.view addSubview:leftImgV];
@@ -77,9 +75,6 @@
         speedLb.text = @"速度：0";
         speedLb.textColor = [UIColor whiteColor];
         [self.view addSubview:speedLb];
-
-        ////        UIImage *imagea=[self OriginImage:[UIImage imageNamed:@"Icon-60"] scaleToSize:CGSizeMake(12, 12)];
-        //        [_lightSlider  setThumbImage:[UIImage imageNamed:@"调色板-点击"] forState:UIControlStateNormal];
         UIImageView * leftImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15,_speedSlider.frame.origin.y, 20, 20)];
         [leftImgV setImage:[UIImage imageNamed:@"速度-"]];
         [self.view addSubview:leftImgV];

@@ -22,6 +22,16 @@
     NSNumber * rssi;
     int cycleNumber;
 }
++ (instancetype)shareBluetoothManager{
+    static BluetoothManager *_shareBluetooth = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        //不能再使用alloc方法
+        //因为已经重写了allocWithZone方法，所以这里要调用父类的分配空间的方法
+        _shareBluetooth = [[super allocWithZone:NULL] init];
+    });
+    return _shareBluetooth;
+}
 #pragma mark - 初始化蓝牙主设中心
 -(instancetype)init
 {

@@ -24,9 +24,10 @@
 @property (nonatomic,strong) UIView *rgbView;
 @property (nonatomic,strong) UIView *bottomColorView;
 @property (nonatomic,strong) UICollectionView *collectionView;
-@property (nonatomic,strong) BluetoothManager * blueManager;
 @property (nonatomic,assign) CBManagerState CBmanagerState;
-@property(nonatomic,strong)NSMutableArray *colorArr;
+@property (nonatomic,strong) NSMutableArray *colorArr;
+@property (nonatomic,strong) BluetoothManager *blueManager;
+
 @end
 
 @implementation LSPaletteController
@@ -40,7 +41,7 @@
     [self.view addSubview:self.lightSlider];
     [self.view addSubview:self.rgbView];
     [self.view addSubview:self.bottomColorView];
-    self.blueManager = [[BluetoothManager alloc]init];
+    self.blueManager = [BluetoothManager shareBluetoothManager];
     [self creatData];
 }
 -(void)viewWillAppear:(BOOL)animated{

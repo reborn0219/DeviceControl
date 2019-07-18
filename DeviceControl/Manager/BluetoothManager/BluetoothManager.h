@@ -12,6 +12,7 @@
 @interface BluetoothManager : NSObject
 <CBCentralManagerDelegate,CBPeripheralDelegate>
 
++ (instancetype)shareBluetoothManager;
 ///主设中心
 @property (strong, nonatomic) CBCentralManager      * centralManager;
 ///从设中心
