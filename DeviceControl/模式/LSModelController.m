@@ -13,6 +13,7 @@
 @property(nonatomic,strong)NSMutableArray *dataSouce;
 @property(nonatomic,strong)UISlider *lightSlider;
 @property(nonatomic,strong)UISlider *speedSlider;
+@property(nonatomic,strong)NSMutableArray *instructionArr;
 
 @end
 
@@ -20,7 +21,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.dataSouce addObjectsFromArray:@[@"青色闪频",@"青色闪频",@"青色闪频",@"静态红色",@"静态蓝色",@"青色闪频",@"青色闪频"]];
+    [self.dataSouce addObjectsFromArray:@[@"红色渐变",
+                                          @"绿色渐变",
+                                          @"蓝色渐变",
+                                          @"黄色渐变",
+                                          @"青色渐变",
+                                          @"紫色渐变",
+                                          @"白色渐变",
+                                          @"红绿渐变",
+                                          @"红蓝渐变",
+                                          @"绿蓝渐变",
+                                          @"七色渐变",
+                                          @"红绿频闪",
+                                          @"红蓝频闪",
+                                          @"绿蓝频闪",
+                                          @"黄青频闪",
+                                          @"绿紫频闪",
+                                          @"三色频闪",
+                                          @"七色频闪",
+                                          @"静态红色",
+                                          @"静态绿色",
+                                          @"静态蓝色",
+                                          @"静态青色",
+                                          @"静态黄色",
+                                          @"静态紫色",
+                                          @"静态白色",
+                                          @"流星炫彩A",
+                                          @"流星炫彩B",
+                                          @"流星炫彩C",
+                                          ]];
+    [self.instructionArr addObjectsFromArray:@[@"01",@"02",@"03",@"04",@"05",@"06",@"07",@"08",@"09",@"0A",@"0B",@"0C",@"0D",@"0E",@"0F",@"10",@"11",@"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",@"1A",@"1B",@"1C"]];
+    
     [self.view addSubview:self.pickerView];
     [self.view addSubview:self.lightSlider];
     [self.view addSubview:self.speedSlider];
@@ -28,6 +59,12 @@
 }
 
 #pragma mark - lazy loading
+-(NSMutableArray *)instructionArr{
+    if (!_instructionArr) {
+        _instructionArr = [NSMutableArray array];
+    }
+    return _instructionArr;
+}
 -(NSMutableArray *)dataSouce{
     if (!_dataSouce) {
         _dataSouce = [NSMutableArray array];
