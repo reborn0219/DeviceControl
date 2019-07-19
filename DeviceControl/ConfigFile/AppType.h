@@ -88,6 +88,7 @@ typedef NS_ENUM(NSInteger,NETWorkErrorCode)
 ///蓝牙事件处理码
 typedef NS_ENUM(NSInteger,BluetoothCode)
 {
+ 
     ///搜索蓝牙
     SearchBluetooth=1000,
     ///连接蓝牙

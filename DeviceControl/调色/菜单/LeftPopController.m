@@ -7,7 +7,7 @@
 //
 
 #import "LeftPopController.h"
-
+#import "BluetoothManager.h"
 @interface LeftPopController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *leftTable;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *backView_top;
@@ -21,9 +21,17 @@
     _backView_top.constant = k_Height_StatusBar;
     _leftTable.delegate = self;
     _leftTable.dataSource = self;
-    _blueArr = @[@"wodeeeee",@"e999999"];
     [_leftTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     _leftTable.separatorStyle = UITableViewCellSeparatorStyleNone;
+    MJWeakSelf
+    [[BluetoothManager shareBluetoothManager] startScanPeripherals];
+    [BluetoothManager shareBluetoothManager].blueToothBlock = ^(id  _Nullable data, BluetoothCode bluetoothCode) {
+        if (bluetoothCode == SearchBluetooth) {
+            weakSelf.blueArr = data;
+            [weakSelf.leftTable reloadData];
+        }
+    };
+    
 }
 - (IBAction)backBtnAction:(id)sender {
     [self dismissViewControllerAnimated:NO completion:nil];
@@ -72,7 +80,11 @@
     UILabel * liglabel = [[UILabel alloc]initWithFrame:CGRectMake(40, 0, 80, 40)];
     liglabel.text = @"我的设备";
     liglabel.textColor = [UIColor whiteColor];
-    
+    UIButton * refreshBtn = [[UIButton alloc]initWithFrame:CGRectMake(140,4,40,40)];
+    [refreshBtn setImage:[UIImage imageNamed:@"刷新"] forState:UIControlStateNormal];
+    [refreshBtn addTarget:self action:@selector(refreshAction) forControlEvents:UIControlEventTouchUpInside];
+    [sectionView addSubview:refreshBtn];
+
     [sectionView addSubview:liglabel];
     
     return sectionView;
@@ -95,12 +107,28 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor  =[UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.text = [_blueArr objectAtIndex:indexPath.row];
+    BluetoothModel *model = [_blueArr objectAtIndex:indexPath.row];
+    cell.textLabel.text = model.name;
     return cell;
     
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSArray *array = [tableView visibleCells];
     
+    for (UITableViewCell *cell in array) {
+        [cell setAccessoryType:UITableViewCellAccessoryNone];
+        cell.textLabel.textColor=[UIColor blackColor];
+    }
+    UITableViewCell *cell=[tableView cellForRowAtIndexPath:indexPath];
+    cell.textLabel.textColor=[UIColor blueColor];
+    [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    BluetoothModel *model = [_blueArr objectAtIndex:indexPath.row];
+    [[BluetoothManager shareBluetoothManager]linkBluetooth:model];
     
+}
+-(void)refreshAction{
+    _blueArr = @[];
+    [self.leftTable reloadData];
+    [[BluetoothManager shareBluetoothManager] startScanPeripherals];
 }
 @end

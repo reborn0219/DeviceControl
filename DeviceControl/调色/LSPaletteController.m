@@ -27,6 +27,7 @@
 @property (nonatomic,assign) CBManagerState CBmanagerState;
 @property (nonatomic,strong) NSMutableArray *colorArr;
 @property (nonatomic,strong) BluetoothManager *blueManager;
+@property (nonatomic,strong) UIView *centerView;
 
 @end
 
@@ -41,12 +42,13 @@
     [self.view addSubview:self.lightSlider];
     [self.view addSubview:self.rgbView];
     [self.view addSubview:self.bottomColorView];
+    [self.view addSubview:self.centerView];
     self.blueManager = [BluetoothManager shareBluetoothManager];
     [self creatData];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.blueManager startScanPeripherals];
+//    [self.blueManager startScanPeripherals];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -95,12 +97,12 @@
     NSLog(@"Blue: %.f", components[2]*255);
     UILabel * tempLab = [_rgbView viewWithTag:100];
     tempLab.text = [NSString stringWithFormat:@"%.f", components[0]*255];
-    
     UILabel * tempLab1 = [_rgbView viewWithTag:101];
     tempLab1.text = [NSString stringWithFormat:@"%.f", components[1]*255];
-    
     UILabel * tempLab2 = [_rgbView viewWithTag:102];
     tempLab2.text = [NSString stringWithFormat:@"%.f", components[2]*255];
+    [self.centerView setBackgroundColor:color];
+    
 }
 -(void)changeColor{
     
@@ -112,6 +114,15 @@
         _colorArr = [NSMutableArray array];
     }
     return _colorArr;
+}
+-(UIView *)centerView{
+    if (!_centerView) {
+        _centerView = [[UIView alloc]initWithFrame:CGRectMake(_paletteView.centerX-30, _paletteView.centerY-30, 60, 60)];
+        _centerView.backgroundColor = [UIColor blueColor];
+        _centerView.layer.cornerRadius = 30;
+        
+    }
+    return _centerView;
 }
 -(UIView *)rgbView{
     if (!_rgbView) {
@@ -282,11 +293,15 @@
     [collectionView reloadData];
     if (indexPath.row==4) {
         [_paletteView changeStatus:2];
+        [_centerView setHidden:YES];
+
     }else if(indexPath.row==5) {
         [_paletteView changeStatus:3];
+        [_centerView setHidden:YES];
+
     }else{
         [_paletteView changeStatus:1];
-
+        [_centerView setHidden:NO];
     }
 }
 @end

@@ -10,6 +10,7 @@
 #import <CoreBluetooth/CoreBluetooth.h>
 
 @interface BluetoothModel : NSObject
+@property (strong, nonatomic) CBPeripheral  * discoveredPeripheral;
 @property(nonatomic,strong)CBCharacteristic * characteristicWrite;
 @property(nonatomic,strong)CBCharacteristic * charPeripheral;
 @property (nonatomic ,copy)NSString * name;

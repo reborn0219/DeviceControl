@@ -11,7 +11,7 @@
 
 @interface BluetoothManager : NSObject
 <CBCentralManagerDelegate,CBPeripheralDelegate>
-
+@property (nonatomic,strong) NSMutableArray<BluetoothModel*> *scanBlueArr;
 + (instancetype)shareBluetoothManager;
 ///主设中心
 @property (strong, nonatomic) CBCentralManager      * centralManager;
@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSData *wirteData;
 ///蓝牙处理回调
 @property(nonatomic,copy)BluetoothEventBlock blueToothBlock;
-
+-(void)linkBluetooth:(BluetoothModel *)model;
 ///开始扫描
 - (void)startScanPeripherals;
 ///广播之后开始扫描

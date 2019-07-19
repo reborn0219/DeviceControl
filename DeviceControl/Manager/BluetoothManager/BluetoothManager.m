@@ -14,7 +14,6 @@
     NSTimer * connectTimer;
     CBCharacteristic *_characteristicWrite;
     CBMutableCharacteristic * _charPeripheral;
-    
     NSMutableString *mutableStr;
     NSArray * blueTooths;
     NSString * ls_openKey;
@@ -26,8 +25,6 @@
     static BluetoothManager *_shareBluetooth = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        //不能再使用alloc方法
-        //因为已经重写了allocWithZone方法，所以这里要调用父类的分配空间的方法
         _shareBluetooth = [[super allocWithZone:NULL] init];
     });
     return _shareBluetooth;
@@ -49,7 +46,12 @@
 }
 
 #pragma mark - 断开蓝牙连接
-
+-(NSMutableArray *)scanBlueArr{
+    if (!_scanBlueArr) {
+        _scanBlueArr = [NSMutableArray array];
+    }
+    return _scanBlueArr;
+}
 -(void)discconnection {
     
     if (_discoveredPeripheral!=nil&&_centralManager!=nil) {
@@ -62,14 +64,12 @@
 #pragma mark - 开始搜索蓝牙设备
 
 - (void)scanForPeripherals {
-    
- 
+    [self.centralManager scanForPeripheralsWithServices:nil options:nil];
 }
-
 #pragma mark - ScanTimer
 - (void)startScanPeripherals
 {
-    
+    [self.scanBlueArr removeAllObjects];
     [self scanForPeripherals];
 }
 
@@ -101,42 +101,62 @@
 
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *,id> *)advertisementData RSSI:(NSNumber *)RSSI
 {
+   
     if (peripheral.name) {
-        NSLog(@"%@",peripheral.name);
-        if (_discoveredPeripheral==nil) {
-            if ([peripheral.name isEqualToString:@"PARA-V002"]) {
-                _discoveredPeripheral = peripheral;
-                [self linkBluetooth];
+//        NSLog(@"%@",peripheral.identifier);
+        NSLog(@"正在扫描蓝牙。。。");
+        if ([peripheral.name isEqualToString:@"PARA-V002"]) {
+//        if (1) {
 
+            for (BluetoothModel *model in self.scanBlueArr) {
+                if([model.name isEqualToString:@"PARA-V002"]){
+                    [self.scanBlueArr removeObject:model];
+                    break;
+                }
+            }
+            BluetoothModel *blueModel = [[BluetoothModel alloc]init];
+            blueModel.discoveredPeripheral = peripheral;
+            blueModel.name = peripheral.name;
+            [_scanBlueArr addObject:blueModel];
+            if(_blueToothBlock){
+                _blueToothBlock(_scanBlueArr,SearchBluetooth);
             }
         }
     }
 }
 
 #pragma mark - 链接需要匹配的蓝牙设备
--(void)linkBluetooth{
-    [_centralManager connectPeripheral:_discoveredPeripheral options:nil];
+-(void)linkBluetooth:(BluetoothModel *)model{
+    [self discconnection];
+    [_centralManager connectPeripheral:model.discoveredPeripheral options:nil];
+    _discoveredPeripheral = model.discoveredPeripheral;
+    NSLog(@"正在链接蓝牙。。。");
+
 //    [_centralManager connectPeripheral:_discoveredPeripheral
 //                               options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:CBConnectPeripheralOptionNotifyOnDisconnectionKey]];
 }
 
 #pragma mark - 蓝牙连接成功
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
-    
-//    _discoveredPeripheral = peripheral;
-//    _discoveredPeripheral.delegate = self;
-//    [_discoveredPeripheral discoverServices:nil];
+
+    NSLog(@"蓝牙链接成功！");
+
     [self.discoveredPeripheral setDelegate:self];
     [self.discoveredPeripheral discoverServices:nil];
-//    [_discoveredPeripheral readRSSI];
+//  [_discoveredPeripheral readRSSI];
     [_centralManager stopScan];
-    
 }
 
 #pragma mark - 发送蓝牙指令
 -(void)sendInstructions:(NSString *)instructionStr{
+    NSLog(@"发送蓝牙指令！指令：%@",instructionStr);
+    
     NSData *data =[self hexToBytes:instructionStr];
-    [self.discoveredPeripheral writeValue:data forCharacteristic:_characteristicWrite type:CBCharacteristicWriteWithoutResponse];
+    if (_characteristicWrite) {
+        [self.discoveredPeripheral writeValue:data forCharacteristic:_characteristicWrite type:CBCharacteristicWriteWithoutResponse];
+    }else{
+        NSLog(@"-----特征码未找到-----");
+    }
     sleep(0.1);
 }
 //hex -> NSData
