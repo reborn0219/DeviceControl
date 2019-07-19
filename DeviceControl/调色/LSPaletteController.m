@@ -28,6 +28,7 @@
 @property (nonatomic,strong) NSMutableArray *colorArr;
 @property (nonatomic,strong) BluetoothManager *blueManager;
 @property (nonatomic,strong) UIView *centerView;
+@property (nonatomic,strong) UIView *paletteBackView;
 
 @end
 
@@ -38,6 +39,7 @@
     [self.view addSubview:self.backImgV];
     [self.view addSubview:self.leftImgV];
     [self.view addSubview:self.rightSwitch];
+    [self.view addSubview:self.paletteBackView];
     [self.view addSubview:self.paletteView];
     [self.view addSubview:self.lightSlider];
     [self.view addSubview:self.rgbView];
@@ -102,13 +104,31 @@
     UILabel * tempLab2 = [_rgbView viewWithTag:102];
     tempLab2.text = [NSString stringWithFormat:@"%.f", components[2]*255];
     [self.centerView setBackgroundColor:color];
-    
+    self.centerView.layer.shadowColor = color.CGColor;
+    self.centerView.layer.shadowOffset = CGSizeMake(1,1);
+    self.centerView.layer.shadowOpacity = 1;
+    self.centerView.layer.shadowRadius = 15;
+  
+    [self.paletteBackView setBackgroundColor:color];
 }
 -(void)changeColor{
     
 }
 
 #pragma mark - lazy loading
+-(UIView *)paletteBackView{
+    if(!_paletteBackView){
+        _paletteBackView = [[UIView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-palette_R*2)/2.0f-2, 50+NavBar_H-2,palette_R*2+4, palette_R*2+4)];
+        _paletteBackView.backgroundColor = [UIColor blueColor];
+        _paletteBackView.layer.cornerRadius = (palette_R*2+4)/2;
+        UIView * centerV = [[UIView alloc]initWithFrame:CGRectMake(2,2, palette_R*2, palette_R*2)];
+        centerV.layer.cornerRadius = palette_R;
+
+        centerV.backgroundColor = [UIColor blackColor];
+        [_paletteBackView addSubview:centerV];
+    }
+    return _paletteBackView;
+}
 -(NSMutableArray *)colorArr{
     if (!_colorArr) {
         _colorArr = [NSMutableArray array];
