@@ -88,8 +88,12 @@
         _lightSlider = [[UISlider alloc]initWithFrame:CGRectMake(45, SCREEN_HEIGHT-160,SCREEN_WIDTH-90,20)];
         [_lightSlider setThumbTintColor:Selected_Color];
         [_lightSlider setTintColor:Selected_Color];
+        _lightSlider.minimumValue = 0;
+        _lightSlider.maximumValue =100;
+        [_lightSlider addTarget:self action:@selector(lightSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
         UILabel * lightLb = [[UILabel alloc]initWithFrame:CGRectMake(45,_lightSlider.frame.origin.y-40,200,20)];
         lightLb.text = @"亮度：0";
+        lightLb.tag = 100;
         lightLb.textColor = [UIColor whiteColor];
         [self.view addSubview:lightLb];
         UIImageView * leftImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15,_lightSlider.frame.origin.y, 20, 20)];
@@ -106,9 +110,14 @@
 -(UISlider *)speedSlider{
     if (!_speedSlider) {
         _speedSlider = [[UISlider alloc]initWithFrame:CGRectMake(45, SCREEN_HEIGHT-250,SCREEN_WIDTH-90,20)];
+        _speedSlider.minimumValue = 0;
+        _speedSlider.maximumValue =100;
         [_speedSlider setThumbTintColor:Selected_Color];
         [_speedSlider setTintColor:Selected_Color];
+        [_speedSlider addTarget:self action:@selector(speedSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+
         UILabel * speedLb = [[UILabel alloc]initWithFrame:CGRectMake(45,_speedSlider.frame.origin.y-40,200,20)];
+        speedLb.tag = 101;
         speedLb.text = @"速度：0";
         speedLb.textColor = [UIColor whiteColor];
         [self.view addSubview:speedLb];
@@ -123,6 +132,21 @@
     }
     return  _speedSlider;
 }
+
+-(void)lightSliderValueChanged:(UISlider *)slider
+{
+    NSLog(@"slider value%f",slider.value);
+    UILabel * lightLb = (UILabel*)[self.view viewWithTag:100];
+    lightLb.text = [NSString stringWithFormat:@"亮度：%.f",slider.value];
+
+}
+-(void)speedSliderValueChanged:(UISlider *)slider
+{
+    UILabel * speedLb = (UILabel*)[self.view viewWithTag:101];
+    speedLb.text = [NSString stringWithFormat:@"速度：%.f",slider.value];
+    NSLog(@"slider value%f",slider.value);
+}
+
 #pragma mark - dataSouce
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;

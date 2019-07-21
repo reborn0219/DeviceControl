@@ -749,7 +749,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V3RQ7D6UN4;
+				DEVELOPMENT_TEAM = NA9D8AVPCL;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DeviceControl/ConfigFile/PrefixHeader.pch";
 				INFOPLIST_FILE = DeviceControl/Info.plist;
@@ -769,7 +769,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V3RQ7D6UN4;
+				DEVELOPMENT_TEAM = NA9D8AVPCL;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DeviceControl/ConfigFile/PrefixHeader.pch";
 				INFOPLIST_FILE = DeviceControl/Info.plist;

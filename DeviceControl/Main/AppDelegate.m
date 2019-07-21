@@ -51,7 +51,8 @@
 
 - (void)selectRootController
 {
-    
+    [[NSUserDefaults standardUserDefaults]setObject:@"0" forKey:Lights_Number];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     [UIApplication sharedApplication].statusBarStyle =  UIStatusBarStyleLightContent;
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     

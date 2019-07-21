@@ -9,8 +9,9 @@
 #import "RightPopController.h"
 #import "AboutViewController.h"
 
-@interface RightPopController ()
+@interface RightPopController ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *backView_top;
+@property (weak, nonatomic) IBOutlet UITextField *countTF;
 @property (nonatomic,strong) UIViewController *currentVC;
 
 @end
@@ -19,7 +20,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _countTF.text = [[NSUserDefaults standardUserDefaults]objectForKey:Lights_Number];
+    _countTF.delegate = self;
+    _countTF.layer.cornerRadius =2;
+    _countTF.layer.borderWidth =1;
+    _countTF.layer.borderColor = [UIColor whiteColor].CGColor;
     _backView_top.constant = k_Height_StatusBar;
+}
+- (IBAction)increaseAction:(id)sender {
+    //增加
+    NSInteger conunt = _countTF.text.integerValue;
+    conunt ++;
+    if (conunt>99) {
+        conunt = 99;
+    }
+     _countTF.text = [NSString stringWithFormat:@"%ld",conunt];
+    [self saveLightNumber];
+
+}
+- (IBAction)reduceAction:(id)sender {
+//    减少
+    NSInteger conunt = _countTF.text.integerValue;
+    conunt --;
+    if (conunt<0) {
+        conunt = 0;
+    }
+    _countTF.text = [NSString stringWithFormat:@"%ld",conunt];
+    [self saveLightNumber];
+
+}
+-(void)saveLightNumber{
+    [[NSUserDefaults standardUserDefaults]setObject:_countTF.text forKey:Lights_Number];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    [self saveLightNumber];
 }
 - (IBAction)backAction:(id)sender {
     [self dismissViewControllerAnimated:NO completion:nil];

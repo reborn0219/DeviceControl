@@ -29,6 +29,8 @@
 @property (nonatomic,strong) BluetoothManager *blueManager;
 @property (nonatomic,strong) UIView *centerView;
 @property (nonatomic,strong) UIView *paletteBackView;
+@property(nonatomic,strong)NSIndexPath *seletedIndex;
+@property(nonatomic,strong)UIColor *currentColor;
 
 @end
 
@@ -45,12 +47,13 @@
     [self.view addSubview:self.rgbView];
     [self.view addSubview:self.bottomColorView];
     [self.view addSubview:self.centerView];
+    _seletedIndex = [NSIndexPath indexPathForRow:0 inSection:0];
     self.blueManager = [BluetoothManager shareBluetoothManager];
     [self creatData];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    [self.blueManager startScanPeripherals];
+    //    [self.blueManager startScanPeripherals];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -74,25 +77,30 @@
                             HexRGB(0xff0000),
                             HexRGB(0x00ff00),
                             HexRGB(0x0000ff),
-//                            HexRGB(0xA449F6),
-//                            HexRGB(0xE14E73),
-//                            HexRGB(0x75FBCF),
-//                            HexRGB(0xF7D252),
-//                            HexRGB(0xE832E1),
-//                            HexRGB(0xB7E9B0),
+                            //                            HexRGB(0xA449F6),
+                            //                            HexRGB(0xE14E73),
+                            //                            HexRGB(0x75FBCF),
+                            //                            HexRGB(0xF7D252),
+                            //                            HexRGB(0xE832E1),
+                            //                            HexRGB(0xB7E9B0),
                             ];
+    _currentColor = HexRGB(0x62c16f);
     for (UIColor *color in defaultArr) {
         ColorModel * model = [[ColorModel alloc]init];
         model.color = color;
         model.selected = NO;
         [self.colorArr addObject:model];
     }
+    ColorModel * model = self.colorArr.firstObject;
+    model.selected = YES;
 }
 -(void)patette:(Palette *)patette choiceColor:(UIColor *)color colorPoint:(CGPoint)colorPoint{
     [self setColorLabelCount:color];
+    _currentColor = color;
     [_blueManager sendInstructions:@"ABBA017700553303EF"];
 }
 -(void)setColorLabelCount:(UIColor *)color{
+    if(color==nil)return;
     const CGFloat *components = CGColorGetComponents(color.CGColor);
     NSLog(@"Red: %.f", components[0]*255);
     NSLog(@"Green: %.f", components[1]*255);
@@ -108,7 +116,14 @@
     self.centerView.layer.shadowOffset = CGSizeMake(1,1);
     self.centerView.layer.shadowOpacity = 1;
     self.centerView.layer.shadowRadius = 15;
-  
+    if(_seletedIndex.row==0||_seletedIndex.row==1||_seletedIndex.row==2||_seletedIndex.row==3) {
+        ColorModel *model  =   [_colorArr objectAtIndex:_seletedIndex.row];
+        model.color = color;
+        
+        [_collectionView reloadData];
+        
+    }
+    
     [self.paletteBackView setBackgroundColor:color];
 }
 -(void)changeColor{
@@ -123,7 +138,7 @@
         _paletteBackView.layer.cornerRadius = (palette_R*2+4)/2;
         UIView * centerV = [[UIView alloc]initWithFrame:CGRectMake(2,2, palette_R*2, palette_R*2)];
         centerV.layer.cornerRadius = palette_R;
-
+        
         centerV.backgroundColor = [UIColor blackColor];
         [_paletteBackView addSubview:centerV];
     }
@@ -152,22 +167,22 @@
             lb.textColor = [UIColor whiteColor];
             lb.text = @"R";
             lb.textAlignment = NSTextAlignmentCenter;
-//            lb.backgroundColor = [UIColor redColor];
+            //            lb.backgroundColor = [UIColor redColor];
             if (i==1) {
                 lb.text = @"G";
-//                lb.backgroundColor = [UIColor greenColor];
-
+                //                lb.backgroundColor = [UIColor greenColor];
+                
             }else if(i == 2){
                 lb.text = @"B";
-//                lb.backgroundColor = [UIColor blueColor];
-
+                //                lb.backgroundColor = [UIColor blueColor];
+                
             }
             lb.font = [UIFont systemFontOfSize:18];
             UILabel * numberLb = [[UILabel alloc]initWithFrame:CGRectMake(20, 0+i*30,35,25)];
             numberLb.tag = i+100;
             numberLb.textAlignment = NSTextAlignmentLeft;
             numberLb.backgroundColor = [UIColor redColor];
-
+            
             if (i==1) {
                 numberLb.backgroundColor = [UIColor greenColor];
                 
@@ -176,7 +191,7 @@
                 
             }
             numberLb.backgroundColor = HexRGB(0x2B324E);
-
+            
             
             numberLb.font = [UIFont systemFontOfSize:16];
             numberLb.textColor = [UIColor whiteColor];
@@ -192,8 +207,11 @@
         _lightSlider = [[UISlider alloc]initWithFrame:CGRectMake(45, SCREEN_HEIGHT-slider_bottom-30,SCREEN_WIDTH-90,20)];
         [_lightSlider setThumbTintColor:Selected_Color];
         [_lightSlider setTintColor:Selected_Color];
-////        UIImage *imagea=[self OriginImage:[UIImage imageNamed:@"Icon-60"] scaleToSize:CGSizeMake(12, 12)];
-//        [_lightSlider  setThumbImage:[UIImage imageNamed:@"调色板-点击"] forState:UIControlStateNormal];
+        [_lightSlider addTarget:self action:@selector(lightSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+        _lightSlider.minimumValue = 0;
+        _lightSlider.maximumValue =100;
+        ////        UIImage *imagea=[self OriginImage:[UIImage imageNamed:@"Icon-60"] scaleToSize:CGSizeMake(12, 12)];
+        //        [_lightSlider  setThumbImage:[UIImage imageNamed:@"调色板-点击"] forState:UIControlStateNormal];
         UIImageView * leftImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15,_lightSlider.frame.origin.y, 20, 20)];
         [leftImgV setImage:[UIImage imageNamed:@"亮度-"]];
         [self.view addSubview:leftImgV];
@@ -201,9 +219,9 @@
         [rightImgV setImage:[UIImage imageNamed:@"亮度+"]];
         [self.view addSubview:leftImgV];
         [self.view addSubview:rightImgV];
-
+        
     }
-   return  _lightSlider;
+    return  _lightSlider;
 }
 -(Palette *)paletteView{
     if (!_paletteView) {
@@ -222,9 +240,9 @@
 }
 -(UIImageView *)backImgV{
     if (!_backImgV) {
-         _backImgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, NavBar_H+6, SCREEN_WIDTH, SCREEN_HEIGHT-NavBar_H)];
+        _backImgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, NavBar_H+6, SCREEN_WIDTH, SCREEN_HEIGHT-NavBar_H)];
         [_backImgV setImage:[UIImage imageNamed:@"背景"]];
-
+        
     }
     return _backImgV;
 }
@@ -268,6 +286,11 @@
     }
     return _collectionView;
 }
+-(void)lightSliderValueChanged:(UISlider *)slider
+{
+    NSLog(@"slider value%f",slider.value);
+    
+}
 #pragma mark - UICollectionViewDataSource
 //cell的最小行间距
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
@@ -305,22 +328,29 @@
     return cell;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    _seletedIndex = indexPath;
     for (ColorModel *model in _colorArr) {
         model.selected = NO;
     }
     ColorModel * cellModel = [_colorArr objectAtIndex:indexPath.item];
+    _currentColor = cellModel.color;
     cellModel.selected = YES;
     [collectionView reloadData];
     if (indexPath.row==4) {
         [_paletteView changeStatus:2];
         [_centerView setHidden:YES];
-
+        [_leftImgV setImage:[UIImage imageNamed:@"黄色"]];
+        
     }else if(indexPath.row==5) {
         [_paletteView changeStatus:3];
         [_centerView setHidden:YES];
-
+        [_leftImgV setImage:[UIImage imageNamed:@"小黑白"]];
+        
     }else{
         [_paletteView changeStatus:1];
+        [_leftImgV setImage:[UIImage imageNamed:@"小色彩盘"]];
+        [self setColorLabelCount:cellModel.color];
+        
         [_centerView setHidden:NO];
     }
 }

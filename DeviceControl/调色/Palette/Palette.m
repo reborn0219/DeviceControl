@@ -47,8 +47,11 @@
     self.mainImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     self.mainImageView.image=[UIImage imageNamed:@"paletteColor"];
     [self addSubview:self.mainImageView];
-    
-    self.sliderImageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"勾选中"]];
+    self.sliderImageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@""]];
+    [self.sliderImageView setFrame:CGRectMake(0, 0,20, 20)];
+    self.sliderImageView.layer.cornerRadius =10;
+    self.sliderImageView.clipsToBounds = YES;
+    [self.sliderImageView setBackgroundColor:Selected_Color];
     [self addSubview:self.sliderImageView];
     self.sliderImageView.center=CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
 }
@@ -76,12 +79,51 @@
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self calculateShowColor:touches]; // 得到颜色
 }
+//获取图片某一点的颜色
+- (UIColor *)colorAtPixel:(CGPoint)point {
+    if (!CGRectContainsPoint(CGRectMake(0.0f, 0.0f, self.mainImageView.size.width, self.mainImageView.size.height), point)) {
+        return nil;
+    }
+    
+    NSInteger pointX = trunc(point.x);
+    NSInteger pointY = trunc(point.y);
+    CGImageRef cgImage = self.mainImageView.image.CGImage;
+    NSUInteger width = self.mainImageView.image.size.width;
+    NSUInteger height = self.mainImageView.image.size.height;
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    int bytesPerPixel = 4;
+    int bytesPerRow = bytesPerPixel * 1;
+    NSUInteger bitsPerComponent = 8;
+    unsigned char pixelData[4] = { 0, 0, 0, 0 };
+    CGContextRef context = CGBitmapContextCreate(pixelData,
+                                                 1,
+                                                 1,
+                                                 bitsPerComponent,
+                                                 bytesPerRow,
+                                                 colorSpace,
+                                                 kCGImageAlphaPremultipliedLast |     kCGBitmapByteOrder32Big);
+    CGColorSpaceRelease(colorSpace);
+    CGContextSetBlendMode(context, kCGBlendModeCopy);
+    
+    CGContextTranslateCTM(context, -pointX, pointY-(CGFloat)height);
+    CGContextDrawImage(context, CGRectMake(0.0f, 0.0f, (CGFloat)width, (CGFloat)height), cgImage);
+    CGContextRelease(context);
+    
+    CGFloat red   = (CGFloat)pixelData[0] / 255.0f;
+    CGFloat green = (CGFloat)pixelData[1] / 255.0f;
+    CGFloat blue  = (CGFloat)pixelData[2] / 255.0f;
+    CGFloat alpha = (CGFloat)pixelData[3] / 255.0f;
+    
+    return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+}
 #pragma mark 计算和传递选择的颜色
 -(void)calculateShowColor:(NSSet<UITouch *> *)touches{
     UITouch *touchObj=touches.anyObject;
     CGPoint movePoint=[touchObj locationInView:self];                       // 得到滑动的点
     
-    UIColor *color=[self calculateCenterPointInView:movePoint];            //  计算得到真正的中心点和颜色
+    [self calculateCenterPointInView:movePoint];
+    UIColor *color = [self colorAtPixel:movePoint];
+    //  计算得到真正的中心点和颜色
     if([self.delegate respondsToSelector:@selector(patette:choiceColor:colorPoint:)]){
         [self.delegate patette:self choiceColor:color colorPoint:self.sliderImageView.center]; // 通过代理传递颜色
     }

@@ -14,5 +14,6 @@
 UIKIT_EXTERN NSString * const Server_Address;
 UIKIT_EXTERN NSString * const Chat_Server_Address;
 UIKIT_EXTERN NSString * const Map_Key;
+UIKIT_EXTERN NSString * const Lights_Number;
 
 @end
