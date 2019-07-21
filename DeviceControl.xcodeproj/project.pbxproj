@@ -748,16 +748,19 @@
 			baseConfigurationReference = 7495AFF72BE6FFAA8273DF29 /* Pods-DeviceControl.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NA9D8AVPCL;
+				DEVELOPMENT_TEAM = V3RQ7D6UN4;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DeviceControl/ConfigFile/PrefixHeader.pch";
 				INFOPLIST_FILE = DeviceControl/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meidyy.DeviceControl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meidyy.bluetoothControl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -768,16 +771,19 @@
 			baseConfigurationReference = 2B172BEF5E4E7259C7B34B76 /* Pods-DeviceControl.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NA9D8AVPCL;
+				DEVELOPMENT_TEAM = V3RQ7D6UN4;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/DeviceControl/ConfigFile/PrefixHeader.pch";
 				INFOPLIST_FILE = DeviceControl/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meidyy.DeviceControl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meidyy.bluetoothControl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 			};

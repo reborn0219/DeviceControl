@@ -2,8 +2,7 @@
 # platform :ios, '9.0'
 
 target 'DeviceControl' do
-    
-  
+
     pod 'YYModel'
     pod 'YYCategories'
     pod 'JPush'
@@ -11,4 +10,5 @@ target 'DeviceControl' do
     pod 'AFNetworking'
     pod 'AFNetworking'
     pod 'MJRefresh'
+  
 end
