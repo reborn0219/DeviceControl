@@ -101,15 +101,15 @@
 
 -(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *,id> *)advertisementData RSSI:(NSNumber *)RSSI
 {
-   
+    NSLog(@"正在扫描蓝牙。。。");
     if (peripheral.name) {
 //        NSLog(@"%@",peripheral.identifier);
-        NSLog(@"正在扫描蓝牙。。。");
-        if ([peripheral.name isEqualToString:@"PARA-V002"]) {
-//        if (1) {
-
+        NSLog(@"扫描到有名字蓝牙。。。");
+//        if ([peripheral.name isEqualToString:@"PARA-V002"]) {
+        
+          
             for (BluetoothModel *model in self.scanBlueArr) {
-                if([model.name isEqualToString:@"PARA-V002"]){
+                if([model.name isEqualToString:peripheral.name]){
                     [self.scanBlueArr removeObject:model];
                     break;
                 }
@@ -121,7 +121,7 @@
             if(_blueToothBlock){
                 _blueToothBlock(_scanBlueArr,SearchBluetooth);
             }
-        }
+//        }
     }
 }
 
@@ -157,7 +157,7 @@
     }else{
         NSLog(@"-----特征码未找到-----");
     }
-    sleep(0.1);
+    sleep(0.3);
 }
 //hex -> NSData
 -(NSData*) hexToBytes:(NSString *)str {

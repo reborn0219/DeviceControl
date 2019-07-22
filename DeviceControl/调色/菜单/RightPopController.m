@@ -53,6 +53,7 @@
     [[NSUserDefaults standardUserDefaults]setObject:_countTF.text forKey:Lights_Number];
     [[NSUserDefaults standardUserDefaults]synchronize];
 }
+
 -(void)textFieldDidEndEditing:(UITextField *)textField{
     [self saveLightNumber];
 }
@@ -67,9 +68,7 @@
     [_currentVC.navigationController pushViewController:aboutVC animated:YES];
     
 }
--(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self dismissViewControllerAnimated:NO completion:nil];
-}
+
 -(void)showInVC:(UIViewController *)VC {
     _currentVC = VC;
     if (self.isBeingPresented) {

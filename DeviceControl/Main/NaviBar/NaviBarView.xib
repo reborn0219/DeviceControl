@@ -18,8 +18,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8w-d6-iVk">
                     <rect key="frame" x="0.0" y="66" width="558" height="50"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RARA Light Module" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmr-7r-HIx">
-                            <rect key="frame" x="170.5" y="13" width="217" height="24"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ParaLight Pulse" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zmr-7r-HIx">
+                            <rect key="frame" x="192" y="13" width="174.5" height="24"/>
                             <color key="backgroundColor" red="0.16078431372549018" green="0.20000000000000001" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="24" id="FRm-Dg-Z5H"/>

@@ -29,8 +29,10 @@
 @property (nonatomic,strong) BluetoothManager *blueManager;
 @property (nonatomic,strong) UIView *centerView;
 @property (nonatomic,strong) UIView *paletteBackView;
-@property(nonatomic,strong)NSIndexPath *seletedIndex;
-@property(nonatomic,strong)UIColor *currentColor;
+@property (nonatomic,strong) NSIndexPath *seletedIndex;
+@property (nonatomic,strong) UIColor *currentColor;
+@property (nonatomic,copy) NSString *brightness;
+
 
 @end
 
@@ -85,6 +87,7 @@
                             //                            HexRGB(0xB7E9B0),
                             ];
     _currentColor = HexRGB(0x62c16f);
+    _brightness = @"00";
     for (UIColor *color in defaultArr) {
         ColorModel * model = [[ColorModel alloc]init];
         model.color = color;
@@ -96,11 +99,12 @@
 }
 -(void)patette:(Palette *)patette choiceColor:(UIColor *)color colorPoint:(CGPoint)colorPoint{
     [self setColorLabelCount:color];
-    _currentColor = color;
-    [_blueManager sendInstructions:@"ABBA017700553303EF"];
+    [self assemblyInstructions];
+
 }
 -(void)setColorLabelCount:(UIColor *)color{
-    if(color==nil)return;
+    if(!color){return;}
+    _currentColor = color;
     const CGFloat *components = CGColorGetComponents(color.CGColor);
     NSLog(@"Red: %.f", components[0]*255);
     NSLog(@"Green: %.f", components[1]*255);
@@ -289,7 +293,8 @@
 -(void)lightSliderValueChanged:(UISlider *)slider
 {
     NSLog(@"slider value%f",slider.value);
-    
+    _brightness = [NSString stringWithFormat:@"%.f",slider.value];
+    [self assemblyInstructions];
 }
 #pragma mark - UICollectionViewDataSource
 //cell的最小行间距
@@ -353,5 +358,27 @@
         
         [_centerView setHidden:NO];
     }
+    [self assemblyInstructions];
+
 }
+///发送蓝牙指令
+-(void)assemblyInstructions{
+   
+    if (!_currentColor) {
+        NSLog(@"%@",_currentColor);
+        return;
+    }else{
+        NSLog(@"啥也不是");
+
+    }
+    NSString * rgbStr = _currentColor.hexString.uppercaseString;
+    NSString * lightNumber = [[NSUserDefaults standardUserDefaults]objectForKey:Lights_Number];
+    lightNumber = [self getHexByDecimal:lightNumber.integerValue];
+    NSString * brightness = [self getHexByDecimal:_brightness.integerValue];
+    NSString * instructionstr = [NSString stringWithFormat:@"ABBA01%@%@%@EF",rgbStr,brightness,lightNumber];
+    NSLog(@"蓝牙发送指令：%@",instructionstr);
+    [[BluetoothManager shareBluetoothManager]sendInstructions:instructionstr];
+    
+}
+
 @end

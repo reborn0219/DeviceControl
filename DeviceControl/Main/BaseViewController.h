@@ -19,7 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)setCustomerTitle:(NSString *)title;
 
 -(void)setNaviBar:(NSInteger)type;
-
+/**
+ 十进制转换十六进制
+ 
+ @param decimal 十进制数
+ @return 十六进制数
+ */
+-(NSString *)getHexByDecimal:(NSInteger)decimal;
 @end
 
 NS_ASSUME_NONNULL_END
