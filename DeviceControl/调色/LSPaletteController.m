@@ -99,8 +99,19 @@
 }
 -(void)patette:(Palette *)patette choiceColor:(UIColor *)color colorPoint:(CGPoint)colorPoint{
     [self setColorLabelCount:color];
-    [self assemblyInstructions];
-
+    
+//    static NSInteger i=0;
+//    if (i%2==0) {
+//        [self assemblyInstructions];
+//    }
+    
+    MJWeakSelf
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0/*延迟执行时间*/ * NSEC_PER_SEC));
+    
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+        [weakSelf assemblyInstructions];
+    });
+  
 }
 -(void)setColorLabelCount:(UIColor *)color{
     if(!color){return;}
@@ -130,19 +141,15 @@
     
     [self.paletteBackView setBackgroundColor:color];
 }
--(void)changeColor{
-    
-}
 
 #pragma mark - lazy loading
 -(UIView *)paletteBackView{
     if(!_paletteBackView){
         _paletteBackView = [[UIView alloc]initWithFrame:CGRectMake((SCREEN_WIDTH-palette_R*2)/2.0f-2, 50+NavBar_H-2,palette_R*2+4, palette_R*2+4)];
-        _paletteBackView.backgroundColor = [UIColor blueColor];
+        _paletteBackView.backgroundColor =  HexRGB(0x62c16f);
         _paletteBackView.layer.cornerRadius = (palette_R*2+4)/2;
         UIView * centerV = [[UIView alloc]initWithFrame:CGRectMake(2,2, palette_R*2, palette_R*2)];
         centerV.layer.cornerRadius = palette_R;
-        
         centerV.backgroundColor = [UIColor blackColor];
         [_paletteBackView addSubview:centerV];
     }
@@ -157,7 +164,7 @@
 -(UIView *)centerView{
     if (!_centerView) {
         _centerView = [[UIView alloc]initWithFrame:CGRectMake(_paletteView.centerX-30, _paletteView.centerY-30, 60, 60)];
-        _centerView.backgroundColor = [UIColor blueColor];
+        _centerView.backgroundColor =  HexRGB(0x62c16f);
         _centerView.layer.cornerRadius = 30;
         
     }
@@ -279,14 +286,14 @@
     if (!_collectionView) {
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc]init];
         flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(50,bottom_color_view_h-120,SCREEN_WIDTH-90,120) collectionViewLayout: flowLayout];
+        _collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(50,bottom_color_view_h-115,SCREEN_WIDTH-90,120) collectionViewLayout: flowLayout];
         [_collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([ColorCell class]) bundle:nil] forCellWithReuseIdentifier:@"ColorCell"];
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
-        UIView *lineV = [[UIView alloc]initWithFrame:CGRectMake(50, bottom_color_view_h-64.5, SCREEN_WIDTH-90, 1)];
+        UIView *lineV = [[UIView alloc]initWithFrame:CGRectMake(0, (SCREEN_WIDTH-90)/6.0f+5, SCREEN_WIDTH-90, 1)];
         [lineV setBackgroundColor:HexRGB(0x939393)];
-        [self.bottomColorView addSubview:lineV];
+        [_collectionView addSubview:lineV];
     }
     return _collectionView;
 }

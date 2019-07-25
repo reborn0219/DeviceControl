@@ -53,7 +53,7 @@
     self.sliderImageView.clipsToBounds = YES;
     [self.sliderImageView setBackgroundColor:Selected_Color];
     [self addSubview:self.sliderImageView];
-    self.sliderImageView.center=CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
+    self.sliderImageView.center=CGPointMake(self.frame.size.width/2, self.frame.size.height-20);
 }
 -(void)changeStatus:(NSInteger)type{
     if (type==1) {

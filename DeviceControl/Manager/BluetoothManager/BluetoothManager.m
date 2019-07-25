@@ -149,8 +149,6 @@
 
 #pragma mark - 发送蓝牙指令
 -(void)sendInstructions:(NSString *)instructionStr{
-    NSLog(@"发送蓝牙指令！指令：%@",instructionStr);
-    
     NSData *data =[self hexToBytes:instructionStr];
     if (_characteristicWrite) {
         [self.discoveredPeripheral writeValue:data forCharacteristic:_characteristicWrite type:CBCharacteristicWriteWithoutResponse];
