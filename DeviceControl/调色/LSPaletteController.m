@@ -59,10 +59,7 @@
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    
-    if (_blueManager!=nil) {
-        [_blueManager discconnection];
-    }
+  
 }
 -(void)creatData{
     
