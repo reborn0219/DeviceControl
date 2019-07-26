@@ -12,6 +12,8 @@
 @interface BluetoothManager : NSObject
 <CBCentralManagerDelegate,CBPeripheralDelegate>
 @property (nonatomic,strong) NSMutableArray<BluetoothModel*> *scanBlueArr;
+@property (nonatomic,strong) NSTimer *instructionTimer;
+
 + (instancetype)shareBluetoothManager;
 ///主设中心
 @property (strong, nonatomic) CBCentralManager      * centralManager;
@@ -32,4 +34,8 @@
 -(void)discconnection;
 ///发送蓝牙指令
 -(void)sendInstructions:(NSString *)instructionStr;
+
+-(void)startInstructionTimer;
+-(void)stopInstructionTimer;
+
 @end

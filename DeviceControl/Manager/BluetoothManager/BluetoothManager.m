@@ -20,6 +20,7 @@
     NSArray *advArr_;
     NSNumber * rssi;
     int cycleNumber;
+    BOOL iscallback;
 }
 + (instancetype)shareBluetoothManager{
     static BluetoothManager *_shareBluetooth = nil;
@@ -36,6 +37,7 @@
         
         mutableStr = [[NSMutableString alloc]init];
         cycleNumber = 0;
+        iscallback = YES;
         if (!_centralManager){
             _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:@{CBCentralManagerOptionShowPowerAlertKey:@YES}];
             [_centralManager setDelegate:self];
@@ -44,7 +46,22 @@
     }
     return self;
 }
-
+-(NSTimer *)instructionTimer{
+    if (!_instructionTimer) {
+        _instructionTimer = [NSTimer timerWithTimeInterval:0.0060 target:self selector:@selector(sendInstructionAction) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:_instructionTimer forMode:NSRunLoopCommonModes];
+    }
+    return _instructionTimer;
+}
+-(void)startInstructionTimer{
+    [self.instructionTimer setFireDate:[NSDate distantPast]];
+}
+-(void)stopInstructionTimer{
+    [self.instructionTimer setFireDate:[NSDate distantFuture]];
+}
+-(void)sendInstructionAction{
+    
+}
 #pragma mark - 断开蓝牙连接
 -(NSMutableArray *)scanBlueArr{
     if (!_scanBlueArr) {
@@ -149,13 +166,17 @@
 
 #pragma mark - 发送蓝牙指令
 -(void)sendInstructions:(NSString *)instructionStr{
-    NSData *data =[self hexToBytes:instructionStr];
-    if (_characteristicWrite) {
-        [self.discoveredPeripheral writeValue:data forCharacteristic:_characteristicWrite type:CBCharacteristicWriteWithoutResponse];
-    }else{
-        NSLog(@"-----特征码未找到-----");
+    if (iscallback) {
+        NSData *data =[self hexToBytes:instructionStr];
+        if (_characteristicWrite) {
+            [self.discoveredPeripheral writeValue:data forCharacteristic:_characteristicWrite type:CBCharacteristicWriteWithoutResponse];
+        }else{
+            NSLog(@"-----特征码未找到-----");
+        }
+        sleep(0.3);
+        iscallback = NO;
     }
-    sleep(0.3);
+   
 }
 //hex -> NSData
 -(NSData*) hexToBytes:(NSString *)str {
@@ -212,6 +233,7 @@
     for(CBService* s in peripheral.services){
         [peripheral discoverCharacteristics:nil forService:s];
         NSLog(@"扫描Characteristics...");
+        iscallback = YES;
     }
 }
 
