@@ -7,13 +7,16 @@
 //
 
 #import "LSModelController.h"
-
+#import "BluetoothManager.h"
 @interface LSModelController ()<UIPickerViewDelegate,UIPickerViewDataSource>
 @property(nonatomic,strong)UIPickerView *pickerView;
 @property(nonatomic,strong)NSMutableArray *dataSouce;
 @property(nonatomic,strong)UISlider *lightSlider;
 @property(nonatomic,strong)UISlider *speedSlider;
 @property(nonatomic,strong)NSMutableArray *instructionArr;
+@property (nonatomic,copy) NSString *lightStr;
+@property (nonatomic,copy) NSString *speedStr;
+@property (nonatomic,copy) NSString *instruction;
 
 @end
 
@@ -21,6 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _speedStr = @"00";
+    _lightStr = @"00";
+    _instruction = @"01";
     [self.dataSouce addObjectsFromArray:@[@"红色渐变",
                                           @"绿色渐变",
                                           @"蓝色渐变",
@@ -138,6 +144,15 @@
     NSLog(@"slider value%f",slider.value);
     UILabel * lightLb = (UILabel*)[self.view viewWithTag:100];
     lightLb.text = [NSString stringWithFormat:@"亮度：%.f",slider.value];
+    _lightStr =  [NSString stringWithFormat:@"%.f",slider.value];
+    static NSInteger i=0;
+    if (i%Time_Interval.integerValue==0) {
+        [self assemblyInstructions];
+    }
+    i++;
+    if (i>1000) {
+        i=0;
+    }
 
 }
 -(void)speedSliderValueChanged:(UISlider *)slider
@@ -145,6 +160,15 @@
     UILabel * speedLb = (UILabel*)[self.view viewWithTag:101];
     speedLb.text = [NSString stringWithFormat:@"速度：%.f",slider.value];
     NSLog(@"slider value%f",slider.value);
+    _speedStr =  [NSString stringWithFormat:@"%.f",slider.value];
+    static NSInteger i=0;
+    if (i%Time_Interval.integerValue==0) {
+        [self assemblyInstructions];
+    }
+    i++;
+    if (i>1000) {
+        i=0;
+    }
 }
 
 #pragma mark - dataSouce
@@ -158,6 +182,16 @@
     return self.dataSouce[row];
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    _instruction = [_instructionArr objectAtIndex:row];
+    [self assemblyInstructions];
+}
+///发送蓝牙指令
+-(void)assemblyInstructions{
+    
+    NSString * lightNumber = [[NSUserDefaults standardUserDefaults]objectForKey:Lights_Number];
+    NSString * instructionstr = [NSString stringWithFormat:@"ABBA02%@00%@%@%@EF",_instruction,[self getHexByDecimal:_speedStr.integerValue],[self getHexByDecimal:_lightStr.integerValue],lightNumber];
+    NSLog(@"蓝牙发送指令：%@",instructionstr);
+    [[BluetoothManager shareBluetoothManager]sendInstructions:instructionstr];
     
 }
 - (UIView *)pickerView:(UIPickerView *)pickerView

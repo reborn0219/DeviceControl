@@ -13,6 +13,12 @@
 @interface Palette (){
     
     HSVType currentHSVWithNew;
+    CGPoint beganPoint;
+    CGPoint movePoint;
+    CGPoint endedPoint;
+    UIColor * currentColor;
+    NSInteger changetype;
+    UIImageView * backImgV;
 }
 
 @property (nonatomic,strong)UIImageView *mainImageView;
@@ -43,10 +49,16 @@
 }
 #pragma mark 添加UI
 -(void)addSomeUI{
-    
-    self.mainImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    backImgV = [[UIImageView alloc]initWithFrame:CGRectMake(-5,-5,self.frame.size.width+10,self.frame.size.height+10)];
+    [backImgV setImage:[UIImage imageNamed:@"paletteColor"]];
+    [backImgV setHidden:YES];
+    changetype = 1;
+    currentColor = HexRGB(0x62c16f);
+    self.mainImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0,self.frame.size.width, self.frame.size.height)];
     self.mainImageView.image=[UIImage imageNamed:@"paletteColor"];
+//    backImgV.transform = transform;
     [self addSubview:self.mainImageView];
+    [self addSubview:backImgV];
     self.sliderImageView=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@""]];
     [self.sliderImageView setFrame:CGRectMake(0, 0,20, 20)];
     self.sliderImageView.layer.cornerRadius =10;
@@ -56,40 +68,50 @@
     self.sliderImageView.center=CGPointMake(self.frame.size.width/2, self.frame.size.height-20);
 }
 -(void)changeStatus:(NSInteger)type{
+    changetype = type;
     if (type==1) {
         self.mainImageView.image=[UIImage imageNamed:@"paletteColor"];
+        backImgV.image=[UIImage imageNamed:@"paletteColor"];
+        CGAffineTransform transform= CGAffineTransformMakeRotation(-M_PI*0.2);
+        self.mainImageView.transform = transform;
+        
     }else if (type==2){
         self.mainImageView.image=[UIImage imageNamed:@"黄色"];
-
+        backImgV.image=[UIImage imageNamed:@"黄色"];
+        CGAffineTransform transform= CGAffineTransformMakeRotation(0);
+        self.mainImageView.transform = transform;
     }else if (type==3)
     {
         self.mainImageView.image=[UIImage imageNamed:@"大黑白"];
-
+        backImgV.image=[UIImage imageNamed:@"大黑白"];
+        CGAffineTransform transform= CGAffineTransformMakeRotation(0);
+        self.mainImageView.transform = transform;
     }
 }
 #pragma mark 开始触摸或者点击
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self calculateShowColor:touches];   // 得到颜色
+ 
 }
 #pragma mark 滑动触摸
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self calculateShowColor:touches]; // 得到颜色
+    [self calculateShowColor:touches :YES];
 }
 #pragma mark 结束触摸
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self calculateShowColor:touches]; // 得到颜色
+    [self calculateShowColor:touches :NO];
 }
+
 //获取图片某一点的颜色
 - (UIColor *)colorAtPixel:(CGPoint)point {
-    if (!CGRectContainsPoint(CGRectMake(0.0f, 0.0f, self.mainImageView.size.width, self.mainImageView.size.height), point)) {
-        return nil;
+    if (!CGRectContainsPoint(CGRectMake(0.0f, 0.0f,backImgV.size.width,backImgV.size.height), point)) {
+        return currentColor;
     }
     
     NSInteger pointX = trunc(point.x);
     NSInteger pointY = trunc(point.y);
-    CGImageRef cgImage = self.mainImageView.image.CGImage;
-    NSUInteger width = self.mainImageView.image.size.width;
-    NSUInteger height = self.mainImageView.image.size.height;
+    CGImageRef cgImage = backImgV.image.CGImage;
+    NSUInteger width = backImgV.image.size.width;
+    NSUInteger height = backImgV.image.size.height;
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     int bytesPerPixel = 4;
     int bytesPerRow = bytesPerPixel * 1;
@@ -113,20 +135,42 @@
     CGFloat green = (CGFloat)pixelData[1] / 255.0f;
     CGFloat blue  = (CGFloat)pixelData[2] / 255.0f;
     CGFloat alpha = (CGFloat)pixelData[3] / 255.0f;
-    
+    currentColor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
     return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+//
+//    if (red<5&&green<5&&blue<5) {
+//        self.sliderImageView.center = beganPoint;
+//        return currentColor;
+//    }else{
+//        currentColor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+//        return [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+//    }
 }
 #pragma mark 计算和传递选择的颜色
--(void)calculateShowColor:(NSSet<UITouch *> *)touches{
+-(void)calculateShowColor:(NSSet<UITouch *> *)touches :(BOOL)ismove{
     UITouch *touchObj=touches.anyObject;
     CGPoint movePoint=[touchObj locationInView:self];                       // 得到滑动的点
     
-    [self calculateCenterPointInView:movePoint];
-    UIColor *color = [self colorAtPixel:movePoint];
-    //  计算得到真正的中心点和颜色
-    if([self.delegate respondsToSelector:@selector(patette:choiceColor:colorPoint:)]){
-        [self.delegate patette:self choiceColor:color colorPoint:self.sliderImageView.center]; // 通过代理传递颜色
+//    [self calculateCenterPointInView:movePoint];
+//    UIColor *color = [self colorAtPixel:movePoint];
+    UIColor *color;
+    if (changetype==1) {
+      color = [self calculateCenterPointInView:movePoint];
+
+    }else{
+        [self calculateCenterPointInView:movePoint];
+        color = [self colorAtPixel:_sliderImageView.center];
     }
+    if (ismove) {
+        if([self.delegate respondsToSelector:@selector(patette:choiceColor:)]){
+            [self.delegate patette:self choiceColor:color];
+        }
+    }else{
+        if([self.delegate respondsToSelector:@selector(patette:choiceColor:colorPoint:)]){
+            [self.delegate patette:self choiceColor:color colorPoint:self.sliderImageView.center]; // 通过代理传递颜色
+        }
+    }
+   
 }
 
 #pragma mark 计算中心点位置和获取颜色
@@ -140,17 +184,12 @@
     if (isnan(angle)) angle=0.0;
     double dist=sqrt(pow(dx,2)+pow(dy,2));
     double saturation=MIN(dist/radius,1.0);
-    
     if (dist<10) saturation=0;
     if (point.x<center.x) angle=M_PI-angle;
     if (point.y>center.y) angle=2.0*M_PI-angle;
-    
     HSVType currentHSV=HSVTypeMake(angle/(2.0*M_PI), saturation, 1.0);
-    
     [self centerPointValue:currentHSV];    // 计算中心点位置
-    
-    UIColor *color=[UIColor colorWithHue:currentHSV.h saturation:currentHSV.s brightness:1.0 alpha:1.0];  // 得到对应的颜色
-    
+    UIColor *color = [UIColor colorWithHue:currentHSV.h saturation:currentHSV.s brightness:1.0 alpha:1.0];  // 得到对应的颜色
     return color;
 }
 #pragma mark 真正显示颜色的中心点

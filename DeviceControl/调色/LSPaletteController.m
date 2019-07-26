@@ -99,19 +99,19 @@
 }
 -(void)patette:(Palette *)patette choiceColor:(UIColor *)color colorPoint:(CGPoint)colorPoint{
     [self setColorLabelCount:color];
-    
-//    static NSInteger i=0;
-//    if (i%2==0) {
-//        [self assemblyInstructions];
-//    }
-    
-    MJWeakSelf
-    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0/*延迟执行时间*/ * NSEC_PER_SEC));
-    
-    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-        [weakSelf assemblyInstructions];
-    });
+    [self assemblyInstructions];
   
+}
+-(void)patette:(Palette *)patette choiceColor:(UIColor *)color{
+    [self setColorLabelCount:color];
+    static NSInteger i = 0;
+    if (i%Time_Interval.integerValue==0) {
+        [self assemblyInstructions];
+    }
+    i++;
+    if (i>1000) {
+        i=0;
+    }
 }
 -(void)setColorLabelCount:(UIColor *)color{
     if(!color){return;}
@@ -301,7 +301,14 @@
 {
     NSLog(@"slider value%f",slider.value);
     _brightness = [NSString stringWithFormat:@"%.f",slider.value];
-    [self assemblyInstructions];
+    static NSInteger i=0;
+    if (i%Time_Interval.integerValue==0) {
+        [self assemblyInstructions];
+    }
+    i++;
+    if (i>1000) {
+        i=0;
+    }
 }
 #pragma mark - UICollectionViewDataSource
 //cell的最小行间距

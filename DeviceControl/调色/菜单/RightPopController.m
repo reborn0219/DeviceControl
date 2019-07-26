@@ -66,7 +66,6 @@
     AboutViewController * aboutVC = [[AboutViewController alloc]init];
     aboutVC.hidesBottomBarWhenPushed = YES;
     [_currentVC.navigationController pushViewController:aboutVC animated:YES];
-    
 }
 
 -(void)showInVC:(UIViewController *)VC {
