@@ -101,14 +101,8 @@
 }
 -(void)patette:(Palette *)patette choiceColor:(UIColor *)color{
     [self setColorLabelCount:color];
-    static NSInteger i = 0;
-    if (i%Time_Interval.integerValue==0) {
-        [self assemblyInstructions];
-    }
-    i++;
-    if (i>1000) {
-        i=0;
-    }
+    ///间隔60ms发送指令
+    [self sendTimerInstructions];
 }
 -(void)setColorLabelCount:(UIColor *)color{
     if(!color){return;}
@@ -298,14 +292,8 @@
 {
     NSLog(@"slider value%f",slider.value);
     _brightness = [NSString stringWithFormat:@"%.f",slider.value];
-    static NSInteger i=0;
-    if (i%Time_Interval.integerValue==0) {
-        [self assemblyInstructions];
-    }
-    i++;
-    if (i>1000) {
-        i=0;
-    }
+    [self sendTimerInstructions];
+
 }
 #pragma mark - UICollectionViewDataSource
 //cell的最小行间距
@@ -390,6 +378,22 @@
     NSLog(@"蓝牙发送指令：%@",instructionstr);
     [[BluetoothManager shareBluetoothManager]sendInstructions:instructionstr];
     
+}
+-(void)sendTimerInstructions{
+    if (!_currentColor) {
+        NSLog(@"%@",_currentColor);
+        return;
+    }else{
+        NSLog(@"啥也不是");
+        
+    }
+    NSString * rgbStr = _currentColor.hexString.uppercaseString;
+    NSString * lightNumber = [[NSUserDefaults standardUserDefaults]objectForKey:Lights_Number];
+    lightNumber = [self getHexByDecimal:lightNumber.integerValue];
+    NSString * brightness = [self getHexByDecimal:_brightness.integerValue];
+    NSString * instructionstr = [NSString stringWithFormat:@"ABBA01%@%@%@EF",rgbStr,brightness,lightNumber];
+    NSLog(@"蓝牙发送指令：%@",instructionstr);
+    [[BluetoothManager shareBluetoothManager]sendTimerInstructions:instructionstr];
 }
 
 @end

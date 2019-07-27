@@ -145,14 +145,7 @@
     UILabel * lightLb = (UILabel*)[self.view viewWithTag:100];
     lightLb.text = [NSString stringWithFormat:@"亮度：%.f",slider.value];
     _lightStr =  [NSString stringWithFormat:@"%.f",slider.value];
-    static NSInteger i=0;
-    if (i%Time_Interval.integerValue==0) {
-        [self assemblyInstructions];
-    }
-    i++;
-    if (i>1000) {
-        i=0;
-    }
+    [self sendTimerInstructions];
 
 }
 -(void)speedSliderValueChanged:(UISlider *)slider
@@ -161,14 +154,8 @@
     speedLb.text = [NSString stringWithFormat:@"速度：%.f",slider.value];
     NSLog(@"slider value%f",slider.value);
     _speedStr =  [NSString stringWithFormat:@"%.f",slider.value];
-    static NSInteger i=0;
-    if (i%Time_Interval.integerValue==0) {
-        [self assemblyInstructions];
-    }
-    i++;
-    if (i>1000) {
-        i=0;
-    }
+    [self sendTimerInstructions];
+
 }
 
 #pragma mark - dataSouce
@@ -189,11 +176,20 @@
 -(void)assemblyInstructions{
     
     NSString * lightNumber = [[NSUserDefaults standardUserDefaults]objectForKey:Lights_Number];
+    lightNumber = [self getHexByDecimal:lightNumber.integerValue];
     NSString * instructionstr = [NSString stringWithFormat:@"ABBA02%@00%@%@%@EF",_instruction,[self getHexByDecimal:_speedStr.integerValue],[self getHexByDecimal:_lightStr.integerValue],lightNumber];
     NSLog(@"蓝牙发送指令：%@",instructionstr);
     [[BluetoothManager shareBluetoothManager]sendInstructions:instructionstr];
     
 }
+-(void)sendTimerInstructions{
+    NSString * lightNumber = [[NSUserDefaults standardUserDefaults]objectForKey:Lights_Number];
+    lightNumber = [self getHexByDecimal:lightNumber.integerValue];
+    NSString * instructionstr = [NSString stringWithFormat:@"ABBA02%@00%@%@%@EF",_instruction,[self getHexByDecimal:_speedStr.integerValue],[self getHexByDecimal:_lightStr.integerValue],lightNumber];
+    NSLog(@"蓝牙发送指令：%@",instructionstr);
+    [[BluetoothManager shareBluetoothManager]sendTimerInstructions:instructionstr];
+}
+
 - (UIView *)pickerView:(UIPickerView *)pickerView
             viewForRow:(NSInteger)row forComponent:(NSInteger)component
            reusingView:(UIView *)view{

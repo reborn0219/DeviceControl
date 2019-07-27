@@ -20,7 +20,7 @@
     NSArray *advArr_;
     NSNumber * rssi;
     int cycleNumber;
-    BOOL iscallback;
+    NSMutableArray * instructionArr;
 }
 + (instancetype)shareBluetoothManager{
     static BluetoothManager *_shareBluetooth = nil;
@@ -31,13 +31,14 @@
     return _shareBluetooth;
 }
 #pragma mark - 初始化蓝牙主设中心
+
+
 -(instancetype)init
 {
     if (self = [super init]) {
         
         mutableStr = [[NSMutableString alloc]init];
         cycleNumber = 0;
-        iscallback = YES;
         if (!_centralManager){
             _centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:@{CBCentralManagerOptionShowPowerAlertKey:@YES}];
             [_centralManager setDelegate:self];
@@ -48,6 +49,7 @@
 }
 -(NSTimer *)instructionTimer{
     if (!_instructionTimer) {
+        instructionArr = [NSMutableArray array];
         _instructionTimer = [NSTimer timerWithTimeInterval:0.0060 target:self selector:@selector(sendInstructionAction) userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:_instructionTimer forMode:NSRunLoopCommonModes];
     }
@@ -59,8 +61,19 @@
 -(void)stopInstructionTimer{
     [self.instructionTimer setFireDate:[NSDate distantFuture]];
 }
+
 -(void)sendInstructionAction{
-    
+    NSString * instructionStr = instructionArr.firstObject;
+    if (instructionStr) {
+        NSData *data =[self hexToBytes:instructionStr];
+        if (_characteristicWrite) {
+            [self.discoveredPeripheral writeValue:data forCharacteristic:_characteristicWrite type:CBCharacteristicWriteWithoutResponse];
+        }else{
+            NSLog(@"-----特征码未找到-----");
+        }
+        [instructionArr removeFirstObject];
+    }
+   
 }
 #pragma mark - 断开蓝牙连接
 -(NSMutableArray *)scanBlueArr{
@@ -155,28 +168,25 @@
 
 #pragma mark - 蓝牙连接成功
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
-
     NSLog(@"蓝牙链接成功！");
-
     [self.discoveredPeripheral setDelegate:self];
     [self.discoveredPeripheral discoverServices:nil];
-//  [_discoveredPeripheral readRSSI];
     [_centralManager stopScan];
 }
-
+-(void)sendTimerInstructions:(NSString *)instructionStr{
+    [instructionArr addObject:instructionStr];
+    [self startInstructionTimer];
+}
 #pragma mark - 发送蓝牙指令
 -(void)sendInstructions:(NSString *)instructionStr{
-    if (iscallback) {
-        NSData *data =[self hexToBytes:instructionStr];
-        if (_characteristicWrite) {
-            [self.discoveredPeripheral writeValue:data forCharacteristic:_characteristicWrite type:CBCharacteristicWriteWithoutResponse];
-        }else{
-            NSLog(@"-----特征码未找到-----");
-        }
-        sleep(0.3);
-        iscallback = NO;
+    [self stopInstructionTimer];
+    [instructionArr removeAllObjects];
+    NSData *data =[self hexToBytes:instructionStr];
+    if (_characteristicWrite) {
+        [self.discoveredPeripheral writeValue:data forCharacteristic:_characteristicWrite type:CBCharacteristicWriteWithoutResponse];
+    }else{
+        NSLog(@"-----特征码未找到-----");
     }
-   
 }
 //hex -> NSData
 -(NSData*) hexToBytes:(NSString *)str {
@@ -233,7 +243,7 @@
     for(CBService* s in peripheral.services){
         [peripheral discoverCharacteristics:nil forService:s];
         NSLog(@"扫描Characteristics...");
-        iscallback = YES;
+
     }
 }
 
