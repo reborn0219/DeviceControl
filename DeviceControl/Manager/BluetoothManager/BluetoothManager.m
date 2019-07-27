@@ -50,7 +50,7 @@
 -(NSTimer *)instructionTimer{
     if (!_instructionTimer) {
         instructionArr = [NSMutableArray array];
-        _instructionTimer = [NSTimer timerWithTimeInterval:0.0060 target:self selector:@selector(sendInstructionAction) userInfo:nil repeats:YES];
+        _instructionTimer = [NSTimer timerWithTimeInterval:Time_Interval target:self selector:@selector(sendInstructionAction) userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:_instructionTimer forMode:NSRunLoopCommonModes];
     }
     return _instructionTimer;
@@ -64,6 +64,7 @@
 
 -(void)sendInstructionAction{
     NSString * instructionStr = instructionArr.firstObject;
+    NSLog(@"-----时间指令--%@---",instructionStr);
     if (instructionStr) {
         NSData *data =[self hexToBytes:instructionStr];
         if (_characteristicWrite) {
