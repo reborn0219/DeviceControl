@@ -176,6 +176,9 @@
     [self.discoveredPeripheral setDelegate:self];
     [self.discoveredPeripheral discoverServices:nil];
     [_centralManager stopScan];
+    if (self.blueToothBlock) {
+        self.blueToothBlock(nil,SendCommd);
+    }
 }
 -(void)sendTimerInstructions:(NSString *)instructionStr{
     [instructionArr addObject:instructionStr];

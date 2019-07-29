@@ -54,6 +54,7 @@
     MJWeakSelf
     self.blueManager.blueToothBlock = ^(id  _Nullable data, BluetoothCode bluetoothCode) {
         if (bluetoothCode==SendCommd) {
+            NSLog(@"蓝牙亮不亮");
             [weakSelf assemblyInstructions];
         }
 
