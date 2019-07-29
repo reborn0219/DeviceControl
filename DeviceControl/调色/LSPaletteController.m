@@ -57,14 +57,14 @@
             NSLog(@"蓝牙亮不亮");
             [weakSelf assemblyInstructions];
         }
-
     };
     [self creatData];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self assemblyInstructions];
-    //    [self.blueManager startScanPeripherals];
+    //[self.blueManager startScanPeripherals];
+    
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -401,7 +401,6 @@
         return;
     }else{
 //        NSLog(@"啥也不是");
-
     }
     NSString * rgbStr = _currentColor.hexString.uppercaseString;
     NSString * lightNumber = [[NSUserDefaults standardUserDefaults]objectForKey:Lights_Number];
@@ -421,7 +420,6 @@
         return;
     }else{
 //        NSLog(@"啥也不是");
-        
     }
     NSString * rgbStr = _currentColor.hexString.uppercaseString;
     NSString * lightNumber = [[NSUserDefaults standardUserDefaults]objectForKey:Lights_Number];

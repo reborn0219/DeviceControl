@@ -272,7 +272,7 @@
                 if (self.blueToothBlock) {
                     self.blueToothBlock(nil,SendCommd);
                 }
-
+                [self sendInstructions:@"ABBA0162C16F0101EF"];
             }
     }
 }
