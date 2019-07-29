@@ -90,7 +90,8 @@
 }
 #pragma mark 开始触摸或者点击
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
- 
+    [self calculateShowColor:touches :NO];
+
 }
 #pragma mark 滑动触摸
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
