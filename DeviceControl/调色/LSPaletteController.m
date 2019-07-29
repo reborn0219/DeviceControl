@@ -51,6 +51,13 @@
     [self.view addSubview:self.centerView];
     _seletedIndex = [NSIndexPath indexPathForRow:0 inSection:0];
     self.blueManager = [BluetoothManager shareBluetoothManager];
+    MJWeakSelf
+    self.blueManager.blueToothBlock = ^(id  _Nullable data, BluetoothCode bluetoothCode) {
+        if (bluetoothCode==SendCommd) {
+            [weakSelf assemblyInstructions];
+        }
+
+    };
     [self creatData];
 }
 -(void)viewWillAppear:(BOOL)animated{
@@ -84,7 +91,7 @@
                             //                            HexRGB(0xB7E9B0),
                             ];
     _currentColor = HexRGB(0x62c16f);
-    _brightness = @"00";
+    _brightness = @"1E";
     for (UIColor *color in defaultArr) {
         ColorModel * model = [[ColorModel alloc]init];
         model.color = color;

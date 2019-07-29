@@ -266,6 +266,10 @@
     for (CBCharacteristic *characteristic in service.characteristics) {
             if ([characteristic.UUID isEqual:[CBUUID UUIDWithString:@"49535343-8841-43F4-A8D4-ECBE34729BB3"]]) {
                 _characteristicWrite = characteristic;//保存写的特征
+                if (self.blueToothBlock) {
+                    self.blueToothBlock(nil,SendCommd);
+                }
+
             }
     }
 }

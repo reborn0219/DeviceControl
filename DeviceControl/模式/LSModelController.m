@@ -100,7 +100,6 @@
         [_lightSlider addTarget:self action:@selector(lightsliderTouchUpInSide:) forControlEvents:UIControlEventTouchUpInside];
         [_lightSlider addTarget:self action:@selector(lightSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
         [_lightSlider addTarget:self action:@selector(lightsliderTouchOutSide:) forControlEvents:UIControlEventTouchUpOutside];
-      
         UILabel * lightLb = [[UILabel alloc]initWithFrame:CGRectMake(45,_lightSlider.frame.origin.y-40,200,20)];
         lightLb.text = @"亮度：0";
         lightLb.tag = 100;
