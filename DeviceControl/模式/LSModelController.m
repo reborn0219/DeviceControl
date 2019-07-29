@@ -96,7 +96,10 @@
         [_lightSlider setTintColor:Selected_Color];
         _lightSlider.minimumValue = 0;
         _lightSlider.maximumValue =100;
+        [_lightSlider addTarget:self action:@selector(lightsliderTouchUpInSide:) forControlEvents:UIControlEventValueChanged];
         [_lightSlider addTarget:self action:@selector(lightSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+        [_lightSlider addTarget:self action:@selector(lightsliderTouchOutSide:) forControlEvents:UIControlEventValueChanged];
+      
         UILabel * lightLb = [[UILabel alloc]initWithFrame:CGRectMake(45,_lightSlider.frame.origin.y-40,200,20)];
         lightLb.text = @"亮度：0";
         lightLb.tag = 100;
@@ -121,7 +124,8 @@
         [_speedSlider setThumbTintColor:Selected_Color];
         [_speedSlider setTintColor:Selected_Color];
         [_speedSlider addTarget:self action:@selector(speedSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-
+        [_speedSlider addTarget:self action:@selector(speedsliderTouchUpInSide:) forControlEvents:UIControlEventValueChanged];
+        [_speedSlider addTarget:self action:@selector(speedsliderTouchOutSide:) forControlEvents:UIControlEventValueChanged];
         UILabel * speedLb = [[UILabel alloc]initWithFrame:CGRectMake(45,_speedSlider.frame.origin.y-40,200,20)];
         speedLb.tag = 101;
         speedLb.text = @"速度：0";
@@ -148,6 +152,21 @@
     [self sendTimerInstructions];
 
 }
+-(void)lightsliderTouchOutSide:(UISlider *)slider{
+    NSLog(@"slider value%f",slider.value);
+    UILabel * lightLb = (UILabel*)[self.view viewWithTag:100];
+    lightLb.text = [NSString stringWithFormat:@"亮度：%.f",slider.value];
+    _lightStr =  [NSString stringWithFormat:@"%.f",slider.value];
+    [self assemblyInstructions];
+}
+-(void)lightsliderTouchUpInSide:(UISlider *)slider{
+    NSLog(@"slider value%f",slider.value);
+    UILabel * lightLb = (UILabel*)[self.view viewWithTag:100];
+    lightLb.text = [NSString stringWithFormat:@"亮度：%.f",slider.value];
+    _lightStr =  [NSString stringWithFormat:@"%.f",slider.value];
+    [self assemblyInstructions];
+}
+
 -(void)speedSliderValueChanged:(UISlider *)slider
 {
     UILabel * speedLb = (UILabel*)[self.view viewWithTag:101];
@@ -157,7 +176,20 @@
     [self sendTimerInstructions];
 
 }
-
+-(void)speedsliderTouchOutSide:(UISlider *)slider{
+    UILabel * speedLb = (UILabel*)[self.view viewWithTag:101];
+    speedLb.text = [NSString stringWithFormat:@"速度：%.f",slider.value];
+    NSLog(@"slider value%f",slider.value);
+    _speedStr =  [NSString stringWithFormat:@"%.f",slider.value];
+    [self assemblyInstructions];
+}
+-(void)speedsliderTouchUpInSide:(UISlider *)slider{
+    UILabel * speedLb = (UILabel*)[self.view viewWithTag:101];
+    speedLb.text = [NSString stringWithFormat:@"速度：%.f",slider.value];
+    NSLog(@"slider value%f",slider.value);
+    _speedStr =  [NSString stringWithFormat:@"%.f",slider.value];
+    [self assemblyInstructions];
+}
 #pragma mark - dataSouce
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
