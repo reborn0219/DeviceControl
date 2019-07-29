@@ -108,9 +108,9 @@
     if(!color){return;}
     _currentColor = color;
     const CGFloat *components = CGColorGetComponents(color.CGColor);
-    NSLog(@"Red: %.f", components[0]*255);
-    NSLog(@"Green: %.f", components[1]*255);
-    NSLog(@"Blue: %.f", components[2]*255);
+//    NSLog(@"Red: %.f", components[0]*255);
+//    NSLog(@"Green: %.f", components[1]*255);
+//    NSLog(@"Blue: %.f", components[2]*255);
     UILabel * tempLab = [_rgbView viewWithTag:100];
     tempLab.text = [NSString stringWithFormat:@"%.f", components[0]*255];
     UILabel * tempLab1 = [_rgbView viewWithTag:101];
@@ -364,10 +364,10 @@
 -(void)assemblyInstructions{
    
     if (!_currentColor) {
-        NSLog(@"%@",_currentColor);
+//        NSLog(@"%@",_currentColor);
         return;
     }else{
-        NSLog(@"啥也不是");
+//        NSLog(@"啥也不是");
 
     }
     NSString * rgbStr = _currentColor.hexString.uppercaseString;
@@ -375,16 +375,16 @@
     lightNumber = [self getHexByDecimal:lightNumber.integerValue];
     NSString * brightness = [self getHexByDecimal:_brightness.integerValue];
     NSString * instructionstr = [NSString stringWithFormat:@"ABBA01%@%@%@EF",rgbStr,brightness,lightNumber];
-    NSLog(@"蓝牙发送指令：%@",instructionstr);
+//    NSLog(@"蓝牙发送指令：%@",instructionstr);
     [[BluetoothManager shareBluetoothManager]sendInstructions:instructionstr];
     
 }
 -(void)sendTimerInstructions{
     if (!_currentColor) {
-        NSLog(@"%@",_currentColor);
+//        NSLog(@"%@",_currentColor);
         return;
     }else{
-        NSLog(@"啥也不是");
+//        NSLog(@"啥也不是");
         
     }
     NSString * rgbStr = _currentColor.hexString.uppercaseString;
@@ -392,7 +392,7 @@
     lightNumber = [self getHexByDecimal:lightNumber.integerValue];
     NSString * brightness = [self getHexByDecimal:_brightness.integerValue];
     NSString * instructionstr = [NSString stringWithFormat:@"ABBA01%@%@%@EF",rgbStr,brightness,lightNumber];
-    NSLog(@"蓝牙发送指令：%@",instructionstr);
+//    NSLog(@"蓝牙发送指令：%@",instructionstr);
     [[BluetoothManager shareBluetoothManager]sendTimerInstructions:instructionstr];
 }
 

@@ -21,6 +21,7 @@
     NSNumber * rssi;
     int cycleNumber;
     NSMutableArray * instructionArr;
+    BOOL istimer;
 }
 + (instancetype)shareBluetoothManager{
     static BluetoothManager *_shareBluetooth = nil;
@@ -56,9 +57,11 @@
     return _instructionTimer;
 }
 -(void)startInstructionTimer{
+    istimer = YES;
     [self.instructionTimer setFireDate:[NSDate distantPast]];
 }
 -(void)stopInstructionTimer{
+    istimer = NO;
     [self.instructionTimer setFireDate:[NSDate distantFuture]];
 }
 
@@ -176,7 +179,13 @@
 }
 -(void)sendTimerInstructions:(NSString *)instructionStr{
     [instructionArr addObject:instructionStr];
-    [self startInstructionTimer];
+    
+    if (istimer) {
+//        NSLog(@"--正在执行命令--");
+    }else{
+//        NSLog(@"--开启定时器--");
+        [self startInstructionTimer];
+    }
 }
 #pragma mark - 发送蓝牙指令
 -(void)sendInstructions:(NSString *)instructionStr{
