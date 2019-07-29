@@ -210,6 +210,8 @@
         [_lightSlider setThumbTintColor:Selected_Color];
         [_lightSlider setTintColor:Selected_Color];
         [_lightSlider addTarget:self action:@selector(lightSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+        [_lightSlider addTarget:self action:@selector(sliderTouchOutSide:) forControlEvents:UIControlEventTouchUpOutside];
+        [_lightSlider addTarget:self action:@selector(sliderTouchUpInSide:) forControlEvents:UIControlEventTouchUpInside];
         _lightSlider.minimumValue = 0;
         _lightSlider.maximumValue =100;
         ////        UIImage *imagea=[self OriginImage:[UIImage imageNamed:@"Icon-60"] scaleToSize:CGSizeMake(12, 12)];
@@ -294,6 +296,16 @@
     _brightness = [NSString stringWithFormat:@"%.f",slider.value];
     [self sendTimerInstructions];
 
+}
+-(void)sliderTouchOutSide:(UISlider *)slider{
+    NSLog(@"slider value%f",slider.value);
+    _brightness = [NSString stringWithFormat:@"%.f",slider.value];
+    [self assemblyInstructions];
+}
+-(void)sliderTouchUpInSide:(UISlider *)slider{
+    NSLog(@"slider value%f",slider.value);
+    _brightness = [NSString stringWithFormat:@"%.f",slider.value];
+    [self assemblyInstructions];
 }
 #pragma mark - UICollectionViewDataSource
 //cell的最小行间距
