@@ -62,6 +62,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self assemblyInstructions];
     //    [self.blueManager startScanPeripherals];
 }
 -(void)viewWillDisappear:(BOOL)animated{
@@ -391,7 +392,9 @@
 }
 ///发送蓝牙指令
 -(void)assemblyInstructions{
-   
+    if (!_rightSwitch.isOn) {
+        return;
+    }
     if (!_currentColor) {
 //        NSLog(@"%@",_currentColor);
         return;
@@ -409,6 +412,9 @@
     
 }
 -(void)sendTimerInstructions{
+    if (!_rightSwitch.isOn) {
+        return;
+    }
     if (!_currentColor) {
 //        NSLog(@"%@",_currentColor);
         return;

@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _speedStr = @"00";
-    _lightStr = @"00";
+    _lightStr = @"30";
     _instruction = @"01";
     [self.dataSouce addObjectsFromArray:@[@"红色渐变",
                                           @"绿色渐变",
@@ -62,6 +62,13 @@
     [self.view addSubview:self.lightSlider];
     [self.view addSubview:self.speedSlider];
     [self.pickerView selectRow:(self.dataSouce.count/2) inComponent:0 animated:NO];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self assemblyInstructions];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - lazy loading
@@ -101,7 +108,7 @@
         [_lightSlider addTarget:self action:@selector(lightSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
         [_lightSlider addTarget:self action:@selector(lightsliderTouchOutSide:) forControlEvents:UIControlEventTouchUpOutside];
         UILabel * lightLb = [[UILabel alloc]initWithFrame:CGRectMake(45,_lightSlider.frame.origin.y-40,200,20)];
-        lightLb.text = @"亮度：0";
+        lightLb.text = @"亮度：30";
         lightLb.tag = 100;
         lightLb.textColor = [UIColor whiteColor];
         [self.view addSubview:lightLb];
