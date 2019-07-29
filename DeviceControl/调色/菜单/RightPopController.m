@@ -42,8 +42,8 @@
 //    减少
     NSInteger conunt = _countTF.text.integerValue;
     conunt --;
-    if (conunt<0) {
-        conunt = 0;
+    if (conunt<1) {
+        conunt = 1;
     }
     _countTF.text = [NSString stringWithFormat:@"%ld",conunt];
     [self saveLightNumber];

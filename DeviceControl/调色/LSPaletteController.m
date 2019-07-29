@@ -214,6 +214,7 @@
         [_lightSlider addTarget:self action:@selector(sliderTouchUpInSide:) forControlEvents:UIControlEventTouchUpInside];
         _lightSlider.minimumValue = 0;
         _lightSlider.maximumValue =100;
+        _lightSlider.value = 30;
         ////        UIImage *imagea=[self OriginImage:[UIImage imageNamed:@"Icon-60"] scaleToSize:CGSizeMake(12, 12)];
         //        [_lightSlider  setThumbImage:[UIImage imageNamed:@"调色板-点击"] forState:UIControlStateNormal];
         UIImageView * leftImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15,_lightSlider.frame.origin.y, 20, 20)];
@@ -253,6 +254,7 @@
 -(UISwitch *)rightSwitch{
     if (!_rightSwitch) {
         _rightSwitch = [[UISwitch alloc]initWithFrame:CGRectMake(SCREEN_WIDTH-65,NavBar_H+6+20,50,50)];
+        [_rightSwitch addTarget:self action:@selector(valueChanged:) forControlEvents:(UIControlEventValueChanged)];
         [_rightSwitch setOn:YES];
     }
     return _rightSwitch;
@@ -289,6 +291,14 @@
         [_collectionView addSubview:lineV];
     }
     return _collectionView;
+}
+-(void)valueChanged:(UISwitch *)sender{
+    if (sender.isOn) {
+        [self assemblyInstructions];
+
+    }else{
+        [[BluetoothManager shareBluetoothManager]sendInstructions:@"ABBA01000000EF"];
+    }
 }
 -(void)lightSliderValueChanged:(UISlider *)slider
 {

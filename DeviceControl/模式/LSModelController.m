@@ -96,9 +96,10 @@
         [_lightSlider setTintColor:Selected_Color];
         _lightSlider.minimumValue = 0;
         _lightSlider.maximumValue =100;
-        [_lightSlider addTarget:self action:@selector(lightsliderTouchUpInSide:) forControlEvents:UIControlEventValueChanged];
+        _lightSlider.value = 30;
+        [_lightSlider addTarget:self action:@selector(lightsliderTouchUpInSide:) forControlEvents:UIControlEventTouchUpInside];
         [_lightSlider addTarget:self action:@selector(lightSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-        [_lightSlider addTarget:self action:@selector(lightsliderTouchOutSide:) forControlEvents:UIControlEventValueChanged];
+        [_lightSlider addTarget:self action:@selector(lightsliderTouchOutSide:) forControlEvents:UIControlEventTouchUpOutside];
       
         UILabel * lightLb = [[UILabel alloc]initWithFrame:CGRectMake(45,_lightSlider.frame.origin.y-40,200,20)];
         lightLb.text = @"亮度：0";
@@ -124,8 +125,8 @@
         [_speedSlider setThumbTintColor:Selected_Color];
         [_speedSlider setTintColor:Selected_Color];
         [_speedSlider addTarget:self action:@selector(speedSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-        [_speedSlider addTarget:self action:@selector(speedsliderTouchUpInSide:) forControlEvents:UIControlEventValueChanged];
-        [_speedSlider addTarget:self action:@selector(speedsliderTouchOutSide:) forControlEvents:UIControlEventValueChanged];
+        [_speedSlider addTarget:self action:@selector(speedsliderTouchUpInSide:) forControlEvents:UIControlEventTouchUpInside];
+        [_speedSlider addTarget:self action:@selector(speedsliderTouchOutSide:) forControlEvents:UIControlEventTouchUpOutside];
         UILabel * speedLb = [[UILabel alloc]initWithFrame:CGRectMake(45,_speedSlider.frame.origin.y-40,200,20)];
         speedLb.tag = 101;
         speedLb.text = @"速度：0";
