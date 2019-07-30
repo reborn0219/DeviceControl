@@ -44,7 +44,9 @@
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
 }
-
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
 
 -(void)showInVC:(UIViewController *)VC {
     

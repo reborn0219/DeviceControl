@@ -61,7 +61,7 @@
     [self.view addSubview:self.pickerView];
     [self.view addSubview:self.lightSlider];
     [self.view addSubview:self.speedSlider];
-    [self.pickerView selectRow:(self.dataSouce.count/2) inComponent:0 animated:NO];
+    [self.pickerView selectRow:(self.dataSouce.count*500/2) inComponent:0 animated:NO];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -202,13 +202,15 @@
     return 1;
 }
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return [self.dataSouce count];
+    return [self.dataSouce count] * 500;
+    
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger) row forComponent:(NSInteger)component {
-    return self.dataSouce[row];
+//    return self.dataSouce[row];
+     return [self.dataSouce objectAtIndex:(row%self.dataSouce.count)];
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    _instruction = [_instructionArr objectAtIndex:row];
+    _instruction = [_instructionArr objectAtIndex:row%self.dataSouce.count];
     [self assemblyInstructions];
 }
 ///发送蓝牙指令

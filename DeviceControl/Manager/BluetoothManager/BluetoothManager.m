@@ -7,8 +7,6 @@
 //
 
 #import "BluetoothManager.h"
-
-
 @implementation BluetoothManager{
     
     NSTimer * connectTimer;
