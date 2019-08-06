@@ -9,5 +9,8 @@
 #import "ColorModel.h"
 
 @implementation ColorModel
-
+-(void)setColor:(UIColor *)color{
+    _color = color;
+    _colorData = [NSKeyedArchiver archivedDataWithRootObject:color];
+}
 @end

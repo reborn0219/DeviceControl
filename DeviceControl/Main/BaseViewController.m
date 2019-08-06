@@ -47,9 +47,10 @@
     }else if (type==1) {
         [self.navibarView.searchBtn setHidden:YES];
         [self.navibarView.backBtn setHidden:NO];
-        self.navibarView.titleLb.text = @"关于";
+        self.navibarView.titleLb.text = NSLocalizedString(@"关于",nil);
         [self.navibarView.backBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
         [self.navibarView.backBtn setTitle:@"返回" forState:UIControlStateNormal];
+        
     }else if (type==2) {
         [self.navibarView.searchBtn setHidden:YES];
         [self.navibarView.backBtn setHidden:NO];

@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ColorModel : NSObject
 @property(nonatomic,assign)BOOL selected;
 @property(nonatomic,strong)UIColor *color;
+@property(nonatomic,strong)NSData *colorData;
+
 @end
 
 NS_ASSUME_NONNULL_END

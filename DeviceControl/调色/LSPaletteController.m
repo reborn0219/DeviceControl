@@ -72,36 +72,46 @@
 }
 -(void)creatData{
     
-    NSArray *defaultArr = @[
-                            HexRGB(0x62c16f),
-                            HexRGB(0xee00f5),
-                            HexRGB(0x54a8f1),
-                            HexRGB(0x7848fd),
-                            HexRGB(0xffff00),
-                            HexRGB(0x999999),
-                            HexRGB(0xffff00),
-                            HexRGB(0xffffff),
-                            HexRGB(0x00ffff),
-                            HexRGB(0xff0000),
-                            HexRGB(0x00ff00),
-                            HexRGB(0x0000ff),
-                            //                            HexRGB(0xA449F6),
-                            //                            HexRGB(0xE14E73),
-                            //                            HexRGB(0x75FBCF),
-                            //                            HexRGB(0xF7D252),
-                            //                            HexRGB(0xE832E1),
-                            //                            HexRGB(0xB7E9B0),
-                            ];
-    _currentColor = HexRGB(0x62c16f);
-    _brightness = @"1E";
-    for (UIColor *color in defaultArr) {
-        ColorModel * model = [[ColorModel alloc]init];
-        model.color = color;
-        model.selected = NO;
-        [self.colorArr addObject:model];
-    }
-    ColorModel * model = self.colorArr.firstObject;
-    model.selected = YES;
+//    NSUserDefaults *colorDefaults = [NSUserDefaults standardUserDefaults];
+//    if ([colorDefaults objectForKey:@"defaultArr"]) {
+//        NSArray *arr = [colorDefaults objectForKey:@"defaultArr"];
+//        [self.colorArr addObjectsFromArray:[NSArray yy_modelArrayWithClass:[ColorModel class] json:arr]];
+//    }else{
+        NSArray *defaultArr = @[
+                                HexRGB(0x62c16f),
+                                HexRGB(0xee00f5),
+                                HexRGB(0x54a8f1),
+                                HexRGB(0x7848fd),
+                                HexRGB(0xffff00),
+                                HexRGB(0x999999),
+                                HexRGB(0xffff00),
+                                HexRGB(0xffffff),
+                                HexRGB(0x00ffff),
+                                HexRGB(0xff0000),
+                                HexRGB(0x00ff00),
+                                HexRGB(0x0000ff),
+                                //                            HexRGB(0xA449F6),
+                                //                            HexRGB(0xE14E73),
+                                //                            HexRGB(0x75FBCF),
+                                //                            HexRGB(0xF7D252),
+                                //                            HexRGB(0xE832E1),
+                                //                            HexRGB(0xB7E9B0),
+                                ];
+        _currentColor = HexRGB(0x62c16f);
+        _brightness = @"1E";
+        for (UIColor *color in defaultArr) {
+            ColorModel * model = [[ColorModel alloc]init];
+            model.color = color;
+            model.selected = NO;
+            [self.colorArr addObject:model];
+        }
+        ColorModel * model = self.colorArr.firstObject;
+        model.selected = YES;
+//        NSMutableArray *colorArr = [NSMutableArray array];
+//        [colorArr addObjectsFromArray:defaultArr];
+//        [colorDefaults setObject:colorArr forKey:@"defaultArr"];
+//        [colorDefaults synchronize];
+//    }
 }
 -(void)patette:(Palette *)patette choiceColor:(UIColor *)color colorPoint:(CGPoint)colorPoint{
     [self setColorLabelCount:color];
@@ -279,7 +289,7 @@
         topLb.textColor = [UIColor whiteColor];
         [_bottomColorView addSubview:topLb];
         UILabel *bottomLb = [[UILabel alloc]initWithFrame:CGRectMake(0,bottom_color_view_h-60,50,60)];
-        bottomLb.text = @"经典";
+        bottomLb.text = NSLocalizedString(@"经典",nil);
         bottomLb.font = [UIFont systemFontOfSize:20];
         bottomLb.textColor = [UIColor whiteColor];
         [_bottomColorView addSubview:bottomLb];

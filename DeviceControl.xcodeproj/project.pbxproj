@@ -30,11 +30,12 @@
 		2F27547B22D34975000C4F5F /* LeftPopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27547922D34975000C4F5F /* LeftPopController.m */; };
 		2F27547C22D34975000C4F5F /* LeftPopController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F27547A22D34975000C4F5F /* LeftPopController.xib */; };
 		2F27548022D3498A000C4F5F /* RightPopController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F27547E22D3498A000C4F5F /* RightPopController.m */; };
-		2F27548122D3498A000C4F5F /* RightPopController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F27547F22D3498A000C4F5F /* RightPopController.xib */; };
 		2F89379922C309B900FD4CB7 /* 蓝牙协议.md in Resources */ = {isa = PBXBuildFile; fileRef = 2F89379722C309B900FD4CB7 /* 蓝牙协议.md */; };
 		2F89379A22C309B900FD4CB7 /* BluetoothManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89379822C309B900FD4CB7 /* BluetoothManager.m */; };
 		2F89379F22C30AB000FD4CB7 /* BluetoothModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F89379D22C30AB000FD4CB7 /* BluetoothModel.m */; };
 		2FED6DEC22DD7EA70007777A /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FED6DEB22DD7EA70007777A /* AboutViewController.m */; };
+		4B6FA72E22F9D1D0003BC030 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4B6FA73022F9D1D0003BC030 /* Localizable.strings */; };
+		4B6FA73222F9D7E3003BC030 /* RightPopController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B6FA73422F9D7E3003BC030 /* RightPopController.xib */; };
 		4BACEF7822BA74CB00C5D5DB /* ColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BACEF7622BA74CB00C5D5DB /* ColorCell.m */; };
 		4BACEF7922BA74CB00C5D5DB /* ColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BACEF7722BA74CB00C5D5DB /* ColorCell.xib */; };
 		4BB77F4022DA594C0060B539 /* ColorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB77F3F22DA594C0060B539 /* ColorModel.m */; };
@@ -108,7 +109,6 @@
 		2F27547A22D34975000C4F5F /* LeftPopController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftPopController.xib; sourceTree = "<group>"; };
 		2F27547D22D3498A000C4F5F /* RightPopController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RightPopController.h; sourceTree = "<group>"; };
 		2F27547E22D3498A000C4F5F /* RightPopController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RightPopController.m; sourceTree = "<group>"; };
-		2F27547F22D3498A000C4F5F /* RightPopController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RightPopController.xib; sourceTree = "<group>"; };
 		2F89379622C309B900FD4CB7 /* BluetoothManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BluetoothManager.h; sourceTree = "<group>"; };
 		2F89379722C309B900FD4CB7 /* 蓝牙协议.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "蓝牙协议.md"; sourceTree = "<group>"; };
 		2F89379822C309B900FD4CB7 /* BluetoothManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BluetoothManager.m; sourceTree = "<group>"; };
@@ -119,6 +119,10 @@
 		2FED6DEA22DD7EA70007777A /* AboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		2FED6DEB22DD7EA70007777A /* AboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		46939196AC287B81F9663E79 /* libPods-DeviceControl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DeviceControl.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B6FA72F22F9D1D0003BC030 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		4B6FA73122F9D1D8003BC030 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		4B6FA73322F9D7E3003BC030 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hant"; path = "zh-Hant.lproj/RightPopController.xib"; sourceTree = "<group>"; };
+		4B6FA73822F9D906003BC030 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "zh-Hans"; path = "zh-Hans.lproj/RightPopController.xib"; sourceTree = "<group>"; };
 		4BACEF7522BA74CB00C5D5DB /* ColorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorCell.h; sourceTree = "<group>"; };
 		4BACEF7622BA74CB00C5D5DB /* ColorCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorCell.m; sourceTree = "<group>"; };
 		4BACEF7722BA74CB00C5D5DB /* ColorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCell.xib; sourceTree = "<group>"; };
@@ -296,6 +300,7 @@
 				2F10661722B0A16E002D3B6D /* BlockDefinition.h */,
 				2F10661822B0A16E002D3B6D /* ColorDefinition.h */,
 				2F10661922B0A16E002D3B6D /* PrefixHeader.pch */,
+				4B6FA73022F9D1D0003BC030 /* Localizable.strings */,
 			);
 			path = ConfigFile;
 			sourceTree = "<group>";
@@ -332,7 +337,7 @@
 				2F27547A22D34975000C4F5F /* LeftPopController.xib */,
 				2F27547D22D3498A000C4F5F /* RightPopController.h */,
 				2F27547E22D3498A000C4F5F /* RightPopController.m */,
-				2F27547F22D3498A000C4F5F /* RightPopController.xib */,
+				4B6FA73422F9D7E3003BC030 /* RightPopController.xib */,
 				2FED6DEA22DD7EA70007777A /* AboutViewController.h */,
 				2FED6DEB22DD7EA70007777A /* AboutViewController.m */,
 			);
@@ -464,6 +469,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
+				"zh-Hans",
 			);
 			mainGroup = 2F1065D022B0A090002D3B6D;
 			productRefGroup = 2F1065DA22B0A090002D3B6D /* Products */;
@@ -485,11 +492,12 @@
 				2F89379922C309B900FD4CB7 /* 蓝牙协议.md in Resources */,
 				2F1065E922B0A092002D3B6D /* LaunchScreen.storyboard in Resources */,
 				4BACEF7922BA74CB00C5D5DB /* ColorCell.xib in Resources */,
-				2F27548122D3498A000C4F5F /* RightPopController.xib in Resources */,
+				4B6FA73222F9D7E3003BC030 /* RightPopController.xib in Resources */,
 				2F1065E622B0A092002D3B6D /* Assets.xcassets in Resources */,
 				2F10662622B0A4D1002D3B6D /* NaviBarView.xib in Resources */,
 				2F27547C22D34975000C4F5F /* LeftPopController.xib in Resources */,
 				2F1065E422B0A090002D3B6D /* Main.storyboard in Resources */,
+				4B6FA72E22F9D1D0003BC030 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +636,24 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		4B6FA73022F9D1D0003BC030 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B6FA72F22F9D1D0003BC030 /* zh-Hant */,
+				4B6FA73122F9D1D8003BC030 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		4B6FA73422F9D7E3003BC030 /* RightPopController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4B6FA73322F9D7E3003BC030 /* zh-Hant */,
+				4B6FA73822F9D906003BC030 /* zh-Hans */,
+			);
+			name = RightPopController.xib;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -635,6 +661,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -694,6 +721,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

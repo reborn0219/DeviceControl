@@ -34,10 +34,10 @@
     view.frame = CGRectMake(0, 0, self.tabBar.bounds.size.width, self.tabBar.bounds.size.height+44);
     [[UITabBar appearance] insertSubview:view atIndex:0];
     LSPaletteController *palete = [[LSPaletteController alloc] init];
-    [self setChildVC:palete title:@"调色" image:@"调色板" selectedImage:@"调色板-点击"];
+    [self setChildVC:palete title:NSLocalizedString(@"调色",nil) image:@"调色板" selectedImage:@"调色板-点击"];
     
     LSModelController *model = [[LSModelController alloc] init];
-    [self setChildVC:model title:@"模式" image:@"中图模式" selectedImage:@"中图模式-点击"];
+    [self setChildVC:model title:NSLocalizedString(@"模式",nil)  image:@"中图模式" selectedImage:@"中图模式-点击"];
     
 //    LSMusicController *music = [[LSMusicController alloc] init];
 //    [self setChildVC:music title:@"音乐" image:@"音乐" selectedImage:@"音乐点击"];

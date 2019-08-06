@@ -80,7 +80,8 @@
     [ligimgV setImage:[UIImage imageNamed:@"灯1"] forState:UIControlStateNormal];
     [sectionView addSubview:ligimgV];
     UILabel * liglabel = [[UILabel alloc]initWithFrame:CGRectMake(40, 0, 80, 40)];
-    liglabel.text = @"我的设备";
+//    liglabel.text = @"我的设备";
+    liglabel.text = NSLocalizedString(@"我的设备", nil);
     liglabel.textColor = [UIColor whiteColor];
     UIButton * refreshBtn = [[UIButton alloc]initWithFrame:CGRectMake(140,4,40,40)];
     [refreshBtn setImage:[UIImage imageNamed:@"刷新"] forState:UIControlStateNormal];
