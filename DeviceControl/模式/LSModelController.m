@@ -45,13 +45,13 @@
                                           @"绿紫频闪",
                                           @"三色频闪",
                                           @"七色频闪",
-                                          @"静态红色",
-                                          @"静态绿色",
-                                          @"静态蓝色",
-                                          @"静态青色",
-                                          @"静态黄色",
-                                          @"静态紫色",
-                                          @"静态白色",
+                                          @"红色静态",
+                                          @"绿色静态",
+                                          @"蓝色静态",
+                                          @"青色静态",
+                                          @"黄色静态",
+                                          @"紫色静态",
+                                          @"白色静态",
                                           @"流星炫彩A",
                                           @"流星炫彩B",
                                           @"流星炫彩C",
@@ -98,7 +98,7 @@
 }
 -(UISlider *)lightSlider{
     if (!_lightSlider) {
-        _lightSlider = [[UISlider alloc]initWithFrame:CGRectMake(45, SCREEN_HEIGHT-160,SCREEN_WIDTH-90,20)];
+        _lightSlider = [[UISlider alloc]initWithFrame:CGRectMake(45, SCREEN_HEIGHT-120,SCREEN_WIDTH-90,20)];
         [_lightSlider setThumbTintColor:Selected_Color];
         [_lightSlider setTintColor:Selected_Color];
         _lightSlider.minimumValue = 0;
@@ -107,8 +107,9 @@
         [_lightSlider addTarget:self action:@selector(lightsliderTouchUpInSide:) forControlEvents:UIControlEventTouchUpInside];
         [_lightSlider addTarget:self action:@selector(lightSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
         [_lightSlider addTarget:self action:@selector(lightsliderTouchOutSide:) forControlEvents:UIControlEventTouchUpOutside];
-        UILabel * lightLb = [[UILabel alloc]initWithFrame:CGRectMake(45,_lightSlider.frame.origin.y-40,200,20)];
+        UILabel * lightLb = [[UILabel alloc]initWithFrame:CGRectMake(45,_lightSlider.frame.origin.y-25,200,20)];
         lightLb.text = @"亮度：30";
+        lightLb.font = [UIFont systemFontOfSize:14.0f];
         lightLb.tag = 100;
         lightLb.textColor = [UIColor whiteColor];
         [self.view addSubview:lightLb];
@@ -125,7 +126,7 @@
 }
 -(UISlider *)speedSlider{
     if (!_speedSlider) {
-        _speedSlider = [[UISlider alloc]initWithFrame:CGRectMake(45, SCREEN_HEIGHT-250,SCREEN_WIDTH-90,20)];
+        _speedSlider = [[UISlider alloc]initWithFrame:CGRectMake(45, SCREEN_HEIGHT-180,SCREEN_WIDTH-90,20)];
         _speedSlider.minimumValue = 0;
         _speedSlider.maximumValue =100;
         [_speedSlider setThumbTintColor:Selected_Color];
@@ -133,9 +134,10 @@
         [_speedSlider addTarget:self action:@selector(speedSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
         [_speedSlider addTarget:self action:@selector(speedsliderTouchUpInSide:) forControlEvents:UIControlEventTouchUpInside];
         [_speedSlider addTarget:self action:@selector(speedsliderTouchOutSide:) forControlEvents:UIControlEventTouchUpOutside];
-        UILabel * speedLb = [[UILabel alloc]initWithFrame:CGRectMake(45,_speedSlider.frame.origin.y-40,200,20)];
+        UILabel * speedLb = [[UILabel alloc]initWithFrame:CGRectMake(45,_speedSlider.frame.origin.y-25,200,20)];
         speedLb.tag = 101;
         speedLb.text = @"速度：0";
+        speedLb.font = [UIFont systemFontOfSize:14.0f];
         speedLb.textColor = [UIColor whiteColor];
         [self.view addSubview:speedLb];
         UIImageView * leftImgV = [[UIImageView alloc]initWithFrame:CGRectMake(15,_speedSlider.frame.origin.y, 20, 20)];
@@ -256,7 +258,6 @@
         [selLb setTextAlignment:NSTextAlignmentCenter];
         [selLb setFont:[UIFont systemFontOfSize:20]];
     }
-    
 //    //下一个选中的颜色（为了选中状态不突兀，自己注释看看效果）
 //    UILabel *selLb1 = (UILabel*)[pickerView viewForRow:row + 1 forComponent:0];
 //    if (selLb1) {
@@ -266,7 +267,6 @@
 //        [selLb1 setBackgroundColor:[UIColor greenColor]];
 //        [selLb1 setFont:[UIFont systemFontOfSize:16]];
 //    }
-//
 //    //设置分割线
 //    for (UIView *line in pickerView.subviews) {
 //        if (line.frame.size.height < 1) {//0.6667
@@ -276,7 +276,7 @@
 //            line.frame = CGRectMake((pickerView.frame.size.width - lineW) * 0.5, tempRect.origin.y, lineW, 2);
 //        }
 //    }
-    
     return norLabel;
+    
 }
 @end

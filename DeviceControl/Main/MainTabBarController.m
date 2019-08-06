@@ -39,14 +39,14 @@
     LSModelController *model = [[LSModelController alloc] init];
     [self setChildVC:model title:@"模式" image:@"中图模式" selectedImage:@"中图模式-点击"];
     
-    LSMusicController *music = [[LSMusicController alloc] init];
-    [self setChildVC:music title:@"音乐" image:@"音乐" selectedImage:@"音乐点击"];
-    
-    LSOnlineMusicController *online = [[LSOnlineMusicController alloc] init];
-    [self setChildVC:online title:@"在线音乐" image:@"在线音乐" selectedImage:@"在线音乐-点击"];
-    LSMicrophoneController *microphone = [[LSMicrophoneController alloc] init];
-    [self setChildVC:microphone title:@"麦克风" image:@"麦克风" selectedImage:@"麦克风-点击"];
-    
+//    LSMusicController *music = [[LSMusicController alloc] init];
+//    [self setChildVC:music title:@"音乐" image:@"音乐" selectedImage:@"音乐点击"];
+//    
+//    LSOnlineMusicController *online = [[LSOnlineMusicController alloc] init];
+//    [self setChildVC:online title:@"在线音乐" image:@"在线音乐" selectedImage:@"在线音乐-点击"];
+//    LSMicrophoneController *microphone = [[LSMicrophoneController alloc] init];
+//    [self setChildVC:microphone title:@"麦克风" image:@"麦克风" selectedImage:@"麦克风-点击"];
+//    
 }
 
 - (void) setChildVC:(UIViewController *)childVC title:(NSString *) title image:(NSString *) image selectedImage:(NSString *) selectedImage {

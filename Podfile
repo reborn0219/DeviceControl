@@ -10,5 +10,5 @@ target 'DeviceControl' do
     pod 'AFNetworking'
     pod 'AFNetworking'
     pod 'MJRefresh'
-  
+
 end
