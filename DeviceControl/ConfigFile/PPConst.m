@@ -21,6 +21,6 @@ NSString * const Server_Address = @"http://192.168.20.22:9006/liangxun/api/v2/";
 NSString * const Map_Key = @"bb6d54f3e71a418046c9261788ecff18";
 NSString * const Chat_Server_Address = @"http://xiaoxi.node4.yanxishe.cc/";
 NSString * const Lights_Number = @"Lights_Number";
-CGFloat const Time_Interval = 0.60;
+CGFloat const Time_Interval = 0.060;
 
 @end

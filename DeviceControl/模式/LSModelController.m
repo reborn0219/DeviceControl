@@ -159,6 +159,9 @@
     UILabel * lightLb = (UILabel*)[self.view viewWithTag:100];
     lightLb.text = [NSString stringWithFormat:@"亮度：%.f",slider.value];
     _lightStr =  [NSString stringWithFormat:@"%.f",slider.value];
+    
+    
+    NSLog(@"---速度%@",_speedStr);
     [self sendTimerInstructions];
 
 }
@@ -167,6 +170,8 @@
     UILabel * lightLb = (UILabel*)[self.view viewWithTag:100];
     lightLb.text = [NSString stringWithFormat:@"亮度：%.f",slider.value];
     _lightStr =  [NSString stringWithFormat:@"%.f",slider.value];
+    NSLog(@"---速度%@",_speedStr);
+
     [self assemblyInstructions];
 }
 -(void)lightsliderTouchUpInSide:(UISlider *)slider{
@@ -174,6 +179,8 @@
     UILabel * lightLb = (UILabel*)[self.view viewWithTag:100];
     lightLb.text = [NSString stringWithFormat:@"亮度：%.f",slider.value];
     _lightStr =  [NSString stringWithFormat:@"%.f",slider.value];
+    NSLog(@"---速度%@",_speedStr);
+
     [self assemblyInstructions];
 }
 
