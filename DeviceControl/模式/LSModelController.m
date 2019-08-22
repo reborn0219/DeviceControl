@@ -9,6 +9,9 @@
 #import "LSModelController.h"
 #import "BluetoothManager.h"
 @interface LSModelController ()<UIPickerViewDelegate,UIPickerViewDataSource>
+{
+   NSDate* begainDate;
+}
 @property(nonatomic,strong)UIPickerView *pickerView;
 @property(nonatomic,strong)NSMutableArray *dataSouce;
 @property(nonatomic,strong)UISlider *lightSlider;
@@ -238,7 +241,24 @@
     lightNumber = [self getHexByDecimal:lightNumber.integerValue];
     NSString * instructionstr = [NSString stringWithFormat:@"ABBA02%@00%@%@%@EF",_instruction,[self getHexByDecimal:_speedStr.integerValue],[self getHexByDecimal:_lightStr.integerValue],lightNumber];
     NSLog(@"蓝牙发送指令：%@",instructionstr);
-    [[BluetoothManager shareBluetoothManager]sendTimerInstructions:instructionstr];
+//    [[BluetoothManager shareBluetoothManager]sendTimerInstructions:instructionstr];
+    
+    
+    NSDate *currentDate = [NSDate date];
+    if (begainDate==nil) {
+        begainDate = [NSDate date];
+    }else{
+        NSTimeInterval time = [currentDate timeIntervalSinceDate:begainDate];
+        if ((time-0.060)>0) {
+            begainDate = [NSDate date];
+            NSLog(@"指令间隔----%f",time);
+            [[BluetoothManager shareBluetoothManager]sendInstructions:instructionstr];
+            
+        }else{
+            NSLog(@"丢失指令----%f",time);
+            
+        }
+    }
 }
 
 - (UIView *)pickerView:(UIPickerView *)pickerView

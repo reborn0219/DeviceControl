@@ -16,6 +16,9 @@
 #define  bottom_color_view_h (IS_PhoneXAll?200:120)
 #define  slider_bottom (bottom_color_view_h+k_Height_TabBar+15)
 @interface LSPaletteController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,PaletteDelegate>
+{
+    NSDate *begainDate;
+}
 @property (nonatomic,strong) Palette *paletteView;
 @property (nonatomic,strong) UIImageView *backImgV;
 @property (nonatomic,strong) UIImageView *leftImgV;
@@ -114,6 +117,7 @@
 //    }
 }
 -(void)patette:(Palette *)patette choiceColor:(UIColor *)color colorPoint:(CGPoint)colorPoint{
+    
     [self setColorLabelCount:color];
     [self assemblyInstructions];
   
@@ -431,13 +435,30 @@
     }else{
 //        NSLog(@"啥也不是");
     }
+    
+    
     NSString * rgbStr = _currentColor.hexString.uppercaseString;
     NSString * lightNumber = [[NSUserDefaults standardUserDefaults]objectForKey:Lights_Number];
     lightNumber = [self getHexByDecimal:lightNumber.integerValue];
     NSString * brightness = [self getHexByDecimal:_brightness.integerValue];
     NSString * instructionstr = [NSString stringWithFormat:@"ABBA01%@%@%@EF",rgbStr,brightness,lightNumber];
 //    NSLog(@"蓝牙发送指令：%@",instructionstr);
-    [[BluetoothManager shareBluetoothManager]sendTimerInstructions:instructionstr];
+    NSDate *currentDate = [NSDate date];
+    if (begainDate==nil) {
+        begainDate = [NSDate date];
+    }else{
+        NSTimeInterval time = [currentDate timeIntervalSinceDate:begainDate];
+        if ((time-0.060)>0) {
+            begainDate = [NSDate date];
+            NSLog(@"指令间隔----%f",time);
+            [[BluetoothManager shareBluetoothManager]sendInstructions:instructionstr];
+
+        }else{
+            NSLog(@"丢失指令----%f",time);
+
+        }
+    }
+    
 }
 
 @end

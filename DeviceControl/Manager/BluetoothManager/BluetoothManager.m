@@ -65,13 +65,13 @@
 
 -(void)sendInstructionAction{
     NSString * instructionStr = instructionArr.firstObject;
-    NSLog(@"-----时间指令--%@---",instructionStr);
+//    NSLog(@"-----时间指令--%@---",instructionStr);
     if (instructionStr) {
         NSData *data =[self hexToBytes:instructionStr];
         if (_characteristicWrite) {
             [self.discoveredPeripheral writeValue:data forCharacteristic:_characteristicWrite type:CBCharacteristicWriteWithoutResponse];
         }else{
-            NSLog(@"-----特征码未找到-----");
+//            NSLog(@"-----特征码未找到-----");
         }
         [instructionArr removeFirstObject];
     }
@@ -178,25 +178,25 @@
         self.blueToothBlock(nil,SendCommd);
     }
 }
--(void)sendTimerInstructions:(NSString *)instructionStr{
-    [instructionArr addObject:instructionStr];
-    
-    if (istimer) {
-//        NSLog(@"--正在执行命令--");
-    }else{
-//        NSLog(@"--开启定时器--");
-        [self startInstructionTimer];
-    }
-}
+//-(void)sendTimerInstructions:(NSString *)instructionStr{
+//    [instructionArr addObject:instructionStr];
+//    
+//    if (istimer) {
+////        NSLog(@"--正在执行命令--");
+//    }else{
+////        NSLog(@"--开启定时器--");
+//        [self startInstructionTimer];
+//    }
+//}
 #pragma mark - 发送蓝牙指令
 -(void)sendInstructions:(NSString *)instructionStr{
-    [self stopInstructionTimer];
-    [instructionArr removeAllObjects];
+//    [self stopInstructionTimer];
+//    [instructionArr removeAllObjects];
     NSData *data =[self hexToBytes:instructionStr];
     if (_characteristicWrite) {
         [self.discoveredPeripheral writeValue:data forCharacteristic:_characteristicWrite type:CBCharacteristicWriteWithoutResponse];
     }else{
-        NSLog(@"-----特征码未找到-----");
+//        NSLog(@"-----特征码未找到-----");
     }
 }
 //hex -> NSData

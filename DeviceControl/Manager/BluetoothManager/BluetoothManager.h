@@ -34,7 +34,7 @@
 -(void)discconnection;
 ///发送蓝牙指令
 -(void)sendInstructions:(NSString *)instructionStr;
--(void)sendTimerInstructions:(NSString *)instructionStr;
+//-(void)sendTimerInstructions:(NSString *)instructionStr;
 
 -(void)startInstructionTimer;
 -(void)stopInstructionTimer;
