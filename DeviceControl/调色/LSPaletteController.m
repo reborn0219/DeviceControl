@@ -451,10 +451,11 @@
         if ((time-0.060)>0) {
             begainDate = [NSDate date];
             NSLog(@"指令间隔----%f",time);
+            NSLog(@"指令间隔----%f+++指令:%@ RGB:%@ 亮度:%lu",time,instructionstr,rgbStr,_brightness.integerValue);
             [[BluetoothManager shareBluetoothManager]sendInstructions:instructionstr];
 
         }else{
-            NSLog(@"丢失指令----%f",time);
+//            NSLog(@"丢失指令----%f",time);
 
         }
     }

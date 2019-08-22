@@ -240,7 +240,7 @@
     NSString * lightNumber = [[NSUserDefaults standardUserDefaults]objectForKey:Lights_Number];
     lightNumber = [self getHexByDecimal:lightNumber.integerValue];
     NSString * instructionstr = [NSString stringWithFormat:@"ABBA02%@00%@%@%@EF",_instruction,[self getHexByDecimal:_speedStr.integerValue],[self getHexByDecimal:_lightStr.integerValue],lightNumber];
-    NSLog(@"蓝牙发送指令：%@",instructionstr);
+//    NSLog(@"蓝牙发送指令：%@",instructionstr);
 //    [[BluetoothManager shareBluetoothManager]sendTimerInstructions:instructionstr];
     
     
@@ -251,11 +251,11 @@
         NSTimeInterval time = [currentDate timeIntervalSinceDate:begainDate];
         if ((time-0.060)>0) {
             begainDate = [NSDate date];
-            NSLog(@"指令间隔----%f",time);
+            NSLog(@"指令间隔----%f+++指令:%@ 速度:%@ 亮度:%@",time,instructionstr,_speedStr,_lightStr);
             [[BluetoothManager shareBluetoothManager]sendInstructions:instructionstr];
             
         }else{
-            NSLog(@"丢失指令----%f",time);
+//            NSLog(@"丢失指令----%f",time);
             
         }
     }
