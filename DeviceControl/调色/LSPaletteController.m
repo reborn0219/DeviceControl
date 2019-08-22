@@ -117,43 +117,22 @@
 //    }
 }
 -(void)patette:(Palette *)patette choiceColor:(UIColor *)color colorPoint:(CGPoint)colorPoint{
-    
-    [self setColorLabelCount:color];
+    if(color){
+        _currentColor = color;
+    }
     [self assemblyInstructions];
   
 }
 -(void)patette:(Palette *)patette choiceColor:(UIColor *)color{
-    [self setColorLabelCount:color];
+    if(color){
+        _currentColor = color;
+    }
     ///间隔60ms发送指令
     [self sendTimerInstructions];
 }
 -(void)setColorLabelCount:(UIColor *)color{
     if(!color){return;}
     _currentColor = color;
-    const CGFloat *components = CGColorGetComponents(color.CGColor);
-//    NSLog(@"Red: %.f", components[0]*255);
-//    NSLog(@"Green: %.f", components[1]*255);
-//    NSLog(@"Blue: %.f", components[2]*255);
-    UILabel * tempLab = [_rgbView viewWithTag:100];
-    tempLab.text = [NSString stringWithFormat:@"%.f", components[0]*255];
-    UILabel * tempLab1 = [_rgbView viewWithTag:101];
-    tempLab1.text = [NSString stringWithFormat:@"%.f", components[1]*255];
-    UILabel * tempLab2 = [_rgbView viewWithTag:102];
-    tempLab2.text = [NSString stringWithFormat:@"%.f", components[2]*255];
-    [self.centerView setBackgroundColor:color];
-    self.centerView.layer.shadowColor = color.CGColor;
-    self.centerView.layer.shadowOffset = CGSizeMake(1,1);
-    self.centerView.layer.shadowOpacity = 1;
-    self.centerView.layer.shadowRadius = 15;
-    if(_seletedIndex.row==0||_seletedIndex.row==1||_seletedIndex.row==2||_seletedIndex.row==3) {
-        ColorModel *model  =   [_colorArr objectAtIndex:_seletedIndex.row];
-        model.color = color;
-        
-        [_collectionView reloadData];
-        
-    }
-    
-    [self.paletteBackView setBackgroundColor:color];
 }
 
 #pragma mark - lazy loading
@@ -180,7 +159,6 @@
         _centerView = [[UIView alloc]initWithFrame:CGRectMake(_paletteView.centerX-30, _paletteView.centerY-30, 60, 60)];
         _centerView.backgroundColor =  HexRGB(0x62c16f);
         _centerView.layer.cornerRadius = 30;
-        
     }
     return _centerView;
 }
@@ -216,13 +194,12 @@
                 
             }
             numberLb.backgroundColor = HexRGB(0x2B324E);
-            
-            
             numberLb.font = [UIFont systemFontOfSize:16];
             numberLb.textColor = [UIColor whiteColor];
             numberLb.text = @"255";
             [_rgbView addSubview:lb];
             [_rgbView addSubview:numberLb];
+            
         }
     }
     return _rgbView;
@@ -325,18 +302,18 @@
 }
 -(void)lightSliderValueChanged:(UISlider *)slider
 {
-    NSLog(@"slider value%f",slider.value);
+//    NSLog(@"slider value%f",slider.value);
     _brightness = [NSString stringWithFormat:@"%.f",slider.value];
     [self sendTimerInstructions];
 
 }
 -(void)sliderTouchOutSide:(UISlider *)slider{
-    NSLog(@"slider value%f",slider.value);
+//    NSLog(@"slider value%f",slider.value);
     _brightness = [NSString stringWithFormat:@"%.f",slider.value];
     [self assemblyInstructions];
 }
 -(void)sliderTouchUpInSide:(UISlider *)slider{
-    NSLog(@"slider value%f",slider.value);
+//    NSLog(@"slider value%f",slider.value);
     _brightness = [NSString stringWithFormat:@"%.f",slider.value];
     [self assemblyInstructions];
 }
@@ -398,8 +375,7 @@
     }else{
         [_paletteView changeStatus:1];
         [_leftImgV setImage:[UIImage imageNamed:@"小色彩盘"]];
-        [self setColorLabelCount:cellModel.color];
-        
+        _currentColor = cellModel.color;
         [_centerView setHidden:NO];
     }
     [self assemblyInstructions];
@@ -411,18 +387,16 @@
         return;
     }
     if (!_currentColor) {
-//        NSLog(@"%@",_currentColor);
         return;
-    }else{
-//        NSLog(@"啥也不是");
     }
+    
     NSString * rgbStr = _currentColor.hexString.uppercaseString;
     NSString * lightNumber = [[NSUserDefaults standardUserDefaults]objectForKey:Lights_Number];
     lightNumber = [self getHexByDecimal:lightNumber.integerValue];
     NSString * brightness = [self getHexByDecimal:_brightness.integerValue];
     NSString * instructionstr = [NSString stringWithFormat:@"ABBA01%@%@%@EF",rgbStr,brightness,lightNumber];
-//    NSLog(@"蓝牙发送指令：%@",instructionstr);
     [[BluetoothManager shareBluetoothManager]sendInstructions:instructionstr];
+    [self changeUI];
     
 }
 -(void)sendTimerInstructions{
@@ -430,13 +404,8 @@
         return;
     }
     if (!_currentColor) {
-//        NSLog(@"%@",_currentColor);
         return;
-    }else{
-//        NSLog(@"啥也不是");
     }
-    
-    
     NSString * rgbStr = _currentColor.hexString.uppercaseString;
     NSString * lightNumber = [[NSUserDefaults standardUserDefaults]objectForKey:Lights_Number];
     lightNumber = [self getHexByDecimal:lightNumber.integerValue];
@@ -451,9 +420,9 @@
         if ((time-0.060)>0) {
             begainDate = [NSDate date];
             NSLog(@"指令间隔----%f",time);
-            NSLog(@"指令间隔----%f+++指令:%@ RGB:%@ 亮度:%lu",time,instructionstr,rgbStr,_brightness.integerValue);
+            NSLog(@"指令间隔----%f+++指令:%@ RGB:%@ 亮度:%d",time,instructionstr,rgbStr,_brightness.intValue);
             [[BluetoothManager shareBluetoothManager]sendInstructions:instructionstr];
-
+            [self changeUI];
         }else{
 //            NSLog(@"丢失指令----%f",time);
 
@@ -461,5 +430,30 @@
     }
     
 }
-
+-(void)changeUI{
+    
+    const CGFloat *components = CGColorGetComponents(_currentColor.CGColor);
+    //    NSLog(@"Red: %.f", components[0]*255);
+    //    NSLog(@"Green: %.f", components[1]*255);
+    //    NSLog(@"Blue: %.f", components[2]*255);
+    UILabel * tempLab = [_rgbView viewWithTag:100];
+    tempLab.text = [NSString stringWithFormat:@"%.f", components[0]*255];
+    UILabel * tempLab1 = [_rgbView viewWithTag:101];
+    tempLab1.text = [NSString stringWithFormat:@"%.f", components[1]*255];
+    UILabel * tempLab2 = [_rgbView viewWithTag:102];
+    tempLab2.text = [NSString stringWithFormat:@"%.f", components[2]*255];
+    [self.centerView setBackgroundColor:_currentColor];
+    self.centerView.layer.shadowColor = _currentColor.CGColor;
+    self.centerView.layer.shadowOffset = CGSizeMake(1,1);
+    self.centerView.layer.shadowOpacity = 1;
+    self.centerView.layer.shadowRadius = 15;
+    if(_seletedIndex.row==0||_seletedIndex.row==1||_seletedIndex.row==2||_seletedIndex.row==3) {
+        ColorModel *model  =   [_colorArr objectAtIndex:_seletedIndex.row];
+        model.color = _currentColor;
+        
+        [_collectionView reloadData];
+        
+    }
+    [self.paletteBackView setBackgroundColor:_currentColor];
+}
 @end
