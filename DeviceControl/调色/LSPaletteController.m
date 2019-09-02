@@ -245,7 +245,7 @@
 }
 -(UIImageView *)backImgV{
     if (!_backImgV) {
-        _backImgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, NavBar_H+6, SCREEN_WIDTH, SCREEN_HEIGHT-NavBar_H)];
+        _backImgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, NavBar_H+6, SCREEN_WIDTH, SCREEN_HEIGHT-NavBar_H-k_Height_TabBar)];
         [_backImgV setImage:[UIImage imageNamed:@"背景"]];
         
     }

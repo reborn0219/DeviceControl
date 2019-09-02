@@ -49,6 +49,9 @@
     [self saveLightNumber];
 
 }
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self dismissViewControllerAnimated:NO completion:nil];
+}
 -(void)saveLightNumber{
     [[NSUserDefaults standardUserDefaults]setObject:_countTF.text forKey:Lights_Number];
     [[NSUserDefaults standardUserDefaults]synchronize];

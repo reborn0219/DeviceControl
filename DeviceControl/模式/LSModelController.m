@@ -20,7 +20,7 @@
 @property (nonatomic,copy) NSString *lightStr;
 @property (nonatomic,copy) NSString *speedStr;
 @property (nonatomic,copy) NSString *instruction;
-
+@property(nonatomic,strong)UIImageView *backImgV;
 @end
 
 @implementation LSModelController
@@ -30,7 +30,8 @@
     _speedStr = @"00";
     _lightStr = @"30";
     _instruction = @"01";
-    
+    [self.view addSubview:self.backImgV];
+
     [self.dataSouce addObjectsFromArray:@[NSLocalizedString(@"红色渐变",nil),
                                           NSLocalizedString(@"绿色渐变",nil),
                                           NSLocalizedString(@"蓝色渐变",nil),
@@ -76,6 +77,14 @@
 }
 
 #pragma mark - lazy loading
+-(UIImageView *)backImgV{
+    if (!_backImgV) {
+        _backImgV = [[UIImageView alloc]initWithFrame:CGRectMake(0, NavBar_H+6, SCREEN_WIDTH, SCREEN_HEIGHT-NavBar_H-k_Height_TabBar)];
+        [_backImgV setImage:[UIImage imageNamed:@"背景"]];
+        
+    }
+    return _backImgV;
+}
 -(NSMutableArray *)instructionArr{
     if (!_instructionArr) {
         _instructionArr = [NSMutableArray array];
